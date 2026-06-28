@@ -35,7 +35,7 @@ const pathname = Astro.url.pathname;
         <ul class="nav__links">
           <li><a href="/" class={pathname === '/' ? 'active' : ''}>Home</a></li>
           <li><a href="/lyrics" class={pathname.startsWith('/lyrics') ? 'active' : ''}>Lyrics</a></li>
-          <li><a href="/videos" class={pathname === '/videos' ? 'active' : ''}>Videos</a></li>
+          <li><a href="/videos" class={pathname.startsWith('/videos') ? 'active' : ''}>Videos</a></li>
           <li><a href="/#about">About</a></li>
         </ul>
       </div>
