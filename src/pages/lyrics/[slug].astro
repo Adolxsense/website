@@ -1,0 +1,112 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { songs, getSongBySlug } from '../../data/songs';
+
+export function getStaticPaths() {
+  return songs.map((song) => ({
+    params: { slug: song.slug },
+  }));
+}
+
+const { slug } = Astro.params;
+const song = getSongBySlug(slug);
+
+if (!song) return Astro.redirect('/lyrics');
+
+/**
+ * Parses lyrics into blocks of section labels and lines.
+ * Section labels match the pattern [Verse], [Chorus], etc.
+ */
+function parseLyrics(raw: string) {
+  const lines = raw.split('\n');
+  const blocks: Array<{ type: 'label' | 'line' | 'blank'; text: string }> = [];
+
+  for (const line of lines) {
+    const trimmed = line.trim();
+    if (!trimmed) {
+      blocks.push({ type: 'blank', text: '' });
+    } else if (/^\[.+\]$/.test(trimmed)) {
+      blocks.push({ type: 'label', text: trimmed.replace(/^\[|\]$/g, '') });
+    } else {
+      blocks.push({ type: 'line', text: trimmed });
+    }
+  }
+
+  return blocks;
+}
+
+const lyricBlocks = parseLyrics(song.lyrics);
+---
+
+<Layout title={song.title} description={song.description}>
+  <div style="padding-top: 100px; padding-bottom: 100px;">
+    <div class="container">
+      <a href="/lyrics" class="back-link">&#8592; All Lyrics</a>
+
+      <div class="song-detail-layout">
+        <!-- LYRICS COLUMN -->
+        <div>
+          <div class="song-detail-header">
+            <h1 class="song-detail-title">{song.title}</h1>
+            <div class="song-detail-meta">
+              <span class="tag">{song.genre}</span>
+              <span class="tag">{song.bpm} BPM</span>
+              <span class="tag">{song.album}</span>
+              <span class="tag">{song.year}</span>
+            </div>
+            <p class="song-detail-desc">{song.description}</p>
+          </div>
+
+          <div class="lyrics-body">
+            {lyricBlocks.map((block) => {
+              if (block.type === 'label') return <span class="section-label">[{block.text}]</span>;
+              if (block.type === 'line') return <span class="line">{block.text}</span>;
+              return <br />;
+            })}
+          </div>
+        </div>
+
+        <!-- VIDEO COLUMN -->
+        <div class="song-video">
+          <div class="song-video-embed">
+            {song.youtubeId ? (
+              <iframe
+                src={`https://www.youtube.com/embed/${song.youtubeId}`}
+                title={song.title}
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen
+              />
+            ) : (
+              <div class="song-video-placeholder">
+                <div style="font-size: 2rem; margin-bottom: 8px; opacity: 0.3;">&#9654;</div>
+                <span>Video coming soon</span>
+              </div>
+            )}
+          </div>
+
+          <div style="margin-top: 32px; padding: 24px; background: var(--bg-card); border: 1px solid var(--border);">
+            <p style="font-family: var(--font-heading); font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-faint); margin-bottom: 16px;">Track Info</p>
+            <div style="display: flex; flex-direction: column; gap: 10px;">
+              <div style="display: flex; justify-content: space-between; font-size: 0.85rem;">
+                <span style="color: var(--text-muted);">Album</span>
+                <span style="color: var(--text);">{song.album}</span>
+              </div>
+              <div style="display: flex; justify-content: space-between; font-size: 0.85rem;">
+                <span style="color: var(--text-muted);">Genre</span>
+                <span style="color: var(--text);">{song.genre}</span>
+              </div>
+              <div style="display: flex; justify-content: space-between; font-size: 0.85rem;">
+                <span style="color: var(--text-muted);">BPM</span>
+                <span style="color: var(--text);">{song.bpm}</span>
+              </div>
+              <div style="display: flex; justify-content: space-between; font-size: 0.85rem;">
+                <span style="color: var(--text-muted);">Year</span>
+                <span style="color: var(--text);">{song.year}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</Layout>

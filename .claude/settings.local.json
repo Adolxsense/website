@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(wget --mirror --convert-links --adjust-extension --page-requisites --no-parent -P ./stratos-template https://stratos-template.vercel.app/)",
+      "Bash(find ~/dev/adolxsense -type f 2>/dev/null | head -5; ls ~/dev/)",
+      "Bash(npm create *)",
+      "Bash(npm install *)",
+      "Bash(npx astro *)",
+      "Bash(npm run *)",
+      "mcp__Claude_Preview__preview_start",
+      "Bash(git init *)",
+      "Bash(git add *)",
+      "Bash(git reset *)",
+      "Bash(git rm *)"
+    ]
+  }
+}

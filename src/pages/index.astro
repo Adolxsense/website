@@ -1,0 +1,142 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { songs } from '../data/songs';
+
+const featuredSongs = songs.slice(0, 4);
+---
+
+<Layout>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero__bg"></div>
+    <div class="hero__grid"></div>
+    <div class="hero__content container">
+      <p class="hero__eyebrow">Nu Metal · Alternative Rock</p>
+      <h1 class="hero__title">
+        ADOLX<span class="accent">SENSE</span>
+      </h1>
+      <p class="hero__tagline">
+        Songs for the things we never said, the pain we never showed,<br />
+        and the memories that still echo.
+      </p>
+      <div class="hero__actions">
+        <a href="/lyrics" class="btn btn-primary">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+          All Lyrics
+        </a>
+        <a href="/videos" class="btn btn-ghost">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+          Watch Videos
+        </a>
+      </div>
+    </div>
+    <div class="hero__scroll">
+      <div class="hero__scroll-line"></div>
+      <span>Scroll</span>
+    </div>
+  </section>
+
+  <!-- SONGS SECTION -->
+  <section class="section" id="music">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-header__label">Discography</p>
+        <h2 class="section-header__title">The <em>Music</em></h2>
+      </div>
+      <div class="songs-grid">
+        {featuredSongs.map((song, i) => (
+          <a href={`/lyrics/${song.slug}`} class="song-card">
+            <span class="song-card__number">0{i + 1}</span>
+            <h3 class="song-card__title">{song.title}</h3>
+            <div class="song-card__meta">
+              <span class="tag">{song.genre}</span>
+              <span class="tag">{song.bpm} BPM</span>
+            </div>
+            <p class="song-card__desc">{song.description}</p>
+            <span class="song-card__arrow">&#8594;</span>
+          </a>
+        ))}
+      </div>
+      <div style="margin-top: 48px; text-align: center;">
+        <a href="/lyrics" class="btn btn-ghost">View All Lyrics &#8594;</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ABOUT SECTION -->
+  <section class="section about-section" id="about">
+    <div class="container">
+      <div class="about-layout">
+        <div class="about-big-text">
+          THE<br />
+          <span>BAND</span>
+        </div>
+        <div class="about-body">
+          <p class="section-header__label" style="margin-bottom: 20px;">About Adolxsense</p>
+          <p>
+            <strong>Adolxsense</strong> is a Nu Metal and Alternative Rock project built on a simple belief:
+            music should make you feel something you can't find words for — and then give you the words.
+          </p>
+          <p>
+            Fronted by the raw, confessional voice of <strong>Christie</strong> (Christine Noelle Lavigne),
+            the band channels early-2000s rock energy through a modern lens — heavy distorted guitars,
+            cinematic atmospheres, and lyrics that live in the spaces between what we say and what we mean.
+          </p>
+          <p>
+            Drawing from the sonic DNA of Linkin Park, Evanescence, Breaking Benjamin, and Staind,
+            Adolxsense exists in a world of dark corridors, empty roads, and the quiet devastation
+            of things left unsaid.
+          </p>
+          <div class="about-quote">
+            <blockquote>
+              "Songs for the things we never said, the pain we never showed,<br />
+              and the memories that still echo."
+            </blockquote>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- VIDEOS PREVIEW -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-header__label">Watch</p>
+        <h2 class="section-header__title">Latest <em>Videos</em></h2>
+      </div>
+      <div class="videos-grid">
+        {songs.slice(0, 3).map((song) => (
+          <div class="video-card">
+            <div class="video-card__embed">
+              {song.youtubeId ? (
+                <iframe
+                  src={`https://www.youtube.com/embed/${song.youtubeId}`}
+                  title={song.title}
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen
+                />
+              ) : (
+                <div class="video-card__placeholder">
+                  <div class="video-card__placeholder-icon">&#9654;</div>
+                  <span>Coming Soon</span>
+                </div>
+              )}
+            </div>
+            <div class="video-card__info">
+              <div class="video-card__title">{song.title}</div>
+              <div class="video-card__album">{song.album}</div>
+            </div>
+          </div>
+        ))}
+      </div>
+      <div style="margin-top: 48px; text-align: center;">
+        <a href="/videos" class="btn btn-ghost">All Videos &#8594;</a>
+      </div>
+    </div>
+  </section>
+</Layout>

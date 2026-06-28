@@ -1,0 +1,43 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { songs } from '../data/songs';
+---
+
+<Layout title="Videos" description="Watch all Adolxsense music videos on YouTube.">
+  <div style="padding-top: 120px; padding-bottom: 100px;">
+    <div class="container">
+      <div class="lyrics-hero">
+        <p class="section-header__label">Watch</p>
+        <h1 class="section-header__title">Videos</h1>
+      </div>
+
+      <div style="padding: 80px 0;">
+        <div class="videos-grid">
+          {songs.map((song) => (
+            <div class="video-card">
+              <div class="video-card__embed">
+                {song.youtubeId ? (
+                  <iframe
+                    src={`https://www.youtube.com/embed/${song.youtubeId}`}
+                    title={song.title}
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen
+                  />
+                ) : (
+                  <div class="video-card__placeholder">
+                    <div class="video-card__placeholder-icon">&#9654;</div>
+                    <span>Coming Soon</span>
+                  </div>
+                )}
+              </div>
+              <div class="video-card__info">
+                <div class="video-card__title">{song.title}</div>
+                <div class="video-card__album">{song.album} &middot; {song.year}</div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+</Layout>
