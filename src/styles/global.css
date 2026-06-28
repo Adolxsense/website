@@ -683,6 +683,39 @@ body::before {
   color: var(--red);
 }
 
+/* ─── LYRICS DUAL (side by side) ─────────────────── */
+.lyrics-dual {
+  display: grid;
+  grid-template-columns: 1fr 1px 1fr;
+  gap: 40px;
+  align-items: start;
+}
+
+.lyrics-dual__divider {
+  background: var(--border);
+  align-self: stretch;
+}
+
+.lyrics-dual__lang {
+  font-family: var(--font-heading);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--red);
+  margin-bottom: 24px;
+}
+
+@media (max-width: 768px) {
+  .lyrics-dual {
+    grid-template-columns: 1fr;
+  }
+  .lyrics-dual__divider {
+    height: 1px;
+    width: 100%;
+  }
+}
+
 /* ─── FOOTER ──────────────────────────────────────── */
 .footer {
   padding: 60px 0;

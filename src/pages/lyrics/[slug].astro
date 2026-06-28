@@ -36,6 +36,8 @@ function parseLyrics(raw: string) {
 }
 
 const lyricBlocks = parseLyrics(song.lyrics);
+const translationBlocks = song.translation ? parseLyrics(song.translation) : [];
+const hasTranslation = translationBlocks.length > 0;
 ---
 
 <Layout title={song.title} description={song.description}>
@@ -57,13 +59,39 @@ const lyricBlocks = parseLyrics(song.lyrics);
             <p class="song-detail-desc">{song.description}</p>
           </div>
 
-          <div class="lyrics-body">
-            {lyricBlocks.map((block) => {
-              if (block.type === 'label') return <span class="section-label">[{block.text}]</span>;
-              if (block.type === 'line') return <span class="line">{block.text}</span>;
-              return <br />;
-            })}
-          </div>
+          {hasTranslation ? (
+            <div class="lyrics-dual">
+              <div class="lyrics-dual__col">
+                <p class="lyrics-dual__lang">English</p>
+                <div class="lyrics-body">
+                  {lyricBlocks.map((block) => {
+                    if (block.type === 'label') return <span class="section-label">[{block.text}]</span>;
+                    if (block.type === 'line') return <span class="line">{block.text}</span>;
+                    return <br />;
+                  })}
+                </div>
+              </div>
+              <div class="lyrics-dual__divider"></div>
+              <div class="lyrics-dual__col">
+                <p class="lyrics-dual__lang">Português</p>
+                <div class="lyrics-body">
+                  {translationBlocks.map((block) => {
+                    if (block.type === 'label') return <span class="section-label">[{block.text}]</span>;
+                    if (block.type === 'line') return <span class="line">{block.text}</span>;
+                    return <br />;
+                  })}
+                </div>
+              </div>
+            </div>
+          ) : (
+            <div class="lyrics-body">
+              {lyricBlocks.map((block) => {
+                if (block.type === 'label') return <span class="section-label">[{block.text}]</span>;
+                if (block.type === 'line') return <span class="line">{block.text}</span>;
+                return <br />;
+              })}
+            </div>
+          )}
         </div>
 
         <!-- VIDEO COLUMN -->
@@ -88,7 +116,7 @@ const lyricBlocks = parseLyrics(song.lyrics);
             <p style="font-family: var(--font-heading); font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-faint); margin-bottom: 16px;">Track Info</p>
             <div style="display: flex; flex-direction: column; gap: 10px;">
               <div style="display: flex; justify-content: space-between; font-size: 0.85rem;">
-                <span style="color: var(--text-muted);">Album</span>
+                <span style="color: var(--text-muted);">Release</span>
                 <span style="color: var(--text);">{song.album}</span>
               </div>
               <div style="display: flex; justify-content: space-between; font-size: 0.85rem;">

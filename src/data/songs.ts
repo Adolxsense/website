@@ -7,6 +7,7 @@ export interface Song {
   genre: string;
   youtubeId: string | null;
   lyrics: string;
+  translation?: string;
   description: string;
 }
 
@@ -14,8 +15,8 @@ export const songs: Song[] = [
   {
     slug: 'before-i-became-this',
     title: 'Before I Became This',
-    album: 'After the Rain',
-    year: 2024,
+    album: 'Single',
+    year: 2026,
     bpm: 96,
     genre: 'Post-Grunge',
     youtubeId: null, // Replace with actual YouTube video ID
