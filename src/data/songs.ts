@@ -3,6 +3,8 @@ export interface Song {
   title: string;
   album: string;
   year: number;
+  releaseDate?: string;
+  label?: string;
   bpm: number;
   genre: string;
   youtubeId: string | null;
@@ -189,23 +191,89 @@ But I'm more than what it made`,
   {
     slug: 'strong-all-day',
     title: 'Strong All Day',
-    album: 'The Weight I Hide',
-    year: 2024,
+    album: 'Single',
+    year: 2026,
+    releaseDate: 'May 1, 2026',
+    label: 'TS Music Records',
     bpm: 144,
     genre: 'Nu Metal',
     youtubeId: null, // Replace with actual YouTube video ID
     description: 'Nu Metal pesado sobre o paradoxo da máscara — ser forte o dia todo e desmoronar sozinho.',
     lyrics: `[Verse 1]
-(Lyrics coming soon)
+Coffee stain on your sleeve
+Fake laugh in the elevator
+Every "how are you?" dodged
+With a tilted smile "I'm fine"
 
-[Pre-Chorus]
-(Lyrics coming soon)
+Long list
+Long day
+Long sigh
+You hold your back like armor
+Carry other people's storms
+Till your own sky turns gray
 
 [Chorus]
-(Lyrics coming soon)
+You stay strong all day
+Till the front door clicks
+And the mask slides off your face
+Let the rain roll in
+As you sink into the dark in your mind
+Strong all day
+Silent at night
+Breaking in the quiet
+Where nobody can find
+How heavy it is just to survive
+
+[Verse 2]
+Keys drop on the kitchen floor
+Echo sounds like thunder
+Shower running
+Lights off
+Tears blend with the water
+
+You stare at your shaking hands
+Like they're some stranger's problem
+Whisper to the empty room "Can I keep holding on?"
+
+[Chorus]
+You stay strong all day
+Till the front door clicks
+And the mask slides off your face
+Let the rain roll in
+As you sink into the dark in your mind
+Strong all day
+Silent at night
+Breaking in the quiet
+Where nobody can find
+How heavy it is just to survive
 
 [Bridge]
-(Lyrics coming soon)`,
+But there's a flicker in the hallway
+Little lamp that won't burn out
+You are tired
+You are hurting
+You are more than all this doubt
+
+One breath
+Then another
+Shaking
+But you still rise
+Maybe strength is in the shatter
+Letting softness touch your eyes (oh)
+
+[Final Chorus]
+You stay strong all day
+Till the front door clicks
+And the mask slides off your face
+Let the rain roll in
+Wash the ashes from the corners of your mind
+Strong all day
+Soft in the night
+Crying in the quiet
+And somehow that's alright
+There's a small
+Stubborn spark
+Still alive inside the dark`,
   },
   {
     slug: 'under-the-rain',

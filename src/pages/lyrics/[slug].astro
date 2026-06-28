@@ -119,6 +119,18 @@ const hasTranslation = translationBlocks.length > 0;
                 <span style="color: var(--text-muted);">Release</span>
                 <span style="color: var(--text);">{song.album}</span>
               </div>
+              {song.releaseDate && (
+                <div style="display: flex; justify-content: space-between; font-size: 0.85rem;">
+                  <span style="color: var(--text-muted);">Date</span>
+                  <span style="color: var(--text);">{song.releaseDate}</span>
+                </div>
+              )}
+              {song.label && (
+                <div style="display: flex; justify-content: space-between; font-size: 0.85rem;">
+                  <span style="color: var(--text-muted);">Label</span>
+                  <span style="color: var(--text);">{song.label}</span>
+                </div>
+              )}
               <div style="display: flex; justify-content: space-between; font-size: 0.85rem;">
                 <span style="color: var(--text-muted);">Genre</span>
                 <span style="color: var(--text);">{song.genre}</span>
