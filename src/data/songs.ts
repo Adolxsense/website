@@ -199,6 +199,81 @@ But I'm more than what it made`,
     genre: 'Nu Metal',
     youtubeId: null, // Replace with actual YouTube video ID
     description: 'Nu Metal pesado sobre o paradoxo da máscara — ser forte o dia todo e desmoronar sozinho.',
+    translation: `[Verso 1]
+Mancha de café na manga
+Risada falsa no elevador
+Todo "tudo bem?" desviado
+Com um sorriso torto "tô bem"
+
+Lista longa
+Dia longo
+Suspiro longo
+Você segura as costas como armadura
+Carrega as tempestades dos outros
+Até o seu próprio céu ficar cinza
+
+[Refrão]
+Você fica forte o dia todo
+Até a porta da frente clicar
+E a máscara escorregar do seu rosto
+Deixa a chuva entrar
+Enquanto você afunda no escuro da sua mente
+Forte o dia todo
+Silencioso à noite
+Quebrando no silêncio
+Onde ninguém consegue encontrar
+O quanto é pesado só sobreviver
+
+[Verso 2]
+As chaves caem no chão da cozinha
+O eco soa como trovão
+Chuveiro ligado
+Luzes apagadas
+As lágrimas se misturam com a água
+
+Você olha para as suas mãos tremendo
+Como se fosse o problema de um estranho
+Sussurra para o quarto vazio "Consigo continuar?"
+
+[Refrão]
+Você fica forte o dia todo
+Até a porta da frente clicar
+E a máscara escorregar do seu rosto
+Deixa a chuva entrar
+Enquanto você afunda no escuro da sua mente
+Forte o dia todo
+Silencioso à noite
+Quebrando no silêncio
+Onde ninguém consegue encontrar
+O quanto é pesado só sobreviver
+
+[Ponte]
+Mas tem uma chama no corredor
+Uma lamparina que não apaga
+Você está cansado
+Você está sofrendo
+Você é mais do que toda essa dúvida
+
+Um fôlego
+Depois outro
+Tremendo
+Mas você ainda se levanta
+Talvez a força esteja no colapso
+Deixar a ternura tocar os seus olhos (oh)
+
+[Refrão Final]
+Você fica forte o dia todo
+Até a porta da frente clicar
+E a máscara escorregar do seu rosto
+Deixa a chuva entrar
+Lavar as cinzas dos cantos da sua mente
+Forte o dia todo
+Suave à noite
+Chorando no silêncio
+E de algum jeito tá tudo bem
+Tem uma pequena
+Chama teimosa
+Ainda viva dentro do escuro`,
     lyrics: `[Verse 1]
 Coffee stain on your sleeve
 Fake laugh in the elevator
