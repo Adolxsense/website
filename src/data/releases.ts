@@ -30,7 +30,7 @@ export const releases: Release[] = [
     title: 'Before I Became This',
     type: 'Single',
     year: 2026,
-    description: 'Post-grunge emocional denso sobre identidade fragmentada e o olhar para trás.',
+    description: 'A dense emotional post-grunge track about fractured identity and looking back at who you used to be.',
     cover: {
       src: '/images/releases/album-cover/before-i-became-this-single',
       alt: 'Before I Became This — Adolxsense Single Cover',
@@ -45,7 +45,7 @@ export const releases: Release[] = [
     type: 'Single',
     year: 2026,
     label: 'TS Music Records',
-    description: 'Nu Metal pesado sobre o paradoxo da máscara — ser forte o dia todo e desmoronar sozinho.',
+    description: 'Heavy Nu Metal about the mask paradox — being strong all day and falling apart alone at night.',
     cover: {
       src: '/images/releases/album-cover/strong-all-day-ep',
       alt: 'Strong All Day — Adolxsense Single Cover',

@@ -22,7 +22,7 @@ export const songs: Song[] = [
     bpm: 96,
     genre: 'Post-Grunge',
     youtubeId: null, // Replace with actual YouTube video ID
-    description: 'Post-grunge emocional denso sobre identidade fragmentada e o olhar para trás.',
+    description: 'A dense emotional post-grunge track about fractured identity and looking back at who you used to be.',
     translation: `[Verso 1]
 Costumava rir de qualquer coisa
 Derramava café, chamava de arte
@@ -198,7 +198,7 @@ But I'm more than what it made`,
     bpm: 144,
     genre: 'Nu Metal',
     youtubeId: null, // Replace with actual YouTube video ID
-    description: 'Nu Metal pesado sobre o paradoxo da máscara — ser forte o dia todo e desmoronar sozinho.',
+    description: 'Heavy Nu Metal about the mask paradox — being strong all day and falling apart alone at night.',
     translation: `[Verso 1]
 Mancha de café na manga
 Risada falsa no elevador
@@ -358,7 +358,7 @@ Still alive inside the dark`,
     bpm: 123,
     genre: 'Rock Anthem',
     youtubeId: null, // Replace with actual YouTube video ID
-    description: 'Mid-tempo rock anthem cinematográfico. A faixa carro-chefe da banda.',
+    description: 'A cinematic mid-tempo rock anthem. The band\'s signature track.',
     lyrics: `[Verse 1]
 (Lyrics coming soon)
 
@@ -382,7 +382,7 @@ Chasing what I cannot take
     bpm: 89,
     genre: 'Ballad',
     youtubeId: null, // Replace with actual YouTube video ID
-    description: 'Balada cinematográfica. O silêncio úmido depois do colapso.',
+    description: 'A cinematic ballad. The damp silence after the collapse.',
     lyrics: `[Verse 1]
 (Lyrics coming soon)
 
