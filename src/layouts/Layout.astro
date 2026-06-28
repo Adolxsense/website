@@ -39,7 +39,9 @@ const pathname = Astro.url.pathname;
   <body>
     <nav class="nav" id="nav">
       <div class="nav__inner">
-        <a href="/" class="nav__logo">ADOLX<span>SENSE</span></a>
+        <a href="/" class="nav__logo">
+          <img src="/images/logo.svg" alt="Adolxsense" class="nav__logo-img" />
+        </a>
         <ul class="nav__links">
           <li><a href="/" class={pathname === '/' ? 'active' : ''}>Home</a></li>
           <li><a href="/releases" class={pathname.startsWith('/releases') ? 'active' : ''}>Releases</a></li>
@@ -55,7 +57,9 @@ const pathname = Astro.url.pathname;
     <footer class="footer">
       <div class="container">
         <div class="footer__inner">
-          <div class="footer__logo">ADOLX<span>SENSE</span></div>
+          <div class="footer__logo">
+            <img src="/images/logo.svg" alt="Adolxsense" class="footer__logo-img" />
+          </div>
           <ul class="footer__links">
             <li><a href="/">Home</a></li>
             <li><a href="/releases">Releases</a></li>

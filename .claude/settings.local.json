@@ -32,7 +32,8 @@
       "Bash(git commit -m 'feat: add Google Analytics \\(G-M5SM5WTL9H\\) *)",
       "Bash(git commit -m 'lyrics: add Strong All Day lyrics, release date and label fields *)",
       "Bash(git commit -m 'lyrics: add PT-BR translation for Strong All Day *)",
-      "Bash(git commit -m 'feat: releases page with index, individual pages and tracklist with lyrics links *)"
+      "Bash(git commit -m 'feat: releases page with index, individual pages and tracklist with lyrics links *)",
+      "Bash(git commit -m 'feat: use band logo SVG in nav, hero, and footer *)"
     ]
   }
 }
