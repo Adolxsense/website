@@ -1,0 +1,84 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { releases, getReleaseBySlug } from '../../data/releases';
+
+export function getStaticPaths() {
+  return releases.map((r) => ({ params: { slug: r.slug } }));
+}
+
+const { slug } = Astro.params;
+const release = getReleaseBySlug(slug);
+
+if (!release) return Astro.redirect('/releases');
+---
+
+<Layout title={release.title} description={`${release.type} · ${release.year} · Adolxsense`}>
+  <div style="padding-top: 100px; padding-bottom: 100px;">
+    <div class="container">
+      <a href="/releases" class="back-link">&#8592; All Releases</a>
+
+      <div class="release-detail-layout">
+        <!-- LEFT: cover + info -->
+        <div class="release-detail-left">
+          <div class="release-detail-cover">
+            <span class="release-detail-cover__type">{release.type}</span>
+            <div class="release-detail-cover__title">{release.title}</div>
+          </div>
+
+          <div class="release-detail-meta-box">
+            <p style="font-family: var(--font-heading); font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-faint); margin-bottom: 16px;">Info</p>
+            <div style="display: flex; flex-direction: column; gap: 10px;">
+              <div class="release-meta-row">
+                <span>Type</span><span>{release.type}</span>
+              </div>
+              <div class="release-meta-row">
+                <span>Year</span><span>{release.year}</span>
+              </div>
+              {release.label && (
+                <div class="release-meta-row">
+                  <span>Label</span><span>{release.label}</span>
+                </div>
+              )}
+              <div class="release-meta-row">
+                <span>Tracks</span><span>{release.tracks.length}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- RIGHT: tracklist -->
+        <div class="release-detail-right">
+          <div class="release-detail-header">
+            <h1 class="song-detail-title">{release.title}</h1>
+            <div style="display: flex; gap: 8px; margin-bottom: 12px;">
+              <span class="tag">{release.type}</span>
+              <span class="tag">{release.year}</span>
+            </div>
+            {release.description && (
+              <p class="song-detail-desc">{release.description}</p>
+            )}
+          </div>
+
+          <div class="tracklist">
+            <p class="tracklist__heading">Tracklist</p>
+            <ol class="tracklist__items">
+              {release.tracks.map((track, i) => (
+                <li class="tracklist__item">
+                  <span class="tracklist__number">{String(i + 1).padStart(2, '0')}</span>
+                  <span class="tracklist__title">{track.title}</span>
+                  {track.songSlug ? (
+                    <a href={`/lyrics/${track.songSlug}`} class="tracklist__lyrics-btn">
+                      Lyrics &#8594;
+                    </a>
+                  ) : (
+                    <span class="tracklist__no-lyrics">—</span>
+                  )}
+                </li>
+              ))}
+            </ol>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</Layout>

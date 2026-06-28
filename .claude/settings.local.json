@@ -28,7 +28,11 @@
       "Bash(curl -sI \"https://adolxsense.com/\")",
       "Bash(curl -v \"https://adolxsense.com/_astro/songs.DqEV7vZ7.css\")",
       "Bash(git commit -m 'lyrics: add full lyrics for Before I Became This *)",
-      "Bash(git commit -m 'lyrics: add PT translation for Before I Became This; tighten dual-col font size *)"
+      "Bash(git commit -m 'lyrics: add PT translation for Before I Became This; tighten dual-col font size *)",
+      "Bash(git commit -m 'feat: add Google Analytics \\(G-M5SM5WTL9H\\) *)",
+      "Bash(git commit -m 'lyrics: add Strong All Day lyrics, release date and label fields *)",
+      "Bash(git commit -m 'lyrics: add PT-BR translation for Strong All Day *)",
+      "Bash(git commit -m 'feat: releases page with index, individual pages and tracklist with lyrics links *)"
     ]
   }
 }

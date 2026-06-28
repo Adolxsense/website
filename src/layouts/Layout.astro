@@ -42,6 +42,7 @@ const pathname = Astro.url.pathname;
         <a href="/" class="nav__logo">ADOLX<span>SENSE</span></a>
         <ul class="nav__links">
           <li><a href="/" class={pathname === '/' ? 'active' : ''}>Home</a></li>
+          <li><a href="/releases" class={pathname.startsWith('/releases') ? 'active' : ''}>Releases</a></li>
           <li><a href="/lyrics" class={pathname.startsWith('/lyrics') ? 'active' : ''}>Lyrics</a></li>
           <li><a href="/videos" class={pathname.startsWith('/videos') ? 'active' : ''}>Videos</a></li>
           <li><a href="/#about">About</a></li>
@@ -57,6 +58,7 @@ const pathname = Astro.url.pathname;
           <div class="footer__logo">ADOLX<span>SENSE</span></div>
           <ul class="footer__links">
             <li><a href="/">Home</a></li>
+            <li><a href="/releases">Releases</a></li>
             <li><a href="/lyrics">Lyrics</a></li>
             <li><a href="/videos">Videos</a></li>
             <li><a href="/#about">About</a></li>
