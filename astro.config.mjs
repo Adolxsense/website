@@ -2,6 +2,6 @@
 import { defineConfig } from 'astro/config';
 
 export default defineConfig({
-  site: 'https://adolxsense.github.io',
+  site: 'https://adolxsense.com',
   output: 'static',
 });
