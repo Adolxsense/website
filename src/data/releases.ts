@@ -83,6 +83,10 @@ export const releases: Release[] = [
     title: 'Under the Rain',
     type: 'Album',
     year: 2024,
+    cover: {
+      src: '/images/releases/album-cover/under-the-rain',
+      alt: 'Under the Rain — Adolxsense Album Cover',
+    },
     tracks: [
       { title: 'Under the Rain', songSlug: 'under-the-rain' },
       { title: 'She Doesn\'t Feel the Rain' },

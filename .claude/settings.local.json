@@ -43,7 +43,9 @@
       "Bash(git commit -m 'chore: regenerate WebP logos from updated SVG *)",
       "Bash(git commit -m 'chore: restore logo.png to repo *)",
       "Bash(git commit -m 'feat: add Before I Became This cover art to releases and lyrics pages *)",
-      "Bash(git commit -m 'feat: add Strong All Day cover art to releases and lyrics pages *)"
+      "Bash(git commit -m 'feat: add Strong All Day cover art to releases and lyrics pages *)",
+      "Bash(git commit -m 'fix: translate all UI content to English US *)",
+      "Bash(git commit -m 'feat: add Under the Rain cover art *)"
     ]
   }
 }
