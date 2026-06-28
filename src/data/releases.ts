@@ -46,6 +46,10 @@ export const releases: Release[] = [
     year: 2026,
     label: 'TS Music Records',
     description: 'Nu Metal pesado sobre o paradoxo da máscara — ser forte o dia todo e desmoronar sozinho.',
+    cover: {
+      src: '/images/releases/album-cover/strong-all-day-ep',
+      alt: 'Strong All Day — Adolxsense Single Cover',
+    },
     tracks: [
       { title: 'Strong All Day', songSlug: 'strong-all-day' },
     ],

@@ -42,7 +42,8 @@
       "Bash(python3 -c ' *)",
       "Bash(git commit -m 'chore: regenerate WebP logos from updated SVG *)",
       "Bash(git commit -m 'chore: restore logo.png to repo *)",
-      "Bash(git commit -m 'feat: add Before I Became This cover art to releases and lyrics pages *)"
+      "Bash(git commit -m 'feat: add Before I Became This cover art to releases and lyrics pages *)",
+      "Bash(git commit -m 'feat: add Strong All Day cover art to releases and lyrics pages *)"
     ]
   }
 }
