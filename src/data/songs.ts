@@ -21,6 +21,88 @@ export const songs: Song[] = [
     genre: 'Post-Grunge',
     youtubeId: null, // Replace with actual YouTube video ID
     description: 'Post-grunge emocional denso sobre identidade fragmentada e o olhar para trás.',
+    translation: `[Verso 1]
+Costumava rir de qualquer coisa
+Derramava café, chamava de arte
+Desenhava um sol em cada margem
+Sem defesas, coração aberto
+
+Agora traço o mesmo círculo de sempre
+Na mesa, com o polegar
+Olho através dos rostos, ouço as vozes
+Todo sentimento ficou entorpecido
+
+[Pré-Refrão]
+Tem uma foto no corredor
+Eu a evito como um fantasma
+Me lembro de quem eu era ali
+Me lembro mais dele (yeah)
+
+[Refrão]
+Sinto falta do eu antes do colapso
+Antes da tempestade sob minha pele
+Antes do espelho ficar tão pesado
+Que mal conseguia me encarar
+Sinto falta do eu que ainda não recuava
+A cada sombra no quarto
+Sou assombrado pela vida que desperdicei
+Estou gritando, mas estou florescendo
+(Ainda sangrando enquanto floresço)
+
+[Verso 2]
+Eu costumava confiar no silêncio
+Agora o silêncio estremece as paredes
+Toda noite, um pequeno apocalipse
+Nos cantos destes corredores
+
+Estou cansado desta armadura
+Placas enferrujadas sobre o peito
+A raiva dorme nas vigas do teto
+E solta suas cinzas quando descanso
+
+[Pré-Refrão]
+Toda gentileza parece suspeita
+Cada porta parece uma guerra
+Continuo andando, continuo regredindo
+Ao contorno do que fui antes (oh)
+
+[Refrão]
+Sinto falta do eu antes do colapso
+Antes da tempestade sob minha pele
+Antes do espelho ficar tão pesado
+Que mal conseguia me encarar
+Sinto falta do eu que ainda não recuava
+A cada sombra no quarto
+Sou assombrado pela vida que desperdicei
+Estou gritando, mas estou florescendo
+(Ainda sangrando enquanto floresço)
+
+[Ponte]
+Não quero ficar assim congelado
+Estátua rachada sob a geada
+Quero abraçar aquele estranho imprudente
+E dizer a ele o que tudo isso custou
+
+Se não consigo voltar à luz do dia
+Vou roubar uma fagulha dessa noite toda
+Que minhas cicatrizes desenhem halos tortos
+Ao redor das bordas do que ainda enxergo (yeah)
+
+[Refrão Final]
+Sinto falta do eu antes do colapso
+Mas ainda estou aqui dentro desta pele
+Cada fratura, cada fratura
+Deixa entrar um pouco de fogo
+Sinto falta do eu que ainda não recuava
+Mas não sou apenas o que perdi
+Sou um cemitério e um jardim
+Agridoce e destinado a custar
+
+[Outro]
+Ergo um copo à minha velha sombra
+Que ela dance, que ela desapareça
+Não sou quem era antes da dor
+Mas sou mais do que ela fez de mim`,
     lyrics: `[Verse 1]
 Used to laugh at nothing
 Spill my coffee, call it art

@@ -706,6 +706,10 @@ body::before {
   margin-bottom: 24px;
 }
 
+.lyrics-dual .lyrics-body .line {
+  font-size: 0.95rem;
+}
+
 @media (max-width: 768px) {
   .lyrics-dual {
     grid-template-columns: 1fr;

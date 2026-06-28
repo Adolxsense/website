@@ -11,7 +11,24 @@
       "Bash(git init *)",
       "Bash(git add *)",
       "Bash(git reset *)",
-      "Bash(git rm *)"
+      "Bash(git rm *)",
+      "Bash(git commit -m ' *)",
+      "Bash(git branch *)",
+      "Bash(git remote *)",
+      "Bash(git push *)",
+      "Bash(git commit -m 'fix: upgrade Node.js to 22 in CI \\(Astro 7 requires >=22.12.0\\) *)",
+      "Bash(git commit -m 'fix: add CNAME for custom domain and update site URL *)",
+      "Bash(dig adolxsense.com A +short)",
+      "Bash(dig www.adolxsense.com CNAME +short)",
+      "Bash(dig adolxsense.com NS +short)",
+      "Bash(dig adolxsense.com CAA +short)",
+      "Bash(curl -sI https://adolxsense.com)",
+      "Bash(curl -s https://adolxsense.com/)",
+      "Bash(curl -sI \"https://adolxsense.com/_astro/songs.DqEV7vZ7.css\")",
+      "Bash(curl -sI \"https://adolxsense.com/\")",
+      "Bash(curl -v \"https://adolxsense.com/_astro/songs.DqEV7vZ7.css\")",
+      "Bash(git commit -m 'lyrics: add full lyrics for Before I Became This *)",
+      "Bash(git commit -m 'lyrics: add PT translation for Before I Became This; tighten dual-col font size *)"
     ]
   }
 }
