@@ -572,6 +572,47 @@ body::before {
   line-height: 1.7;
 }
 
+/* ─── COVER IMAGE ─────────────────────────────────── */
+.release-card__cover-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.release-card:hover .release-card__cover-img {
+  transform: scale(1.04);
+}
+
+.release-detail-cover-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  position: absolute;
+  inset: 0;
+}
+
+.song-cover {
+  width: 100%;
+  border: 1px solid var(--border);
+  overflow: hidden;
+}
+
+.song-cover-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.song-cover:hover .song-cover-img {
+  transform: scale(1.02);
+}
+
 /* ─── LYRICS PAGE ─────────────────────────────────── */
 .lyrics-hero {
   padding: 160px 0 80px;

@@ -33,7 +33,16 @@
       "Bash(git commit -m 'lyrics: add Strong All Day lyrics, release date and label fields *)",
       "Bash(git commit -m 'lyrics: add PT-BR translation for Strong All Day *)",
       "Bash(git commit -m 'feat: releases page with index, individual pages and tracklist with lyrics links *)",
-      "Bash(git commit -m 'feat: use band logo SVG in nav, hero, and footer *)"
+      "Bash(git commit -m 'feat: use band logo SVG in nav, hero, and footer *)",
+      "Bash(python3 -c \"import cairosvg\")",
+      "Bash(pip3 install *)",
+      "Bash(brew install *)",
+      "Bash(rsvg-convert --version)",
+      "Bash(rsvg-convert public/images/logo.svg -w 1600 -o /tmp/logo-1600.png)",
+      "Bash(python3 -c ' *)",
+      "Bash(git commit -m 'chore: regenerate WebP logos from updated SVG *)",
+      "Bash(git commit -m 'chore: restore logo.png to repo *)",
+      "Bash(git commit -m 'feat: add Before I Became This cover art to releases and lyrics pages *)"
     ]
   }
 }

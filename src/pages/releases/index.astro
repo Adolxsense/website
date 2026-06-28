@@ -36,10 +36,25 @@ const typeLabels: Record<ReleaseType, string> = {
               {items.map((release) => (
                 <a href={`/releases/${release.slug}`} class="release-card">
                   <div class="release-card__cover">
+                    {release.cover ? (
+                      <picture>
+                        <source
+                          srcset={`${release.cover.src}-300w.webp`}
+                          type="image/webp"
+                        />
+                        <img
+                          src={`${release.cover.src}.jpg`}
+                          alt={release.cover.alt}
+                          class="release-card__cover-img"
+                          loading="lazy"
+                          width="300"
+                          height="300"
+                        />
+                      </picture>
+                    ) : (
+                      <div class="release-card__title-overlay">{release.title}</div>
+                    )}
                     <span class="release-card__type-badge">{release.type}</span>
-                    <div class="release-card__title-overlay">
-                      {release.title}
-                    </div>
                   </div>
                   <div class="release-card__info">
                     <h3 class="release-card__name">{release.title}</h3>

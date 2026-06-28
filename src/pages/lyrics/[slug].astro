@@ -1,6 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import { songs, getSongBySlug } from '../../data/songs';
+import { releases } from '../../data/releases';
 
 export function getStaticPaths() {
   return songs.map((song) => ({
@@ -12,6 +13,9 @@ const { slug } = Astro.params;
 const song = getSongBySlug(slug);
 
 if (!song) return Astro.redirect('/lyrics');
+
+const release = releases.find((r) => r.tracks.some((t) => t.songSlug === slug));
+const cover = release?.cover ?? null;
 
 /**
  * Parses lyrics into blocks of section labels and lines.
@@ -94,9 +98,27 @@ const hasTranslation = translationBlocks.length > 0;
           )}
         </div>
 
-        <!-- VIDEO COLUMN -->
+        <!-- VIDEO / COVER COLUMN -->
         <div class="song-video">
-          <div class="song-video-embed">
+          {cover && (
+            <div class="song-cover">
+              <picture>
+                <source
+                  srcset={`${cover.src}-600w.webp 600w, ${cover.src}-300w.webp 300w`}
+                  sizes="(max-width: 768px) 100vw, 340px"
+                  type="image/webp"
+                />
+                <img
+                  src={`${cover.src}.jpg`}
+                  alt={cover.alt}
+                  class="song-cover-img"
+                  width="600"
+                  height="600"
+                />
+              </picture>
+            </div>
+          )}
+          <div class="song-video-embed" style={cover ? 'margin-top: 16px;' : ''}>
             {song.youtubeId ? (
               <iframe
                 src={`https://www.youtube.com/embed/${song.youtubeId}`}

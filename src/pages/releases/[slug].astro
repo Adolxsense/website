@@ -21,8 +21,27 @@ if (!release) return Astro.redirect('/releases');
         <!-- LEFT: cover + info -->
         <div class="release-detail-left">
           <div class="release-detail-cover">
-            <span class="release-detail-cover__type">{release.type}</span>
-            <div class="release-detail-cover__title">{release.title}</div>
+            {release.cover ? (
+              <picture>
+                <source
+                  srcset={`${release.cover.src}-600w.webp 600w, ${release.cover.src}-300w.webp 300w`}
+                  sizes="(max-width: 768px) 100vw, 280px"
+                  type="image/webp"
+                />
+                <img
+                  src={`${release.cover.src}.jpg`}
+                  alt={release.cover.alt}
+                  class="release-detail-cover-img"
+                  width="600"
+                  height="600"
+                />
+              </picture>
+            ) : (
+              <>
+                <span class="release-detail-cover__type">{release.type}</span>
+                <div class="release-detail-cover__title">{release.title}</div>
+              </>
+            )}
           </div>
 
           <div class="release-detail-meta-box">

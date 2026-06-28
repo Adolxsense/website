@@ -6,6 +6,12 @@ export interface ReleaseTrack {
   songSlug?: string;
 }
 
+export interface ReleaseCover {
+  /** Base path without extension, e.g. /images/releases/album-cover/before-i-became-this-single */
+  src: string;
+  alt: string;
+}
+
 export interface Release {
   slug: string;
   title: string;
@@ -13,6 +19,7 @@ export interface Release {
   year: number;
   label?: string;
   description?: string;
+  cover?: ReleaseCover;
   tracks: ReleaseTrack[];
 }
 
@@ -24,6 +31,10 @@ export const releases: Release[] = [
     type: 'Single',
     year: 2026,
     description: 'Post-grunge emocional denso sobre identidade fragmentada e o olhar para trás.',
+    cover: {
+      src: '/images/releases/album-cover/before-i-became-this-single',
+      alt: 'Before I Became This — Adolxsense Single Cover',
+    },
     tracks: [
       { title: 'Before I Became This', songSlug: 'before-i-became-this' },
     ],
