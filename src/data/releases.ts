@@ -198,6 +198,10 @@ export const releases: Release[] = [
     label: 'TS Music Records',
     upc: '199749051296',
     promotionUrl: 'https://distrokid.com/hyperfollow/adolxsense1/maybe-tomorrow',
+    cover: {
+      src: '/images/releases/album-cover/maybe-tomorrow',
+      alt: 'Maybe Tomorrow — Adolxsense Single Cover',
+    },
     tracks: [
       { title: 'Maybe Tomorrow' },
     ],
