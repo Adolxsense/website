@@ -52,7 +52,9 @@
       "Bash(git commit -m 'feat: add Still Reaching cover art *)",
       "Bash(git commit -m 'feat: add Unheard cover art *)",
       "Bash(git commit -m 'feat: add Maybe Tomorrow cover art *)",
-      "Bash(git commit -m 'feat: replace inline SVG icons with Font Awesome 6 brand icons *)"
+      "Bash(git commit -m 'feat: replace inline SVG icons with Font Awesome 6 brand icons *)",
+      "Bash(pkill -f \"astro preview\")",
+      "Bash(curl -s http://localhost:4326/)"
     ]
   }
 }

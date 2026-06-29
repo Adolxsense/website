@@ -1058,6 +1058,104 @@ body::before {
   }
 }
 
+/* ─── LISTEN STRIP ───────────────────────────────── */
+.listen-strip {
+  background: var(--bg-surface);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 28px 0;
+}
+
+.listen-strip__inner {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.listen-strip__label {
+  font-family: var(--font-heading);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  white-space: nowrap;
+}
+
+.listen-strip__links {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.listen-strip__divider {
+  width: 1px;
+  height: 32px;
+  background: var(--border);
+  flex-shrink: 0;
+}
+
+.listen-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 18px;
+  border-radius: 3px;
+  font-family: var(--font-heading);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  transition: opacity 0.2s, transform 0.2s;
+  white-space: nowrap;
+}
+
+.listen-btn i {
+  font-size: 1rem;
+}
+
+.listen-btn:hover {
+  opacity: 0.85;
+  transform: translateY(-1px);
+}
+
+.listen-btn--spotify {
+  background: #1DB954;
+  color: #000;
+}
+
+.listen-btn--apple {
+  background: #fc3c44;
+  color: #fff;
+}
+
+.listen-btn--playlist {
+  opacity: 0.85;
+  background: transparent;
+  border: 1px solid;
+}
+
+.listen-btn--playlist.listen-btn--spotify {
+  color: #1DB954;
+  border-color: #1DB954;
+}
+
+.listen-btn--playlist.listen-btn--apple {
+  color: #fc3c44;
+  border-color: #fc3c44;
+}
+
+.listen-btn--playlist:hover {
+  opacity: 1;
+}
+
+@media (max-width: 768px) {
+  .listen-strip__divider { display: none; }
+  .listen-strip__inner { gap: 16px; }
+}
+
 /* ─── STREAMING BUTTONS ──────────────────────────── */
 .streaming-links {
   margin-top: 20px;
