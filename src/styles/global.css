@@ -126,7 +126,7 @@ body::before {
 }
 
 .nav__logo-img {
-  height: 32px;
+  height: 64px;
   width: auto;
   display: block;
   filter: brightness(0) invert(1);
