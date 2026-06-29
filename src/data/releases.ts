@@ -149,6 +149,10 @@ export const releases: Release[] = [
     label: 'TS Music Records',
     upc: '199953688516',
     promotionUrl: 'https://distrokid.com/hyperfollow/adolxsense1/ashes-in-the-rain',
+    cover: {
+      src: '/images/releases/album-cover/ashes-in-the-rain',
+      alt: 'Ashes in the Rain — Adolxsense Single Cover',
+    },
     tracks: [
       { title: 'Ashes in the Rain' },
     ],
