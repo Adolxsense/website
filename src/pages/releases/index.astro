@@ -1,20 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import { releases, releaseTypeOrder } from '../../data/releases';
-import type { ReleaseType } from '../../data/releases';
-
-const grouped = releaseTypeOrder.reduce((acc, type) => {
-  const items = releases.filter((r) => r.type === type);
-  if (items.length) acc[type] = items;
-  return acc;
-}, {} as Record<ReleaseType, typeof releases>);
-
-const typeLabels: Record<ReleaseType, string> = {
-  Single: 'Singles',
-  Album: 'Albums',
-  LP: 'LPs',
-  EP: 'EPs',
-};
+import { releases } from '../../data/releases';
 ---
 
 <Layout title="Releases" description="All Adolxsense releases — albums, singles, EPs and LPs.">
@@ -25,50 +11,41 @@ const typeLabels: Record<ReleaseType, string> = {
         <h1 class="section-header__title">Releases</h1>
       </div>
 
-      <div style="padding-top: 80px; display: flex; flex-direction: column; gap: 72px;">
-        {(Object.entries(grouped) as [ReleaseType, typeof releases][]).map(([type, items]) => (
-          <div>
-            <div class="releases-group-header">
-              <span class="tag">{typeLabels[type]}</span>
-              <div class="releases-group-line"></div>
-            </div>
-            <div class="releases-grid">
-              {items.map((release) => (
-                <a href={`/releases/${release.slug}`} class="release-card">
-                  <div class="release-card__cover">
-                    {release.cover ? (
-                      <picture>
-                        <source
-                          srcset={`${release.cover.src}-300w.webp`}
-                          type="image/webp"
-                        />
-                        <img
-                          src={`${release.cover.src}.jpg`}
-                          alt={release.cover.alt}
-                          class="release-card__cover-img"
-                          loading="lazy"
-                          width="300"
-                          height="300"
-                        />
-                      </picture>
-                    ) : (
-                      <div class="release-card__title-overlay">{release.title}</div>
-                    )}
-                    <span class="release-card__type-badge">{release.type}</span>
-                  </div>
-                  <div class="release-card__info">
-                    <h3 class="release-card__name">{release.title}</h3>
-                    <div class="release-card__meta">
-                      <span style="color: var(--text-muted); font-size: 0.82rem;">{release.year}</span>
-                      {release.label && <span style="color: var(--text-faint); font-size: 0.82rem;">· {release.label}</span>}
-                    </div>
-                    <p class="release-card__tracks">{release.tracks.length} track{release.tracks.length !== 1 ? 's' : ''}</p>
-                  </div>
-                </a>
-              ))}
-            </div>
-          </div>
-        ))}
+      <div style="padding-top: 80px;">
+        <div class="releases-grid">
+          {releases.map((release) => (
+            <a href={`/releases/${release.slug}`} class="release-card">
+              <div class="release-card__cover">
+                {release.cover ? (
+                  <picture>
+                    <source
+                      srcset={`${release.cover.src}-300w.webp`}
+                      type="image/webp"
+                    />
+                    <img
+                      src={`${release.cover.src}.jpg`}
+                      alt={release.cover.alt}
+                      class="release-card__cover-img"
+                      loading="lazy"
+                      width="300"
+                      height="300"
+                    />
+                  </picture>
+                ) : (
+                  <div class="release-card__title-overlay">{release.title}</div>
+                )}
+                <span class="release-card__type-badge">{release.type}</span>
+              </div>
+              <div class="release-card__info">
+                <h3 class="release-card__name">{release.title}</h3>
+                <div class="release-card__meta">
+                  <span style="color: var(--text-muted); font-size: 0.82rem;">{release.releaseDate}</span>
+                </div>
+                <p class="release-card__tracks">{release.tracks.length} track{release.tracks.length !== 1 ? 's' : ''}</p>
+              </div>
+            </a>
+          ))}
+        </div>
       </div>
     </div>
   </div>

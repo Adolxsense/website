@@ -12,7 +12,7 @@ const release = getReleaseBySlug(slug);
 if (!release) return Astro.redirect('/releases');
 ---
 
-<Layout title={release.title} description={`${release.type} · ${release.year} · Adolxsense`}>
+<Layout title={release.title} description={`${release.type} · ${release.releaseDate} · Adolxsense`}>
   <div style="padding-top: 100px; padding-bottom: 100px;">
     <div class="container">
       <a href="/releases" class="back-link">&#8592; All Releases</a>
@@ -51,17 +51,36 @@ if (!release) return Astro.redirect('/releases');
                 <span>Type</span><span>{release.type}</span>
               </div>
               <div class="release-meta-row">
-                <span>Year</span><span>{release.year}</span>
+                <span>Released</span><span>{release.releaseDate}</span>
               </div>
               {release.label && (
                 <div class="release-meta-row">
                   <span>Label</span><span>{release.label}</span>
                 </div>
               )}
+              {release.upc && (
+                <div class="release-meta-row">
+                  <span>UPC</span><span style="font-size:0.78rem;">{release.upc}</span>
+                </div>
+              )}
               <div class="release-meta-row">
                 <span>Tracks</span><span>{release.tracks.length}</span>
               </div>
             </div>
+            {(release.promotionUrl || release.spotifyUrl) && (
+              <div style="margin-top: 20px; display: flex; flex-direction: column; gap: 8px;">
+                {release.promotionUrl && (
+                  <a href={release.promotionUrl} target="_blank" rel="noopener noreferrer" class="tracklist__lyrics-btn" style="text-align:center;">
+                    Listen / Pre-save &#8599;
+                  </a>
+                )}
+                {release.spotifyUrl && (
+                  <a href={release.spotifyUrl} target="_blank" rel="noopener noreferrer" class="tracklist__lyrics-btn" style="text-align:center;">
+                    Spotify &#8599;
+                  </a>
+                )}
+              </div>
+            )}
           </div>
         </div>
 
@@ -71,7 +90,7 @@ if (!release) return Astro.redirect('/releases');
             <h1 class="song-detail-title">{release.title}</h1>
             <div style="display: flex; gap: 8px; margin-bottom: 12px;">
               <span class="tag">{release.type}</span>
-              <span class="tag">{release.year}</span>
+              <span class="tag">{release.releaseDate}</span>
             </div>
             {release.description && (
               <p class="song-detail-desc">{release.description}</p>
