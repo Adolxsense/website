@@ -110,6 +110,10 @@ export const releases: Release[] = [
     upc: '199947443800',
     promotionUrl: 'https://distrokid.com/hyperfollow/adolxsense1/after-the-rain',
     description: 'A cinematic ballad. The damp silence after the collapse.',
+    cover: {
+      src: '/images/releases/album-cover/after-the-rain',
+      alt: 'After the Rain — Adolxsense Single Cover',
+    },
     tracks: [
       { title: 'After the Rain', songSlug: 'after-the-rain' },
       { title: 'After the Rain (Acoustic Version)' },
