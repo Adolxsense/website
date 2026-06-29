@@ -1619,7 +1619,7 @@ body::before {
 }
 
 .footer__logo-img {
-  height: 28px;
+  height: 64px;
   width: auto;
   display: block;
   filter: brightness(0) invert(1);
