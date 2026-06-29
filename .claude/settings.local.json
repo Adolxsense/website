@@ -47,7 +47,8 @@
       "Bash(git commit -m 'fix: translate all UI content to English US *)",
       "Bash(git commit -m 'feat: add Under the Rain cover art *)",
       "Bash(git commit -m 'docs: update CLAUDE.md with full project rules and conventions *)",
-      "Bash(git commit -m 'feat: rebuild discography from DISCOGRAPHY.md — accurate tracklists, dates, UPCs, promo links; flat date-sorted releases grid *)"
+      "Bash(git commit -m 'feat: rebuild discography from DISCOGRAPHY.md — accurate tracklists, dates, UPCs, promo links; flat date-sorted releases grid *)",
+      "Bash(git commit -m 'feat: add Memories of Unplayed Songs cover art *)"
     ]
   }
 }

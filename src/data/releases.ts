@@ -204,6 +204,10 @@ export const releases: Release[] = [
     upc: '199749826085',
     promotionUrl: 'https://distrokid.com/hyperfollow/adolxsense1/memories-of-unplayed-songs-2',
     spotifyUrl: 'https://open.spotify.com/intl-pt/album/3i95acUgbBHYosdTu9Cglw?si=AZvSjk_OTwOuyiCQAc1j7w',
+    cover: {
+      src: '/images/releases/album-cover/memories-of-unplayed-songs',
+      alt: 'Memories of Unplayed Songs — Adolxsense LP Cover',
+    },
     tracks: [
       { title: 'Whiskey Roads' },
       { title: 'Shadows in the Hallway' },
