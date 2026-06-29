@@ -54,7 +54,15 @@
       "Bash(git commit -m 'feat: add Maybe Tomorrow cover art *)",
       "Bash(git commit -m 'feat: replace inline SVG icons with Font Awesome 6 brand icons *)",
       "Bash(pkill -f \"astro preview\")",
-      "Bash(curl -s http://localhost:4326/)"
+      "Bash(curl -s http://localhost:4326/)",
+      "mcp__Claude_in_Chrome__navigate",
+      "Bash(git commit -m 'feat: update hero slideshow to 4 banners \\(new banner-1, banner-3, banner-4\\) *)",
+      "Bash(curl -s http://localhost:4328/)",
+      "Bash(git commit -m 'feat: add Latest Releases section to homepage; rename The Music to Latest Lyrics *)",
+      "Bash(git commit -m 'feat: embed Spotify player on release pages; update streaming buttons to bordered style *)",
+      "Bash(git commit -m 'feat: clean hero banner \\(remove text/buttons overlay\\); increase nav logo to 64px *)",
+      "Bash(git commit -m 'feat: redesign About section with new text and logo; hero vignette effect *)",
+      "Bash(git commit -m 'feat: reorder homepage sections; center about section; add contact email to footer *)"
     ]
   }
 }

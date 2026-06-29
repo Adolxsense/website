@@ -607,14 +607,16 @@ body::before {
 
 .about-header {
   margin-bottom: 56px;
+  text-align: center;
 }
 
 .about-header__logo {
-  height: clamp(48px, 8vw, 96px);
+  height: clamp(96px, 16vw, 192px);
   width: auto;
   filter: brightness(0) invert(1);
   opacity: 0.9;
   margin-top: 12px;
+  display: inline-block;
 }
 
 .about-grid {
@@ -632,6 +634,7 @@ body::before {
   color: var(--text);
   line-height: 1.6;
   margin-bottom: 24px;
+  text-align: center;
 }
 
 .about-body-text {
@@ -639,6 +642,7 @@ body::before {
   color: var(--text-muted);
   line-height: 1.85;
   margin-bottom: 20px;
+  text-align: center;
 }
 
 .about-body-text strong {
@@ -662,12 +666,14 @@ body::before {
   text-transform: uppercase;
   color: var(--red);
   margin-bottom: 8px;
+  text-align: center;
 }
 
 .about-influences__list {
   font-size: 0.88rem;
   color: var(--text-muted);
   line-height: 1.7;
+  text-align: center;
 }
 
 .about-ai-note {
@@ -705,6 +711,7 @@ body::before {
   font-weight: 500;
   color: var(--text);
   line-height: 2;
+  text-align: center;
 }
 
 .about-closing__welcome {
@@ -713,7 +720,7 @@ body::before {
   letter-spacing: 0.04em;
   color: var(--text-faint);
   line-height: 1.3;
-  text-align: right;
+  text-align: center;
 }
 
 .about-closing__welcome em {
@@ -1561,6 +1568,19 @@ body::before {
 }
 
 .footer__links a:hover {
+  color: var(--red);
+}
+
+.footer__email {
+  font-family: var(--font-heading);
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  letter-spacing: 0.04em;
+  transition: color 0.2s;
+}
+
+.footer__email:hover {
   color: var(--red);
 }
 
