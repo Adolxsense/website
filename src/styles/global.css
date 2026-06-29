@@ -88,7 +88,7 @@ body::before {
   top: 0;
   left: 0;
   right: 0;
-  z-index: 100;
+  z-index: 201;
   padding: 20px 0;
   transition: background 0.3s, backdrop-filter 0.3s, border-color 0.3s;
   border-bottom: 1px solid transparent;
@@ -1529,6 +1529,82 @@ body::before {
   }
 }
 
+/* ─── HAMBURGER BUTTON ────────────────────────── */
+.nav__hamburger {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--text);
+  font-size: 1.4rem;
+  cursor: pointer;
+  padding: 4px 8px;
+  line-height: 1;
+}
+
+@media (max-width: 768px) {
+  .nav__hamburger {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+}
+
+/* ─── MOBILE MENU OVERLAY ─────────────────────── */
+.nav__mobile-menu {
+  display: none;
+  position: fixed;
+  inset: 0;
+  top: 0;
+  z-index: 200;
+  background: rgba(8, 8, 8, 0.97);
+  backdrop-filter: blur(16px);
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  padding: 100px 24px 60px;
+}
+
+.nav__mobile-menu.open {
+  display: flex;
+}
+
+.nav__mobile-links {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 28px;
+}
+
+.nav__mobile-links a {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  transition: color 0.2s;
+}
+
+.nav__mobile-links a:hover,
+.nav__mobile-links a.active {
+  color: var(--text);
+}
+
+.nav__mobile-socials {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.nav__mobile-socials .social-icon {
+  font-size: 1.4rem;
+}
+
 /* ─── FOOTER ──────────────────────────────────────── */
 .footer {
   padding: 60px 0;
@@ -1689,5 +1765,17 @@ body::before {
   }
   .nav__links {
     display: none;
+  }
+  .nav__inner {
+    position: relative;
+    justify-content: center;
+  }
+  .listen-strip__inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  .listen-strip__links {
+    flex-wrap: wrap;
   }
 }
