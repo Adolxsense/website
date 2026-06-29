@@ -67,16 +67,18 @@ if (!release) return Astro.redirect('/releases');
                 <span>Tracks</span><span>{release.tracks.length}</span>
               </div>
             </div>
-            {(release.promotionUrl || release.spotifyUrl) && (
-              <div style="margin-top: 20px; display: flex; flex-direction: column; gap: 8px;">
-                {release.promotionUrl && (
-                  <a href={release.promotionUrl} target="_blank" rel="noopener noreferrer" class="tracklist__lyrics-btn" style="text-align:center;">
-                    Listen / Pre-save &#8599;
+            {(release.spotifyUrl || release.appleMusicUrl) && (
+              <div class="streaming-links">
+                {release.spotifyUrl && (
+                  <a href={release.spotifyUrl} target="_blank" rel="noopener noreferrer" class="streaming-btn streaming-btn--spotify" aria-label="Listen on Spotify">
+                    <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
+                    Spotify
                   </a>
                 )}
-                {release.spotifyUrl && (
-                  <a href={release.spotifyUrl} target="_blank" rel="noopener noreferrer" class="tracklist__lyrics-btn" style="text-align:center;">
-                    Spotify &#8599;
+                {release.appleMusicUrl && (
+                  <a href={release.appleMusicUrl} target="_blank" rel="noopener noreferrer" class="streaming-btn streaming-btn--apple" aria-label="Listen on Apple Music">
+                    <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M23.994 6.124a9.23 9.23 0 00-.24-2.19c-.317-1.31-1.062-2.31-2.18-3.043a5.022 5.022 0 00-1.877-.726 10.496 10.496 0 00-1.564-.15c-.04-.003-.083-.01-.124-.013H5.986c-.152.01-.303.017-.455.026C4.786.07 4.043.15 3.34.428 2.004.958 1.04 1.88.475 3.208a5.485 5.485 0 00-.36 1.548c-.048.38-.08.758-.081 1.14v13.18c.009.473.034.946.128 1.41.285 1.418 1.03 2.48 2.22 3.2a5.51 5.51 0 002.166.64c.389.05.78.073 1.17.073h12.486c.37 0 .74-.02 1.11-.064.617-.073 1.2-.24 1.743-.53 1.276-.69 2.067-1.74 2.396-3.17.12-.53.17-1.07.17-1.61.003-4.61.003-9.22 0-13.83zM15.5 5.38l.01.027c-.005.023-.018.04-.024.063-.01.026-.02.046-.03.07-.083.2-.19.38-.32.547L9.56 13.47c-.12.163-.255.313-.41.445a2.54 2.54 0 01-.793.45 2.6 2.6 0 01-.926.16c-.26 0-.518-.038-.766-.117a2.574 2.574 0 01-.667-.358 2.6 2.6 0 01-.503-.537 2.622 2.622 0 01-.32-.67 2.676 2.676 0 01-.107-.73c0-.267.038-.53.115-.784a2.617 2.617 0 01.37-.694c.173-.22.38-.405.617-.548.234-.144.49-.247.76-.305.268-.058.54-.075.81-.05.272.024.534.096.782.213.247.117.472.278.665.474.19.194.344.42.453.665.11.244.17.504.18.77l.016.27 4.914-6.73a.46.46 0 01.043-.055c.005-.005.012-.008.017-.013V5.39c.04-.01.077-.017.118-.022.075-.01.15-.018.226-.018.276 0 .545.08.775.23.23.15.41.363.524.614.06.132.096.273.11.417.015.143.005.288-.025.43z"/></svg>
+                    Apple Music
                   </a>
                 )}
               </div>

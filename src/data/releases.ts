@@ -22,6 +22,7 @@ export interface Release {
   upc?: string;
   promotionUrl?: string;
   spotifyUrl?: string;
+  appleMusicUrl?: string;
   description?: string;
   cover?: ReleaseCover;
   tracks: ReleaseTrack[];
@@ -38,6 +39,8 @@ export const releases: Release[] = [
     label: 'TS Music Records',
     upc: '825324105237',
     promotionUrl: 'https://distrokid.com/hyperfollow/adolxsense1/before-i-became-this',
+    spotifyUrl: 'https://open.spotify.com/album/6GK8IRLchCPdqj195Rw4Tn?si=LLdsCEq9TwGqcKt9Iqn8Ow',
+    appleMusicUrl: 'https://music.apple.com/br/album/before-i-became-this-single/6766311606',
     description: 'A dense emotional post-grunge track about fractured identity and looking back at who you used to be.',
     cover: {
       src: '/images/releases/album-cover/before-i-became-this-single',
@@ -56,6 +59,8 @@ export const releases: Release[] = [
     label: 'TS Music Records',
     upc: '825583810989',
     promotionUrl: 'https://distrokid.com/hyperfollow/adolxsense1/strong-all-day',
+    spotifyUrl: 'https://open.spotify.com/album/0Cn5IEebWpyPhqwUwWR9Dq?si=w79O1LVkSwCgqwgb5Hx5AA',
+    appleMusicUrl: 'https://music.apple.com/br/album/strong-all-day-single/1890747740',
     description: 'Heavy Nu Metal about the mask paradox — being strong all day and falling apart alone at night.',
     cover: {
       src: '/images/releases/album-cover/strong-all-day-ep',
@@ -75,6 +80,8 @@ export const releases: Release[] = [
     label: 'TS Music Records',
     upc: '825642014594',
     promotionUrl: 'https://distrokid.com/hyperfollow/adolxsense1/under-the-rain',
+    spotifyUrl: 'https://open.spotify.com/album/42YhyLVwBcmLQRbBq49mqB?si=dM7ukt7sTZ-3zP4BmO7ghg',
+    appleMusicUrl: 'https://music.apple.com/br/album/under-the-rain-single/1888916150',
     description: 'A cinematic mid-tempo rock anthem. The band\'s signature track.',
     cover: {
       src: '/images/releases/album-cover/under-the-rain',
@@ -95,6 +102,8 @@ export const releases: Release[] = [
     label: 'TS Music Records',
     upc: '821530844007',
     promotionUrl: 'https://distrokid.com/hyperfollow/adolxsense1/the-weight-i-hide-2',
+    spotifyUrl: 'https://open.spotify.com/album/6eN0b03KWVmrX0p9bLrUJj?si=jciP6P6IQA62EO1EC5NMcA',
+    appleMusicUrl: 'https://music.apple.com/br/album/the-weight-i-hide-single/1868294125',
     cover: {
       src: '/images/releases/album-cover/the-weight-i-hide',
       alt: 'The Weight I Hide — Adolxsense Single Cover',
@@ -113,6 +122,8 @@ export const releases: Release[] = [
     label: 'TS Music Records',
     upc: '199947443800',
     promotionUrl: 'https://distrokid.com/hyperfollow/adolxsense1/after-the-rain',
+    spotifyUrl: 'https://open.spotify.com/album/6MWGHk3WLtFiJoezXVyB7p?si=9ghufF0eRWOxNaxwPXGwug',
+    appleMusicUrl: 'https://music.apple.com/br/album/after-the-rain-single/1857830814',
     description: 'A cinematic ballad. The damp silence after the collapse.',
     cover: {
       src: '/images/releases/album-cover/after-the-rain',
@@ -132,6 +143,8 @@ export const releases: Release[] = [
     label: 'TS Music Records',
     upc: '199948578884',
     promotionUrl: 'https://distrokid.com/hyperfollow/adolxsense1/where-light-begins',
+    spotifyUrl: 'https://open.spotify.com/album/1v5jetcKmPXviVY1uGVaOy?si=OVGJc46uS1-7JwEcPtJHlw',
+    appleMusicUrl: 'https://music.apple.com/br/album/where-light-begins-single/1857319405',
     cover: {
       src: '/images/releases/album-cover/where-light-begins',
       alt: 'Where Light Begins — Adolxsense Single Cover',
@@ -149,6 +162,8 @@ export const releases: Release[] = [
     label: 'TS Music Records',
     upc: '199953688516',
     promotionUrl: 'https://distrokid.com/hyperfollow/adolxsense1/ashes-in-the-rain',
+    spotifyUrl: 'https://open.spotify.com/album/6tZZaajBtLlib8BrVe16aQ?si=x9h57QzSSiyn2xCwx0SS0g',
+    appleMusicUrl: 'https://music.apple.com/br/album/ashes-in-the-rain-single/1854605069',
     cover: {
       src: '/images/releases/album-cover/ashes-in-the-rain',
       alt: 'Ashes in the Rain — Adolxsense Single Cover',
@@ -166,6 +181,8 @@ export const releases: Release[] = [
     label: 'TS Music Records',
     upc: '199750366068',
     promotionUrl: 'https://distrokid.com/hyperfollow/adolxsense1/unheard',
+    spotifyUrl: 'https://open.spotify.com/album/0xAhTyBPPFUwQaqANo9PoG?si=-MSNHsSiTDS-vGVC1He4Lw',
+    appleMusicUrl: 'https://music.apple.com/br/album/unheard/1850765731',
     cover: {
       src: '/images/releases/album-cover/unheard',
       alt: 'Unheard — Adolxsense LP Cover',
@@ -194,6 +211,8 @@ export const releases: Release[] = [
     label: 'TS Music Records',
     upc: '199749036460',
     promotionUrl: 'https://distrokid.com/hyperfollow/adolxsense1/still-reaching',
+    spotifyUrl: 'https://open.spotify.com/album/4nyDKnhPzhuBLXjYvObfF3?si=Thjyi2RwTKaWE8M2VibGOw',
+    appleMusicUrl: 'https://music.apple.com/br/album/still-reaching-ep/1849932897',
     cover: {
       src: '/images/releases/album-cover/still-reaching',
       alt: 'Still Reaching — Adolxsense EP Cover',
@@ -214,6 +233,8 @@ export const releases: Release[] = [
     label: 'TS Music Records',
     upc: '199749051296',
     promotionUrl: 'https://distrokid.com/hyperfollow/adolxsense1/maybe-tomorrow',
+    spotifyUrl: 'https://open.spotify.com/album/23wg9GB6q7DZS8pJQYH2gu?si=7dmGEYN9QJu00kTGo5bf7Q',
+    appleMusicUrl: 'https://music.apple.com/br/album/maybe-tomorrow-single/1850117103',
     cover: {
       src: '/images/releases/album-cover/maybe-tomorrow',
       alt: 'Maybe Tomorrow — Adolxsense Single Cover',
@@ -232,6 +253,7 @@ export const releases: Release[] = [
     upc: '199749826085',
     promotionUrl: 'https://distrokid.com/hyperfollow/adolxsense1/memories-of-unplayed-songs-2',
     spotifyUrl: 'https://open.spotify.com/intl-pt/album/3i95acUgbBHYosdTu9Cglw?si=AZvSjk_OTwOuyiCQAc1j7w',
+    appleMusicUrl: 'https://music.apple.com/br/album/memories-of-unplayed-songs/1849422593',
     cover: {
       src: '/images/releases/album-cover/memories-of-unplayed-songs',
       alt: 'Memories of Unplayed Songs — Adolxsense LP Cover',

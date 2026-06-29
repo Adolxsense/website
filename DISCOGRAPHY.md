@@ -7,6 +7,7 @@ Memories of Unplayed Songs (LP)
 
 Promotion Page: https://distrokid.com/hyperfollow/adolxsense1/memories-of-unplayed-songs-2
 Spotify Link: https://open.spotify.com/intl-pt/album/3i95acUgbBHYosdTu9Cglw?si=AZvSjk_OTwOuyiCQAc1j7w
+Apple Music Link: https://music.apple.com/br/album/memories-of-unplayed-songs/1849422593
 
 Album Info
 
@@ -56,6 +57,8 @@ Songs
 Maybe Tomorrow (Single)
 
 Promotion Page: https://distrokid.com/hyperfollow/adolxsense1/maybe-tomorrow
+Spotify Link: https://open.spotify.com/album/23wg9GB6q7DZS8pJQYH2gu?si=7dmGEYN9QJu00kTGo5bf7Q
+Apple Music Link: https://music.apple.com/br/album/maybe-tomorrow-single/1850117103
 
 Album Info
 
@@ -73,6 +76,8 @@ Songs
 Still Reaching (EP)
 
 Promotion Page: https://distrokid.com/hyperfollow/adolxsense1/still-reaching
+Spotify Link: https://open.spotify.com/album/4nyDKnhPzhuBLXjYvObfF3?si=Thjyi2RwTKaWE8M2VibGOw
+Apple Music Link: https://music.apple.com/br/album/still-reaching-ep/1849932897
 
 Album Info
 
@@ -96,6 +101,8 @@ Songs
 Unheard (LP)
 
 Promotion Page: https://distrokid.com/hyperfollow/adolxsense1/unheard
+Spotify Link: https://open.spotify.com/album/0xAhTyBPPFUwQaqANo9PoG?si=-MSNHsSiTDS-vGVC1He4Lw
+Apple Music Link: https://music.apple.com/br/album/unheard/1850765731
 
 Album Info
 
@@ -135,6 +142,8 @@ Songs
 Ashes in the Rain (Single)
 
 Promotion Page: https://distrokid.com/hyperfollow/adolxsense1/ashes-in-the-rain
+Spotify Link: https://open.spotify.com/album/6tZZaajBtLlib8BrVe16aQ?si=x9h57QzSSiyn2xCwx0SS0g
+Apple Music Link: https://music.apple.com/br/album/ashes-in-the-rain-single/1854605069
 
 Album Info
 
@@ -152,6 +161,8 @@ Songs
 Where Light Begins (Single)
 
 Promotion Page: https://distrokid.com/hyperfollow/adolxsense1/where-light-begins
+Spotify Link: https://open.spotify.com/album/1v5jetcKmPXviVY1uGVaOy?si=OVGJc46uS1-7JwEcPtJHlw
+Apple Music Link: https://music.apple.com/br/album/where-light-begins-single/1857319405
 
 Album Info
 
@@ -166,9 +177,11 @@ Songs
     1. ISRC: QT6F82533447
 ---
 
-After the Rain
+After the Rain (Single)
 
 Promotion Page: https://distrokid.com/hyperfollow/adolxsense1/after-the-rain
+Spotify Link: https://open.spotify.com/album/6MWGHk3WLtFiJoezXVyB7p?si=9ghufF0eRWOxNaxwPXGwug
+Apple Music Link: https://music.apple.com/br/album/after-the-rain-single/1857830814
 
 Album Info
 
@@ -185,9 +198,11 @@ Songs
     1. ISRC: QT6FD2519097
 ---
 
-The Weight I Hide
+The Weight I Hide (Single)
 
 Promotion Page: https://distrokid.com/hyperfollow/adolxsense1/the-weight-i-hide-2
+Spotify Link: https://open.spotify.com/album/6eN0b03KWVmrX0p9bLrUJj?si=jciP6P6IQA62EO1EC5NMcA
+Apple Music Link: https://music.apple.com/br/album/the-weight-i-hide-single/1868294125
 
 Album Info
 
@@ -204,9 +219,11 @@ Songs
     1. ISRC: QZDA42636147
 ---
 
-Under the Rain
+Under the Rain (Single)
 
 Promotion Page: https://distrokid.com/hyperfollow/adolxsense1/under-the-rain
+Spotify Link: https://open.spotify.com/album/42YhyLVwBcmLQRbBq49mqB?si=dM7ukt7sTZ-3zP4BmO7ghg
+Apple Music Link: https://music.apple.com/br/album/under-the-rain-single/1888916150
 
 Album Info
 
@@ -225,9 +242,11 @@ Songs
     1. ISRC: QZTB32657049
 ---
 
-Strong All Day
+Strong All Day (Single)
 
 Promotion Page: https://distrokid.com/hyperfollow/adolxsense1/strong-all-day
+Spotify Link: https://open.spotify.com/album/0Cn5IEebWpyPhqwUwWR9Dq?si=w79O1LVkSwCgqwgb5Hx5AA
+Apple Music Link: https://music.apple.com/br/album/strong-all-day-single/1890747740
 
 Album Info
 
@@ -244,9 +263,11 @@ Songs
     1. ISRC: QZTB82615766
 ---
 
-Before I Became This
+Before I Became This (Single)
 
 Promotion Page: https://distrokid.com/hyperfollow/adolxsense1/before-i-became-this
+Spotify Link: https://open.spotify.com/album/6GK8IRLchCPdqj195Rw4Tn?si=LLdsCEq9TwGqcKt9Iqn8Ow
+Apple Music Link: https://music.apple.com/br/album/before-i-became-this-single/6766311606
 
 Album Info
 
