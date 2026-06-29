@@ -95,6 +95,10 @@ export const releases: Release[] = [
     label: 'TS Music Records',
     upc: '821530844007',
     promotionUrl: 'https://distrokid.com/hyperfollow/adolxsense1/the-weight-i-hide-2',
+    cover: {
+      src: '/images/releases/album-cover/the-weight-i-hide',
+      alt: 'The Weight I Hide — Adolxsense Single Cover',
+    },
     tracks: [
       { title: 'The Weight I Hide' },
       { title: 'The Weight I Hide (Acoustic Version)' },
