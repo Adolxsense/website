@@ -359,4 +359,62 @@ const coverBySong = Object.fromEntries(
       </div>
     </div>
   </section>
+
+  <div class="divider"></div>
+
+  <section class="section" id="fansletter">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-header__label">Stay Connected</p>
+        <h2 class="section-header__title">Join the <em>Fansletter</em></h2>
+        <p class="section-header__sub">Be the first to hear about new releases, shows, and band news.</p>
+      </div>
+
+      <form
+        action="https://assets.mailerlite.com/jsonp/2478376/forms/191620638290478405/subscribe"
+        method="POST"
+        class="fansletter-form"
+        id="fansletter-form"
+      >
+        <input type="hidden" name="ml-submit" value="1" />
+        <input type="hidden" name="anticsrf" value="true" />
+
+        <div class="fansletter-form__row">
+          <input
+            type="text"
+            name="fields[name]"
+            placeholder="Your Name"
+            class="fansletter-form__input"
+            required
+          />
+          <input
+            type="email"
+            name="fields[email]"
+            placeholder="Your Email"
+            class="fansletter-form__input"
+            required
+          />
+          <button type="submit" class="btn btn-primary fansletter-form__btn">
+            <i class="fa-solid fa-envelope"></i> Subscribe
+          </button>
+        </div>
+
+        <p class="fansletter-form__success" id="fansletter-success" hidden>
+          You're in! Welcome to the Fansletter.
+        </p>
+      </form>
+    </div>
+  </section>
+
+  <script>
+    const form = document.getElementById('fansletter-form') as HTMLFormElement;
+    const success = document.getElementById('fansletter-success') as HTMLElement;
+    form?.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const data = new FormData(form);
+      await fetch(form.action, { method: 'POST', body: data, mode: 'no-cors' });
+      form.querySelector('.fansletter-form__row')?.setAttribute('hidden', '');
+      success.removeAttribute('hidden');
+    });
+  </script>
 </Layout>

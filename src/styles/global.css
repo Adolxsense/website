@@ -1595,6 +1595,68 @@ body::before {
   background: linear-gradient(90deg, transparent, var(--border), transparent);
 }
 
+/* ─── FANSLETTER ──────────────────────────────────── */
+.section-header__sub {
+  color: var(--text-muted);
+  font-size: 1rem;
+  margin-top: 8px;
+}
+
+.fansletter-form {
+  max-width: 700px;
+  margin: 48px auto 0;
+}
+
+.fansletter-form__row {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.fansletter-form__input {
+  flex: 1;
+  min-width: 180px;
+  padding: 14px 16px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  transition: border-color 0.2s;
+}
+
+.fansletter-form__input::placeholder {
+  color: var(--text-faint);
+}
+
+.fansletter-form__input:focus {
+  outline: none;
+  border-color: var(--red);
+}
+
+.fansletter-form__btn {
+  flex-shrink: 0;
+}
+
+.fansletter-form__success {
+  color: var(--red);
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-top: 16px;
+  text-align: center;
+}
+
+@media (max-width: 600px) {
+  .fansletter-form__row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+
 /* ─── ANIMATIONS ──────────────────────────────────── */
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(24px); }
