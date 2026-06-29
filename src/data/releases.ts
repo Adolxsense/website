@@ -150,6 +150,10 @@ export const releases: Release[] = [
     label: 'TS Music Records',
     upc: '199750366068',
     promotionUrl: 'https://distrokid.com/hyperfollow/adolxsense1/unheard',
+    cover: {
+      src: '/images/releases/album-cover/unheard',
+      alt: 'Unheard — Adolxsense LP Cover',
+    },
     tracks: [
       { title: 'Inside My Skin' },
       { title: 'Shadows in the Room' },
