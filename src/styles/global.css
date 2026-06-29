@@ -1363,6 +1363,12 @@ body::before {
   white-space: nowrap;
 }
 
+.listen-strip__group {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
 .listen-strip__links {
   display: flex;
   align-items: center;
@@ -1773,7 +1779,12 @@ body::before {
   .listen-strip__inner {
     flex-direction: column;
     align-items: flex-start;
-    gap: 12px;
+    gap: 16px;
+  }
+  .listen-strip__group {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
   }
   .listen-strip__links {
     flex-wrap: wrap;
