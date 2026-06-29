@@ -1113,6 +1113,128 @@ body::before {
   }
 }
 
+/* ─── HOME LATEST RELEASES ───────────────────────── */
+.home-releases-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+
+.home-release-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.home-release-card__cover-link {
+  display: block;
+  overflow: hidden;
+}
+
+.home-release-card__cover {
+  position: relative;
+  aspect-ratio: 1;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  transition: border-color 0.25s;
+}
+
+.home-release-card__cover-link:hover .home-release-card__cover {
+  border-color: var(--border-hover);
+}
+
+.home-release-card__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.home-release-card__cover-link:hover .home-release-card__img {
+  transform: scale(1.04);
+}
+
+.home-release-card__placeholder {
+  width: 100%;
+  height: 100%;
+  background: var(--bg-card);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  color: var(--text-faint);
+  padding: 20px;
+  text-align: center;
+}
+
+.home-release-card__info {
+  padding: 20px 4px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.home-release-card__title {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  letter-spacing: 0.03em;
+  color: var(--text);
+  line-height: 1.1;
+  transition: color 0.2s;
+}
+
+.home-release-card__title:hover {
+  color: var(--red);
+}
+
+.home-release-card__date {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
+
+.home-release-card__label {
+  font-size: 0.78rem;
+  color: var(--text-faint);
+}
+
+.home-release-card__streaming {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 8px;
+}
+
+.home-release-card__streaming .streaming-btn {
+  flex: 1;
+  justify-content: center;
+  padding: 8px 12px;
+  font-size: 0.72rem;
+}
+
+.home-release-card__more {
+  font-family: var(--font-heading);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  transition: color 0.2s;
+  margin-top: 4px;
+}
+
+.home-release-card__more:hover {
+  color: var(--red);
+}
+
+@media (max-width: 768px) {
+  .home-releases-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+}
+
 /* ─── LISTEN STRIP ───────────────────────────────── */
 .listen-strip {
   background: var(--bg-surface);

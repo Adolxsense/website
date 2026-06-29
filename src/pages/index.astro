@@ -4,6 +4,7 @@ import { songs } from '../data/songs';
 import { releases } from '../data/releases';
 
 const featuredSongs = songs.slice(0, 4);
+const latestReleases = releases.slice(0, 3);
 
 /** Map: songSlug → release cover */
 const coverBySong = Object.fromEntries(
@@ -155,12 +156,79 @@ const coverBySong = Object.fromEntries(
     </div>
   </div>
 
-  <!-- SONGS SECTION -->
-  <section class="section" id="music">
+  <!-- LATEST RELEASES SECTION -->
+  <section class="section" id="releases-home">
     <div class="container">
       <div class="section-header">
         <p class="section-header__label">Discography</p>
-        <h2 class="section-header__title">The <em>Music</em></h2>
+        <h2 class="section-header__title">Latest <em>Releases</em></h2>
+      </div>
+      <div class="home-releases-grid">
+        {latestReleases.map((release) => (
+          <div class="home-release-card">
+            <a href={`/releases/${release.slug}`} class="home-release-card__cover-link">
+              <div class="home-release-card__cover">
+                {release.cover ? (
+                  <picture>
+                    <source
+                      srcset={`${release.cover.src}-600w.webp 600w, ${release.cover.src}-300w.webp 300w`}
+                      sizes="(max-width: 768px) 100vw, 400px"
+                      type="image/webp"
+                    />
+                    <img
+                      src={`${release.cover.src}.jpg`}
+                      alt={release.cover.alt}
+                      class="home-release-card__img"
+                      loading="lazy"
+                      width="600"
+                      height="600"
+                    />
+                  </picture>
+                ) : (
+                  <div class="home-release-card__placeholder">{release.title}</div>
+                )}
+                <span class="release-card__type-badge">{release.type}</span>
+              </div>
+            </a>
+            <div class="home-release-card__info">
+              <a href={`/releases/${release.slug}`} class="home-release-card__title">{release.title}</a>
+              <p class="home-release-card__date">{release.releaseDate}</p>
+              {release.label && <p class="home-release-card__label">{release.label}</p>}
+              <div class="home-release-card__streaming">
+                {release.spotifyUrl && (
+                  <a href={release.spotifyUrl} target="_blank" rel="noopener noreferrer" class="streaming-btn streaming-btn--spotify" aria-label="Listen on Spotify">
+                    <i class="fa-brands fa-spotify"></i>
+                    Spotify
+                  </a>
+                )}
+                {release.appleMusicUrl && (
+                  <a href={release.appleMusicUrl} target="_blank" rel="noopener noreferrer" class="streaming-btn streaming-btn--apple" aria-label="Listen on Apple Music">
+                    <i class="fa-brands fa-apple"></i>
+                    Apple Music
+                  </a>
+                )}
+              </div>
+              <a href={`/releases/${release.slug}`} class="home-release-card__more">
+                View release &#8594;
+              </a>
+            </div>
+          </div>
+        ))}
+      </div>
+      <div style="margin-top: 48px; text-align: center;">
+        <a href="/releases" class="btn btn-ghost">All Releases &#8594;</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- LATEST LYRICS SECTION -->
+  <section class="section" id="music">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-header__label">Lyrics</p>
+        <h2 class="section-header__title">Latest <em>Lyrics</em></h2>
       </div>
       <div class="songs-grid">
         {featuredSongs.map((song, i) => {
