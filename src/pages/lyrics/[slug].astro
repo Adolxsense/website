@@ -42,9 +42,40 @@ function parseLyrics(raw: string) {
 const lyricBlocks = parseLyrics(song.lyrics);
 const translationBlocks = song.translation ? parseLyrics(song.translation) : [];
 const hasTranslation = translationBlocks.length > 0;
+
+const ogImage = cover
+  ? `https://adolxsense.com${cover.src}-1200w.webp`
+  : 'https://adolxsense.com/images/banner/banner-1-1920w.webp';
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MusicRecording',
+  name: song.title,
+  url: `https://adolxsense.com/lyrics/${song.slug}`,
+  genre: song.genre,
+  byArtist: {
+    '@type': 'MusicGroup',
+    name: 'Adolxsense',
+    url: 'https://adolxsense.com',
+  },
+  ...(release && {
+    inAlbum: {
+      '@type': 'MusicAlbum',
+      name: release.title,
+      url: `https://adolxsense.com/releases/${release.slug}`,
+    },
+  }),
+  ...(cover && { image: ogImage }),
+};
 ---
 
-<Layout title={song.title} description={song.description}>
+<Layout
+  title={song.title}
+  description={song.description}
+  ogType="music.song"
+  ogImage={ogImage}
+  jsonLd={jsonLd}
+>
   <div style="padding-top: 100px; padding-bottom: 100px;">
     <div class="container">
       <a href="/lyrics" class="back-link">&#8592; All Lyrics</a>

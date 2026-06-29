@@ -62,7 +62,8 @@
       "Bash(git commit -m 'feat: embed Spotify player on release pages; update streaming buttons to bordered style *)",
       "Bash(git commit -m 'feat: clean hero banner \\(remove text/buttons overlay\\); increase nav logo to 64px *)",
       "Bash(git commit -m 'feat: redesign About section with new text and logo; hero vignette effect *)",
-      "Bash(git commit -m 'feat: reorder homepage sections; center about section; add contact email to footer *)"
+      "Bash(git commit -m 'feat: reorder homepage sections; center about section; add contact email to footer *)",
+      "Bash(git commit -m 'feat: full SEO implementation *)"
     ]
   }
 }

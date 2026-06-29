@@ -6,6 +6,27 @@ import { releases } from '../data/releases';
 const featuredSongs = songs.slice(0, 4);
 const latestReleases = releases.slice(0, 3);
 
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MusicGroup',
+  name: 'Adolxsense',
+  url: 'https://adolxsense.com',
+  description: 'Nu Metal and Alternative Rock project. Songs for the things we never said, the pain we never showed, and the memories that still echo.',
+  genre: ['Nu Metal', 'Alternative Rock', 'Post-Grunge'],
+  sameAs: [
+    'https://open.spotify.com/artist/0E2Sa4BxDqWcleazYE7lUT',
+    'https://music.apple.com/br/artist/adolxsense/1848634461',
+    'https://www.youtube.com/@adolxsenseofficial',
+    'https://www.instagram.com/adolxsense',
+    'https://www.tiktok.com/@adolxsense',
+    'https://www.facebook.com/adolxsense',
+    'https://x.com/adolxsense',
+  ],
+  email: 'hey@adolxsense.com',
+  logo: 'https://adolxsense.com/images/logo.svg',
+  image: 'https://adolxsense.com/images/banner/banner-1-1920w.webp',
+};
+
 /** Map: songSlug → release cover */
 const coverBySong = Object.fromEntries(
   releases
@@ -14,7 +35,7 @@ const coverBySong = Object.fromEntries(
 );
 ---
 
-<Layout>
+<Layout jsonLd={jsonLd}>
   <!-- HERO -->
   <section class="hero">
     <!-- Rotating banner images -->

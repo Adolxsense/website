@@ -19,9 +19,43 @@ function spotifyEmbedUrl(url: string): string | null {
 }
 
 const spotifyEmbed = release.spotifyUrl ? spotifyEmbedUrl(release.spotifyUrl) : null;
+
+const ogImage = release.cover
+  ? `https://adolxsense.com${release.cover.src}-1200w.webp`
+  : 'https://adolxsense.com/images/banner/banner-1-1920w.webp';
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MusicAlbum',
+  name: release.title,
+  url: `https://adolxsense.com/releases/${release.slug}`,
+  datePublished: release.releaseDate,
+  albumProductionType: 'StudioAlbum',
+  albumReleaseType: release.type === 'Single' ? 'SingleRelease' : 'AlbumRelease',
+  byArtist: {
+    '@type': 'MusicGroup',
+    name: 'Adolxsense',
+    url: 'https://adolxsense.com',
+  },
+  ...(release.cover && { image: ogImage }),
+  ...(release.label && { recordLabel: release.label }),
+  numTracks: release.tracks.length,
+  track: release.tracks.map((t, i) => ({
+    '@type': 'MusicRecording',
+    name: t.title,
+    position: i + 1,
+    ...(t.songSlug && { url: `https://adolxsense.com/lyrics/${t.songSlug}` }),
+  })),
+};
 ---
 
-<Layout title={release.title} description={`${release.type} · ${release.releaseDate} · Adolxsense`}>
+<Layout
+  title={release.title}
+  description={`${release.type} · ${release.releaseDate} · Adolxsense`}
+  ogType="music.album"
+  ogImage={ogImage}
+  jsonLd={jsonLd}
+>
   <div style="padding-top: 100px; padding-bottom: 100px;">
     <div class="container">
       <a href="/releases" class="back-link">&#8592; All Releases</a>
