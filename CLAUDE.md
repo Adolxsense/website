@@ -21,6 +21,7 @@ rm -rf node_modules/.vite .astro
 - **Framework:** Astro (static output, deployed to GitHub Pages)
 - **Styling:** Plain CSS via `src/styles/global.css` — no Tailwind, no component libraries
 - **Fonts:** Bebas Neue (display), Space Grotesk (headings), Inter (body) — loaded from Google Fonts
+- **Icons:** Font Awesome 6 via CDN (`all.min.css`) — use `<i class="fa-brands fa-spotify"></i>` etc.
 - **Language:** TypeScript for all data files
 - **Deploy:** GitHub Actions → GitHub Pages via `.github/workflows/deploy.yml`
 - **Domain:** adolxsense.com (DNS on Cloudflare, proxy disabled for GitHub Pages HTTPS)
@@ -34,9 +35,9 @@ src/
     songs.ts       ← song data: lyrics, translations, metadata
     releases.ts    ← releases: albums, singles, EPs, LPs with tracklists
   layouts/
-    Layout.astro   ← shared layout: nav, footer, Google Analytics
+    Layout.astro   ← shared layout: nav, footer, Google Analytics, social icons
   pages/
-    index.astro
+    index.astro    ← homepage: hero slideshow, about, latest releases, latest lyrics, videos
     lyrics/
       index.astro
       [slug].astro
@@ -48,10 +49,11 @@ src/
     global.css     ← all styles, single file
 public/
   images/
-    logo.svg               ← band logo (vector, used in nav/hero/footer)
+    logo.svg               ← band logo (vector, used in nav/about/footer)
     logo.png               ← original logo source
     logo-800w.webp         ← raster copy at 800px wide
     logo-400w.webp         ← raster copy at 400px wide
+    banner/                ← hero slideshow images (WebP only — see banner rules)
     releases/
       album-cover/         ← release cover art (see image rules below)
 ```
@@ -122,16 +124,21 @@ When a song has a `translation` field, the lyrics page automatically renders Eng
 
 ### Adding a new release
 
-Add it to `src/data/releases.ts`:
+Add it to `src/data/releases.ts`. Releases are sorted by release date DESC (latest first):
 
 ```ts
 {
   slug: 'release-slug',
   title: 'Release Title',
-  type: 'Single',   // 'Single' | 'Album' | 'EP' | 'LP'
+  type: 'Single',          // 'Single' | 'Album' | 'EP' | 'LP'
   year: 2026,
-  label: 'Label Name',   // optional
-  description: 'Short English description.',  // optional
+  releaseDate: 'May 1, 2026',
+  label: 'TS Music Records',
+  upc: '000000000000',     // optional
+  promotionUrl: 'https://distrokid.com/...',
+  spotifyUrl: 'https://open.spotify.com/album/...',
+  appleMusicUrl: 'https://music.apple.com/...',
+  description: 'Short English description.',
   cover: {
     src: '/images/releases/album-cover/release-slug',
     alt: 'Release Title — Adolxsense Cover',
@@ -143,14 +150,23 @@ Add it to `src/data/releases.ts`:
 }
 ```
 
-Releases are grouped by type in this order: Singles → Albums → LPs → EPs.
+### Spotify embed
+
+The release detail page automatically embeds the Spotify player when `spotifyUrl` is set. The embed URL is derived from the Spotify URL — no extra field needed.
+
+### Where release covers appear automatically
+
+- `/releases` index — 300w thumbnail in the card grid
+- `/releases/[slug]` — 600w in the detail sidebar
+- `/lyrics/[slug]` — 600w above the video embed, if the song belongs to a release with a cover
+- Homepage "Latest Releases" section — 600w/300w responsive
 
 ## Images
 
 ### Logo
 
 - **Source of truth:** `public/images/logo.svg` (edited manually by the user)
-- **Usage:** `<img src="/images/logo.svg" />` in nav (32px tall), hero (responsive), footer (28px tall)
+- **Usage:** `<img src="/images/logo.svg" />` in nav (64px tall), about section (responsive), footer
 - **Raster copies:** `logo-800w.webp` and `logo-400w.webp` — regenerate whenever the SVG changes:
 
 ```bash
@@ -163,6 +179,30 @@ for suffix, w in [('800', 800), ('400', 400)]:
     c.save(f'public/images/logo-{suffix}w.webp', 'WEBP', quality=90)
 "
 ```
+
+### Hero banner images
+
+**Location:** `public/images/banner/`
+
+**Rule:** Original PNG/JPG files are excluded from the repo via `.gitignore`. Only commit the WebP versions.
+
+**Naming convention:** `banner-1`, `banner-2`, `banner-3`, `banner-4` etc.
+
+**When adding a new banner image**, generate four WebP sizes:
+
+```bash
+python3 -c "
+from PIL import Image
+src = 'public/images/banner/source.png'  # original file
+base = 'public/images/banner/banner-N'   # output base name
+img = Image.open(src).convert('RGB')
+for suffix, w in [('1920', 1920), ('1280', 1280), ('768', 768), ('480', 480)]:
+    c = img.copy(); c.thumbnail((w, 9999), Image.LANCZOS)
+    c.save(f'{base}-{suffix}w.webp', 'WEBP', quality=85)
+"
+```
+
+Then add a new `<div class="banner-slide">` in `src/pages/index.astro` and a new dot button in `.hero__dots`.
 
 ### Release cover art
 
@@ -184,19 +224,52 @@ for suffix, w in [('1200', 1200), ('600', 600), ('300', 300)]:
 "
 ```
 
-Then add the `cover` field to the release in `src/data/releases.ts` pointing to the base path (without extension). The `<picture>` element with `srcset` is handled automatically by the release and lyrics page templates.
-
-**Where covers appear automatically:**
-- `/releases` index — 300w thumbnail in the card grid
-- `/releases/[slug]` — 600w in the detail sidebar
-- `/lyrics/[slug]` — 600w above the video embed, if the song belongs to a release with a cover
+Then add the `cover` field to the release in `src/data/releases.ts` pointing to the base path (without extension).
 
 ### General image rules
 
 - Always use WebP for optimized versions; keep the original JPG/PNG as source
+- Original high-res PNGs/JPGs for banners are excluded from the repo — add to `.gitignore`
 - Always add `width` and `height` attributes to `<img>` tags
-- Use `loading="lazy"` on all images below the fold
+- Use `loading="lazy"` on all images below the fold; use `fetchpriority="high"` on the first hero image
 - Store all public assets under `public/images/`
+
+## Homepage Structure
+
+Sections in order (top to bottom):
+
+1. **Hero** — full-screen image slideshow (4 rotating banners, 6s interval, dot navigation, vignette overlay)
+2. **Listen Strip** — Spotify + Apple Music artist page links and "This is Adolxsense" playlist links
+3. **About** — band bio with logo, centered text, influences, closing statement
+4. **Latest Releases** — 3 most recent releases with cover, streaming buttons, release link
+5. **Latest Lyrics** — 4 most recent songs with cover art, linking to lyrics pages
+6. **Latest Videos** — 3 video embeds (YouTube)
+7. **Footer** — logo, social icons, nav links, contact email, copyright
+
+## Social Media & Streaming
+
+Social links are defined in `src/layouts/Layout.astro` in the `socials` array and render in the nav and footer automatically.
+
+| Platform | Handle/URL |
+|---|---|
+| TikTok | https://www.tiktok.com/@adolxsense |
+| YouTube | https://www.youtube.com/@adolxsenseofficial |
+| Instagram | https://www.instagram.com/adolxsense |
+| Facebook | https://www.facebook.com/adolxsense |
+| X | https://x.com/adolxsense |
+| Spotify (artist) | https://open.spotify.com/artist/0E2Sa4BxDqWcleazYE7lUT |
+| Apple Music (artist) | https://music.apple.com/br/artist/adolxsense/1848634461 |
+
+## Contact
+
+- **Email:** hey@adolxsense.com (shown in footer)
+
+## Streaming Button Style
+
+Streaming buttons (Spotify, Apple Music) use a **bordered style with no background**:
+- Spotify: green border + green text (`#1DB954`)
+- Apple Music: red border + red text (`#fc3c44`)
+- Icons via Font Awesome: `fa-brands fa-spotify`, `fa-brands fa-apple`
 
 ## Analytics
 
