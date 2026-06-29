@@ -132,6 +132,10 @@ export const releases: Release[] = [
     label: 'TS Music Records',
     upc: '199948578884',
     promotionUrl: 'https://distrokid.com/hyperfollow/adolxsense1/where-light-begins',
+    cover: {
+      src: '/images/releases/album-cover/where-light-begins',
+      alt: 'Where Light Begins — Adolxsense Single Cover',
+    },
     tracks: [
       { title: 'Where Light Begins' },
     ],
