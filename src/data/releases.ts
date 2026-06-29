@@ -174,6 +174,10 @@ export const releases: Release[] = [
     label: 'TS Music Records',
     upc: '199749036460',
     promotionUrl: 'https://distrokid.com/hyperfollow/adolxsense1/still-reaching',
+    cover: {
+      src: '/images/releases/album-cover/still-reaching',
+      alt: 'Still Reaching — Adolxsense EP Cover',
+    },
     tracks: [
       { title: 'Still Reaching' },
       { title: 'Still Reaching (Heavy Version)' },
