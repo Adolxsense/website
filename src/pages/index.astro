@@ -16,7 +16,34 @@ const coverBySong = Object.fromEntries(
 <Layout>
   <!-- HERO -->
   <section class="hero">
-    <div class="hero__bg"></div>
+    <!-- Rotating banner images -->
+    <div class="hero__slides">
+      <div class="banner-slide active">
+        <img
+          srcset="/images/banner/banner-1-480w.webp 480w, /images/banner/banner-1-768w.webp 768w, /images/banner/banner-1-1280w.webp 1280w, /images/banner/banner-1-1920w.webp 1920w"
+          sizes="100vw"
+          src="/images/banner/banner-1-1920w.webp"
+          alt="" class="banner-slide__img" fetchpriority="high"
+        />
+      </div>
+      <div class="banner-slide">
+        <img
+          srcset="/images/banner/banner-2-480w.webp 480w, /images/banner/banner-2-768w.webp 768w, /images/banner/banner-2-1280w.webp 1280w, /images/banner/banner-2-1920w.webp 1920w"
+          sizes="100vw"
+          src="/images/banner/banner-2-1920w.webp"
+          alt="" class="banner-slide__img" loading="lazy"
+        />
+      </div>
+      <div class="banner-slide">
+        <img
+          srcset="/images/banner/banner-3-480w.webp 480w, /images/banner/banner-3-768w.webp 768w, /images/banner/banner-3-1280w.webp 1280w, /images/banner/banner-3-1920w.webp 1920w"
+          sizes="100vw"
+          src="/images/banner/banner-3-1920w.webp"
+          alt="" class="banner-slide__img" loading="lazy"
+        />
+      </div>
+    </div>
+    <div class="hero__overlay"></div>
     <div class="hero__grid"></div>
     <div class="hero__content container">
       <p class="hero__eyebrow">Nu Metal · Alternative Rock</p>
@@ -48,7 +75,45 @@ const coverBySong = Object.fromEntries(
       <div class="hero__scroll-line"></div>
       <span>Scroll</span>
     </div>
+    <div class="hero__dots">
+      <button class="hero__dot active" data-index="0" aria-label="Slide 1"></button>
+      <button class="hero__dot" data-index="1" aria-label="Slide 2"></button>
+      <button class="hero__dot" data-index="2" aria-label="Slide 3"></button>
+    </div>
   </section>
+
+  <script>
+    const slides = Array.from(document.querySelectorAll('.banner-slide'));
+    const dots   = Array.from(document.querySelectorAll('.hero__dot'));
+    let current  = 0;
+    let timer: ReturnType<typeof setInterval>;
+
+    function goTo(index: number) {
+      slides[current].classList.remove('active');
+      dots[current].classList.remove('active');
+      current = index;
+      slides[current].classList.add('active');
+      dots[current].classList.add('active');
+    }
+
+    function next() {
+      goTo((current + 1) % slides.length);
+    }
+
+    function startTimer() {
+      timer = setInterval(next, 6000);
+    }
+
+    dots.forEach((dot) => {
+      dot.addEventListener('click', () => {
+        clearInterval(timer);
+        goTo(Number(dot.dataset.index));
+        startTimer();
+      });
+    });
+
+    startTimer();
+  </script>
 
   <!-- LISTEN NOW STRIP -->
   <div class="listen-strip">

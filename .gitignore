@@ -20,6 +20,10 @@ pnpm-debug.log*
 # macOS-specific files
 .DS_Store
 
+# Original high-res banner images (too large for the repo — use WebP versions instead)
+public/images/banner/*.png
+public/images/banner/*.jpg
+
 # jetbrains setting folder
 .idea/
 .claude/settings.local.json
