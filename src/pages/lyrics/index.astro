@@ -15,14 +15,16 @@ import { songs } from '../../data/songs';
         <div class="songs-grid">
           {songs.map((song, i) => (
             <a href={`/lyrics/${song.slug}`} class="song-card">
-              <span class="song-card__number">{String(i + 1).padStart(2, '0')}</span>
-              <h3 class="song-card__title">{song.title}</h3>
-              <div class="song-card__meta">
-                <span class="tag">{song.genre}</span>
-                <span class="tag">{song.album}</span>
+              <div class="song-card__body">
+                <span class="song-card__number">{String(i + 1).padStart(2, '0')}</span>
+                <h3 class="song-card__title">{song.title}</h3>
+                <div class="song-card__meta">
+                  <span class="tag">{song.genre}</span>
+                  <span class="tag">{song.album}</span>
+                </div>
+                <p class="song-card__desc">{song.description}</p>
+                <span class="song-card__arrow">&#8594;</span>
               </div>
-              <p class="song-card__desc">{song.description}</p>
-              <span class="song-card__arrow">&#8594;</span>
             </a>
           ))}
         </div>

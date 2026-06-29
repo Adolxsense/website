@@ -1,8 +1,16 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import { songs } from '../data/songs';
+import { releases } from '../data/releases';
 
 const featuredSongs = songs.slice(0, 4);
+
+/** Map: songSlug → release cover */
+const coverBySong = Object.fromEntries(
+  releases
+    .filter((r) => r.cover)
+    .flatMap((r) => r.tracks.filter((t) => t.songSlug).map((t) => [t.songSlug!, r.cover!]))
+);
 ---
 
 <Layout>
@@ -50,18 +58,38 @@ const featuredSongs = songs.slice(0, 4);
         <h2 class="section-header__title">The <em>Music</em></h2>
       </div>
       <div class="songs-grid">
-        {featuredSongs.map((song, i) => (
-          <a href={`/lyrics/${song.slug}`} class="song-card">
-            <span class="song-card__number">0{i + 1}</span>
-            <h3 class="song-card__title">{song.title}</h3>
-            <div class="song-card__meta">
-              <span class="tag">{song.genre}</span>
-              <span class="tag">{song.bpm} BPM</span>
-            </div>
-            <p class="song-card__desc">{song.description}</p>
-            <span class="song-card__arrow">&#8594;</span>
-          </a>
-        ))}
+        {featuredSongs.map((song, i) => {
+          const cover = coverBySong[song.slug];
+          return (
+            <a href={`/lyrics/${song.slug}`} class="song-card">
+              {cover && (
+                <div class="song-card__cover">
+                  <picture>
+                    <source srcset={`${cover.src}-300w.webp`} type="image/webp" />
+                    <img
+                      src={`${cover.src}.jpg`}
+                      alt={cover.alt}
+                      class="song-card__cover-img"
+                      loading="lazy"
+                      width="300"
+                      height="300"
+                    />
+                  </picture>
+                </div>
+              )}
+              <div class="song-card__body">
+                <span class="song-card__number">0{i + 1}</span>
+                <h3 class="song-card__title">{song.title}</h3>
+                <div class="song-card__meta">
+                  <span class="tag">{song.genre}</span>
+                  <span class="tag">{song.bpm} BPM</span>
+                </div>
+                <p class="song-card__desc">{song.description}</p>
+                <span class="song-card__arrow">&#8594;</span>
+              </div>
+            </a>
+          );
+        })}
       </div>
       <div style="margin-top: 48px; text-align: center;">
         <a href="/lyrics" class="btn btn-ghost">View All Lyrics &#8594;</a>
