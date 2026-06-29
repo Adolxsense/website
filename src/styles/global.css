@@ -992,6 +992,18 @@ body::before {
 .release-meta-row span:first-child { color: var(--text-muted); }
 .release-meta-row span:last-child  { color: var(--text); }
 
+/* ─── SPOTIFY EMBED ──────────────────────────────── */
+.spotify-embed {
+  margin-top: 20px;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.spotify-embed iframe {
+  display: block;
+  border: none;
+}
+
 /* ─── TRACKLIST ───────────────────────────────────── */
 .tracklist {
   margin-top: 48px;
@@ -1299,13 +1311,15 @@ body::before {
 }
 
 .listen-btn--spotify {
-  background: #1DB954;
-  color: #000;
+  background: transparent;
+  color: #1DB954;
+  border: 1px solid #1DB954;
 }
 
 .listen-btn--apple {
-  background: #fc3c44;
-  color: #fff;
+  background: transparent;
+  color: #fc3c44;
+  border: 1px solid #fc3c44;
 }
 
 .listen-btn--playlist {
@@ -1367,13 +1381,15 @@ body::before {
 }
 
 .streaming-btn--spotify {
-  background: #1DB954;
-  color: #000;
+  background: transparent;
+  color: #1DB954;
+  border: 1px solid #1DB954;
 }
 
 .streaming-btn--apple {
-  background: #fc3c44;
-  color: #fff;
+  background: transparent;
+  color: #fc3c44;
+  border: 1px solid #fc3c44;
 }
 
 /* ─── SOCIAL ICONS ───────────────────────────────── */

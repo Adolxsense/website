@@ -10,6 +10,15 @@ const { slug } = Astro.params;
 const release = getReleaseBySlug(slug);
 
 if (!release) return Astro.redirect('/releases');
+
+/** Convert a Spotify URL to its embed URL with dark theme */
+function spotifyEmbedUrl(url: string): string | null {
+  const match = url.match(/open\.spotify\.com\/(album|playlist|track)\/([a-zA-Z0-9]+)/);
+  if (!match) return null;
+  return `https://open.spotify.com/embed/${match[1]}/${match[2]}?utm_source=generator&theme=0`;
+}
+
+const spotifyEmbed = release.spotifyUrl ? spotifyEmbedUrl(release.spotifyUrl) : null;
 ---
 
 <Layout title={release.title} description={`${release.type} · ${release.releaseDate} · Adolxsense`}>
@@ -84,6 +93,20 @@ if (!release) return Astro.redirect('/releases');
               </div>
             )}
           </div>
+
+          {spotifyEmbed && (
+            <div class="spotify-embed">
+              <iframe
+                src={spotifyEmbed}
+                width="100%"
+                height="352"
+                frameborder="0"
+                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                loading="lazy"
+                title={`${release.title} on Spotify`}
+              ></iframe>
+            </div>
+          )}
         </div>
 
         <!-- RIGHT: tracklist -->
