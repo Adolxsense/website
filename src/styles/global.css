@@ -1677,6 +1677,10 @@ body::before {
   margin-top: 8px;
 }
 
+#fansletter .section-header {
+  text-align: center;
+}
+
 .fansletter-form {
   max-width: 700px;
   margin: 48px auto 0;
