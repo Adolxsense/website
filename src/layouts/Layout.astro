@@ -10,14 +10,14 @@ interface Props {
 }
 
 const {
-  title = 'Adolxsense',
+  title = "Revive the 2000s Nu Metal and Alternative Rock!",
   description = 'Songs for the things we never said, the pain we never showed, and the memories that still echo.',
   ogImage = 'https://adolxsense.com/images/banner/banner-1-1920w.webp',
   ogType = 'website',
   jsonLd,
 } = Astro.props;
 
-const fullTitle = title === 'Adolxsense' ? title : `${title} — Adolxsense`;
+const fullTitle = title === 'Adolxsense' ? title : `Adolxsense — ${title}`;
 const pathname = Astro.url.pathname;
 const canonicalUrl = `https://adolxsense.com${pathname}`;
 
