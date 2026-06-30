@@ -4,8 +4,9 @@
     {
       "name": "adolxsense",
       "runtimeExecutable": "npm",
-      "runtimeArgs": ["run", "preview", "--", "--port", "4329"],
-      "port": 4329
+      "runtimeArgs": ["run", "dev"],
+      "port": 4321,
+      "autoPort": false
     }
   ]
 }

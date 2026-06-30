@@ -63,7 +63,9 @@
       "Bash(git commit -m 'feat: clean hero banner \\(remove text/buttons overlay\\); increase nav logo to 64px *)",
       "Bash(git commit -m 'feat: redesign About section with new text and logo; hero vignette effect *)",
       "Bash(git commit -m 'feat: reorder homepage sections; center about section; add contact email to footer *)",
-      "Bash(git commit -m 'feat: full SEO implementation *)"
+      "Bash(git commit -m 'feat: full SEO implementation *)",
+      "Bash(magick /tmp/fav-16.png /tmp/fav-32.png /tmp/fav-48.png public/favicon.ico)",
+      "Bash(kill 39917)"
     ]
   }
 }
