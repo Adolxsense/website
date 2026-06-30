@@ -24,34 +24,112 @@ const ogImage = release.cover
   ? `https://adolxsense.com${release.cover.src}-1200w.webp`
   : 'https://adolxsense.com/images/banner/banner-1-1920w.webp';
 
+const releaseTypeMap: Record<string, string> = {
+  Single: 'SingleRelease',
+  EP: 'EPRelease',
+  LP: 'AlbumRelease',
+  Album: 'AlbumRelease',
+};
+
+const artist = {
+  '@type': 'MusicGroup',
+  name: 'Adolxsense',
+  url: 'https://adolxsense.com',
+  sameAs: [
+    'https://open.spotify.com/artist/0E2Sa4BxDqWcleazYE7lUT',
+    'https://music.apple.com/br/artist/adolxsense/1848634461',
+    'https://www.youtube.com/@adolxsenseofficial',
+    'https://www.instagram.com/adolxsense',
+    'https://www.tiktok.com/@adolxsense',
+  ],
+};
+
+const releaseUrl = `https://adolxsense.com/releases/${release.slug}`;
+
+const streamingOffers = [
+  ...(release.spotifyUrl ? [{
+    '@type': 'Offer',
+    url: release.spotifyUrl,
+    seller: { '@type': 'Organization', name: 'Spotify' },
+    availability: 'https://schema.org/InStock',
+    price: '0',
+    priceCurrency: 'USD',
+    category: 'StreamingService',
+  }] : []),
+  ...(release.appleMusicUrl ? [{
+    '@type': 'Offer',
+    url: release.appleMusicUrl,
+    seller: { '@type': 'Organization', name: 'Apple Music' },
+    availability: 'https://schema.org/InStock',
+    price: '0',
+    priceCurrency: 'USD',
+    category: 'StreamingService',
+  }] : []),
+];
+
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'MusicAlbum',
+  '@id': releaseUrl,
   name: release.title,
-  url: `https://adolxsense.com/releases/${release.slug}`,
+  url: releaseUrl,
   datePublished: release.releaseDate,
-  albumProductionType: 'StudioAlbum',
-  albumReleaseType: release.type === 'Single' ? 'SingleRelease' : 'AlbumRelease',
-  byArtist: {
-    '@type': 'MusicGroup',
-    name: 'Adolxsense',
-    url: 'https://adolxsense.com',
-  },
+  copyrightYear: release.year,
+  albumProductionType: 'https://schema.org/StudioAlbum',
+  albumReleaseType: `https://schema.org/${releaseTypeMap[release.type] ?? 'AlbumRelease'}`,
+  genre: ['Nu Metal', 'Alternative Rock', 'Post-Grunge'],
+  inLanguage: 'en',
+  byArtist: artist,
   ...(release.cover && { image: ogImage }),
-  ...(release.label && { recordLabel: release.label }),
+  ...(release.description && { description: release.description }),
+  ...(release.label && {
+    recordLabel: {
+      '@type': 'Organization',
+      name: release.label,
+    },
+  }),
+  ...(release.upc && { gtin13: release.upc }),
   numTracks: release.tracks.length,
   track: release.tracks.map((t, i) => ({
     '@type': 'MusicRecording',
     name: t.title,
     position: i + 1,
+    byArtist: artist,
+    inAlbum: { '@id': releaseUrl },
     ...(t.songSlug && { url: `https://adolxsense.com/lyrics/${t.songSlug}` }),
   })),
+  ...(streamingOffers.length > 0 && { offers: streamingOffers }),
+  sameAs: [
+    ...(release.spotifyUrl ? [release.spotifyUrl] : []),
+    ...(release.appleMusicUrl ? [release.appleMusicUrl] : []),
+    ...(release.promotionUrl ? [release.promotionUrl] : []),
+  ],
+  potentialAction: [
+    ...(release.spotifyUrl ? [{
+      '@type': 'ListenAction',
+      target: { '@type': 'EntryPoint', urlTemplate: release.spotifyUrl },
+      expectsAcceptanceOf: {
+        '@type': 'Offer',
+        seller: { '@type': 'Organization', name: 'Spotify' },
+      },
+    }] : []),
+    ...(release.appleMusicUrl ? [{
+      '@type': 'ListenAction',
+      target: { '@type': 'EntryPoint', urlTemplate: release.appleMusicUrl },
+      expectsAcceptanceOf: {
+        '@type': 'Offer',
+        seller: { '@type': 'Organization', name: 'Apple Music' },
+      },
+    }] : []),
+  ],
 };
 ---
 
 <Layout
   title={release.title}
-  description={`${release.type} · ${release.releaseDate} · Adolxsense`}
+  description={release.description
+    ? `${release.description} ${release.type} by Adolxsense — released ${release.releaseDate}.`
+    : `${release.title} — ${release.type} by Adolxsense. Released ${release.releaseDate}. Stream on Spotify and Apple Music.`}
   ogType="music.album"
   ogImage={ogImage}
   jsonLd={jsonLd}
