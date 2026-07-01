@@ -6,7 +6,7 @@ import { songs } from '../../data/songs';
 <Layout title="Lyrics" description="All Adolxsense song lyrics — Nu Metal and Alternative Rock.">
   <div style="padding-top: 120px;">
     <div class="container">
-      <div class="lyrics-hero">
+      <div class="lyrics-hero reveal">
         <p class="section-header__label">All Songs</p>
         <h1 class="section-header__title">Lyrics</h1>
       </div>
@@ -14,7 +14,7 @@ import { songs } from '../../data/songs';
       <div style="padding: 80px 0;">
         <div class="songs-grid">
           {songs.map((song, i) => (
-            <a href={`/lyrics/${song.slug}`} class="song-card">
+            <a href={`/lyrics/${song.slug}`} class="song-card reveal" style={`--reveal-delay: ${i % 4}`}>
               <div class="song-card__body">
                 <span class="song-card__number">{String(i + 1).padStart(2, '0')}</span>
                 <h3 class="song-card__title">{song.title}</h3>

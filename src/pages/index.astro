@@ -158,13 +158,13 @@ const coverBySong = Object.fromEntries(
   <!-- ABOUT SECTION -->
   <section class="section about-section" id="about">
     <div class="container">
-      <div class="about-header">
+      <div class="about-header reveal">
         <p class="section-header__label">About</p>
         <img src="/images/logo.svg" alt="Adolxsense" class="about-header__logo" />
       </div>
 
       <div class="about-grid">
-        <div class="about-grid__intro">
+        <div class="about-grid__intro reveal">
           <p class="about-lead">
             Adolxsense is a Nu Metal and Alternative Rock project born for the emotions that never learned how to speak.
           </p>
@@ -176,7 +176,7 @@ const coverBySong = Object.fromEntries(
           </p>
         </div>
 
-        <div class="about-grid__details">
+        <div class="about-grid__details reveal" style="--reveal-delay: 1">
           <div class="about-influences">
             <p class="about-influences__label">Sounds like</p>
             <p class="about-influences__list">
@@ -194,7 +194,7 @@ const coverBySong = Object.fromEntries(
         </div>
       </div>
 
-      <div class="about-closing">
+      <div class="about-closing reveal" style="--reveal-delay: 1">
         <p class="about-closing__lines">
           These are songs for the things we never said.<br />
           For the pain we never showed.<br />
@@ -213,13 +213,13 @@ const coverBySong = Object.fromEntries(
   <!-- LATEST RELEASES SECTION -->
   <section class="section" id="releases-home">
     <div class="container">
-      <div class="section-header">
+      <div class="section-header reveal">
         <p class="section-header__label">Discography</p>
         <h2 class="section-header__title">Latest <em>Releases</em></h2>
       </div>
       <div class="home-releases-grid">
-        {latestReleases.map((release) => (
-          <div class="home-release-card">
+        {latestReleases.map((release, i) => (
+          <div class="home-release-card reveal" style={`--reveal-delay: ${i}`}>
             <a href={`/releases/${release.slug}`} class="home-release-card__cover-link">
               <div class="home-release-card__cover">
                 {release.cover ? (
@@ -280,7 +280,7 @@ const coverBySong = Object.fromEntries(
   <!-- LATEST LYRICS SECTION -->
   <section class="section" id="music">
     <div class="container">
-      <div class="section-header">
+      <div class="section-header reveal">
         <p class="section-header__label">Lyrics</p>
         <h2 class="section-header__title">Latest <em>Lyrics</em></h2>
       </div>
@@ -288,7 +288,7 @@ const coverBySong = Object.fromEntries(
         {featuredSongs.map((song, i) => {
           const cover = coverBySong[song.slug];
           return (
-            <a href={`/lyrics/${song.slug}`} class="song-card">
+            <a href={`/lyrics/${song.slug}`} class="song-card reveal" style={`--reveal-delay: ${i}`}>
               {cover && (
                 <div class="song-card__cover">
                   <picture>
@@ -329,13 +329,13 @@ const coverBySong = Object.fromEntries(
   <!-- VIDEOS PREVIEW -->
   <section class="section">
     <div class="container">
-      <div class="section-header">
+      <div class="section-header reveal">
         <p class="section-header__label">Watch</p>
         <h2 class="section-header__title">Latest <em>Videos</em></h2>
       </div>
       <div class="videos-grid">
-        {songs.slice(0, 3).map((song) => (
-          <div class="video-card">
+        {songs.slice(0, 3).map((song, i) => (
+          <div class="video-card reveal" style={`--reveal-delay: ${i}`}>
             <div class="video-card__embed">
               {song.youtubeId ? (
                 <iframe
@@ -368,7 +368,7 @@ const coverBySong = Object.fromEntries(
 
   <section class="section" id="fansletter">
     <div class="container">
-      <div class="section-header">
+      <div class="section-header reveal">
         <p class="section-header__label">Stay Connected</p>
         <h2 class="section-header__title">Join the <em>Fansletter</em></h2>
         <p class="section-header__sub">Be the first to hear about new releases, shows, and band news.</p>
@@ -377,7 +377,8 @@ const coverBySong = Object.fromEntries(
       <form
         action="https://assets.mailerlite.com/jsonp/2478376/forms/191620638290478405/subscribe"
         method="POST"
-        class="fansletter-form"
+        class="fansletter-form reveal"
+        style="--reveal-delay: 1"
         id="fansletter-form"
       >
         <input type="hidden" name="ml-submit" value="1" />

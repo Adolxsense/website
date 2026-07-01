@@ -78,12 +78,12 @@ const jsonLd = {
 >
   <div style="padding-top: 100px; padding-bottom: 100px;">
     <div class="container">
-      <a href="/lyrics" class="back-link">&#8592; All Lyrics</a>
+      <a href="/lyrics" class="back-link reveal">&#8592; All Lyrics</a>
 
       <div class="song-detail-layout">
         <!-- LYRICS COLUMN -->
         <div>
-          <div class="song-detail-header">
+          <div class="song-detail-header reveal">
             <h1 class="song-detail-title">{song.title}</h1>
             <div class="song-detail-meta">
               <span class="tag">{song.genre}</span>
@@ -95,7 +95,7 @@ const jsonLd = {
           </div>
 
           {hasTranslation ? (
-            <div class="lyrics-dual">
+            <div class="lyrics-dual reveal" style="--reveal-delay: 1">
               <div class="lyrics-dual__col">
                 <p class="lyrics-dual__lang">English</p>
                 <div class="lyrics-body">
@@ -119,7 +119,7 @@ const jsonLd = {
               </div>
             </div>
           ) : (
-            <div class="lyrics-body">
+            <div class="lyrics-body reveal" style="--reveal-delay: 1">
               {lyricBlocks.map((block) => {
                 if (block.type === 'label') return <span class="section-label">[{block.text}]</span>;
                 if (block.type === 'line') return <span class="line">{block.text}</span>;
@@ -130,7 +130,7 @@ const jsonLd = {
         </div>
 
         <!-- VIDEO / COVER COLUMN -->
-        <div class="song-video">
+        <div class="song-video reveal" style="--reveal-delay: 2">
           {cover && (
             <div class="song-cover">
               <picture>

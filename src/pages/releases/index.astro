@@ -6,15 +6,15 @@ import { releases } from '../../data/releases';
 <Layout title="Releases" description="All Adolxsense releases — albums, singles, EPs and LPs.">
   <div style="padding-top: 120px; padding-bottom: 100px;">
     <div class="container">
-      <div class="lyrics-hero">
+      <div class="lyrics-hero reveal">
         <p class="section-header__label">Discography</p>
         <h1 class="section-header__title">Releases</h1>
       </div>
 
       <div style="padding-top: 80px;">
         <div class="releases-grid">
-          {releases.map((release) => (
-            <a href={`/releases/${release.slug}`} class="release-card">
+          {releases.map((release, i) => (
+            <a href={`/releases/${release.slug}`} class="release-card reveal" style={`--reveal-delay: ${i % 4}`}>
               <div class="release-card__cover">
                 {release.cover ? (
                   <picture>

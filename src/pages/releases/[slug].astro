@@ -136,12 +136,12 @@ const jsonLd = {
 >
   <div style="padding-top: 100px; padding-bottom: 100px;">
     <div class="container">
-      <a href="/releases" class="back-link">&#8592; All Releases</a>
+      <a href="/releases" class="back-link reveal">&#8592; All Releases</a>
 
       <div class="release-detail-layout">
         <!-- LEFT: cover + info -->
         <div class="release-detail-left">
-          <div class="release-detail-cover">
+          <div class="release-detail-cover reveal">
             {release.cover ? (
               <picture>
                 <source
@@ -165,7 +165,7 @@ const jsonLd = {
             )}
           </div>
 
-          <div class="release-detail-meta-box">
+          <div class="release-detail-meta-box reveal" style="--reveal-delay: 1">
             <p style="font-family: var(--font-heading); font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-faint); margin-bottom: 16px;">Info</p>
             <div style="display: flex; flex-direction: column; gap: 10px;">
               <div class="release-meta-row">
@@ -223,7 +223,7 @@ const jsonLd = {
 
         <!-- RIGHT: tracklist -->
         <div class="release-detail-right">
-          <div class="release-detail-header">
+          <div class="release-detail-header reveal">
             <h1 class="song-detail-title">{release.title}</h1>
             <div style="display: flex; gap: 8px; margin-bottom: 12px;">
               <span class="tag">{release.type}</span>
@@ -234,7 +234,7 @@ const jsonLd = {
             )}
           </div>
 
-          <div class="tracklist">
+          <div class="tracklist reveal" style="--reveal-delay: 1">
             <p class="tracklist__heading">Tracklist</p>
             <ol class="tracklist__items">
               {release.tracks.map((track, i) => (
