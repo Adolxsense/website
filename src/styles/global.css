@@ -1808,3 +1808,61 @@ body::before {
     transition: none;
   }
 }
+
+/* ─── CUSTOM CURSOR ──────────────────────────── */
+@media (pointer: fine) {
+  body { cursor: none; }
+  a, button { cursor: none; }
+
+  #cursor-dot {
+    position: fixed;
+    top: -4px;
+    left: -4px;
+    width: 8px;
+    height: 8px;
+    background: var(--red);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 99999;
+    will-change: transform;
+  }
+
+  #cursor-ring {
+    position: fixed;
+    top: -20px;
+    left: -20px;
+    width: 40px;
+    height: 40px;
+    border: 1.5px solid rgba(192, 57, 43, 0.6);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 99998;
+    will-change: transform;
+    transition: width 0.2s, height 0.2s, top 0.2s, left 0.2s, border-color 0.2s, background 0.2s;
+  }
+
+  #cursor-ring.on-link {
+    width: 56px;
+    height: 56px;
+    top: -28px;
+    left: -28px;
+    border-color: var(--red);
+    background: rgba(192, 57, 43, 0.08);
+  }
+
+  #cursor-ring.pressed {
+    width: 28px;
+    height: 28px;
+    top: -14px;
+    left: -14px;
+    background: rgba(192, 57, 43, 0.2);
+  }
+}
+
+/* ─── HERO PARALLAX ──────────────────────────── */
+.banner-slide__img {
+  will-change: transform;
+  /* Scale up slightly so parallax shift doesn't reveal edges */
+  transform-origin: center top;
+  scale: 1.15;
+}

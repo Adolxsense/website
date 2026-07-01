@@ -77,6 +77,10 @@ const socials = [
     </script>
   </head>
   <body>
+    <!-- Custom cursor -->
+    <div id="cursor-dot"></div>
+    <div id="cursor-ring"></div>
+
     <nav class="nav" id="nav">
       <div class="nav__inner">
         <a href="/" class="nav__logo">
@@ -205,6 +209,53 @@ const socials = [
       document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') closeMenu();
       });
+
+      // ── Cursor trail ────────────────────────────────
+      const dot  = document.getElementById('cursor-dot')!;
+      const ring = document.getElementById('cursor-ring')!;
+      let mx = -100, my = -100, rx = -100, ry = -100;
+
+      document.addEventListener('mousemove', (e) => {
+        mx = e.clientX; my = e.clientY;
+        dot.style.transform = `translate(${mx}px, ${my}px)`;
+      });
+
+      (function animateRing() {
+        rx += (mx - rx) * 0.12;
+        ry += (my - ry) * 0.12;
+        ring.style.transform = `translate(${rx}px, ${ry}px)`;
+        requestAnimationFrame(animateRing);
+      })();
+
+      document.addEventListener('mousedown', () => ring.classList.add('pressed'));
+      document.addEventListener('mouseup',   () => ring.classList.remove('pressed'));
+
+      document.querySelectorAll('a, button').forEach(el => {
+        el.addEventListener('mouseenter', () => ring.classList.add('on-link'));
+        el.addEventListener('mouseleave', () => ring.classList.remove('on-link'));
+      });
+
+      // ── Magnetic buttons ────────────────────────────
+      document.querySelectorAll<HTMLElement>('.btn, .streaming-btn, .listen-btn').forEach(btn => {
+        btn.addEventListener('mousemove', (e) => {
+          const r = btn.getBoundingClientRect();
+          const x = (e.clientX - r.left - r.width  / 2) * 0.35;
+          const y = (e.clientY - r.top  - r.height / 2) * 0.35;
+          btn.style.transform = `translate(${x}px, ${y}px)`;
+        });
+        btn.addEventListener('mouseleave', () => {
+          btn.style.transform = '';
+        });
+      });
+
+      // ── Hero parallax ───────────────────────────────
+      const heroImgs = document.querySelectorAll<HTMLElement>('.banner-slide__img');
+      if (heroImgs.length) {
+        lenis.on('scroll', ({ scroll }: { scroll: number }) => {
+          const y = scroll * 0.25;
+          heroImgs.forEach(img => { img.style.transform = `translateY(${y}px)`; });
+        });
+      }
     </script>
   </body>
 </html>
