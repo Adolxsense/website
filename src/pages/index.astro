@@ -2,6 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import { songs } from '../data/songs';
 import { releases } from '../data/releases';
+import { preRelease as pre } from '../data/preRelease';
 
 const featuredSongs = songs.slice(0, 4);
 const latestReleases = releases.slice(0, 3);
@@ -118,6 +119,73 @@ const coverBySong = Object.fromEntries(
     });
 
     startTimer();
+  </script>
+
+  <!-- PRE-RELEASE HIGHLIGHT -->
+  <section class="home-prerelease">
+    <div class="home-prerelease__bg" style={`background-image:url(${pre.cover.src}-1200w.webp)`}></div>
+    <div class="home-prerelease__overlay"></div>
+
+    <div class="container home-prerelease__inner">
+      <a href="/pre-release" class="home-prerelease__cover" aria-label={`${pre.title} — pre-release`}>
+        <picture>
+          <source srcset={`${pre.cover.src}-600w.webp 600w, ${pre.cover.src}-300w.webp 300w`} sizes="(max-width: 900px) 100vw, 380px" type="image/webp" />
+          <img src={`${pre.cover.src}.jpg`} alt={pre.cover.alt} class="home-prerelease__cover-img" loading="lazy" width="600" height="600" />
+        </picture>
+        <span class="home-prerelease__badge">{pre.type} · Coming Soon</span>
+      </a>
+
+      <div class="home-prerelease__content">
+        <p class="home-prerelease__eyebrow">
+          <span class="pulse-dot"></span> New Single &middot; {pre.releaseDate}
+        </p>
+        <h2 class="home-prerelease__title">{pre.title}</h2>
+        <p class="home-prerelease__desc">{pre.description}</p>
+
+        <div class="prerelease-countdown home-prerelease__countdown" id="homePreCountdown" data-target={pre.releaseDateISO}>
+          <div class="countdown-unit"><span class="countdown-num" data-days>00</span><span class="countdown-label">Days</span></div>
+          <div class="countdown-unit"><span class="countdown-num" data-hours>00</span><span class="countdown-label">Hours</span></div>
+          <div class="countdown-unit"><span class="countdown-num" data-minutes>00</span><span class="countdown-label">Minutes</span></div>
+          <div class="countdown-unit"><span class="countdown-num" data-seconds>00</span><span class="countdown-label">Seconds</span></div>
+          <div class="countdown-out">Out Now</div>
+        </div>
+
+        <div class="home-prerelease__actions">
+          {pre.spotifyUrl && (
+            <a href={pre.spotifyUrl} target="_blank" rel="noopener noreferrer" class="prerelease-presave-btn">
+              <i class="fa-brands fa-spotify"></i>
+              Pre-Save on Spotify
+            </a>
+          )}
+          <a href="/pre-release" class="btn btn-ghost">Full Details &#8594;</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    const preRoot = document.getElementById('homePreCountdown');
+    if (preRoot) {
+      const t = new Date(preRoot.getAttribute('data-target') || '').getTime();
+      const pel = {
+        d: preRoot.querySelector('[data-days]'),
+        h: preRoot.querySelector('[data-hours]'),
+        m: preRoot.querySelector('[data-minutes]'),
+        s: preRoot.querySelector('[data-seconds]'),
+      };
+      const p2 = (n: number) => String(n).padStart(2, '0');
+      function preTick() {
+        if (isNaN(t)) return;
+        const diff = t - Date.now();
+        if (diff <= 0) { preRoot.classList.add('is-out'); return; }
+        if (pel.d) pel.d.textContent = String(Math.floor(diff / 86400000));
+        if (pel.h) pel.h.textContent = p2(Math.floor((diff % 86400000) / 3600000));
+        if (pel.m) pel.m.textContent = p2(Math.floor((diff % 3600000) / 60000));
+        if (pel.s) pel.s.textContent = p2(Math.floor((diff % 60000) / 1000));
+      }
+      preTick();
+      setInterval(preTick, 1000);
+    }
   </script>
 
   <!-- LISTEN NOW STRIP -->
