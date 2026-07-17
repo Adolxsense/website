@@ -254,6 +254,75 @@ body::before {
   display: none;
 }
 
+/* ── Hero pre-release promo slide ── */
+.hero-promo__bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center 30%;
+  filter: brightness(0.5);
+  transform: scale(1.04);
+}
+
+.hero-promo {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0 24px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 1.2s ease;
+  background: radial-gradient(ellipse 80% 62% at 50% 46%, rgba(8,8,8,0.62) 0%, rgba(8,8,8,0.22) 62%, transparent 100%);
+}
+
+.hero-promo.is-visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.hero-promo__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--font-heading);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--text);
+  margin-bottom: 20px;
+}
+
+.hero-promo__title {
+  font-family: var(--font-display);
+  font-size: clamp(3.5rem, 12vw, 9rem);
+  line-height: 0.92;
+  letter-spacing: 0.03em;
+  color: var(--text);
+  margin-bottom: 16px;
+  text-shadow: 0 4px 40px rgba(0, 0, 0, 0.6);
+}
+
+.hero-promo__date {
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--red);
+  margin-bottom: 40px;
+}
+
+.hero-promo__actions {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
 .hero__content {
   position: relative;
   z-index: 3;
@@ -837,6 +906,20 @@ body::before {
   font-size: 0.95rem;
   max-width: 560px;
   line-height: 1.6;
+}
+
+.prerelease-para {
+  max-width: 640px;
+  line-height: 1.8;
+}
+
+.prerelease-para + .prerelease-para {
+  margin-top: 18px;
+}
+
+.prerelease-para:last-child {
+  color: var(--text);
+  font-style: italic;
 }
 
 .song-detail-layout {

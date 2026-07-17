@@ -7,6 +7,9 @@ import { preRelease as pre } from '../data/preRelease';
 const featuredSongs = songs.slice(0, 4);
 const latestReleases = releases.slice(0, 3);
 
+const preHeroBg = pre.heroBanner ? `${pre.heroBanner}-1920w.webp` : `${pre.cover.src}-1200w.webp`;
+const preHook = pre.description.split('\n\n')[0];
+
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'MusicGroup',
@@ -41,7 +44,10 @@ const coverBySong = Object.fromEntries(
   <section class="hero">
     <!-- Rotating banner images -->
     <div class="hero__slides">
-      <div class="banner-slide active">
+      <div class="banner-slide banner-slide--promo active">
+        <div class="hero-promo__bg" style={`background-image:url(${preHeroBg})`}></div>
+      </div>
+      <div class="banner-slide">
         <img
           srcset="/images/banner/banner-1-480w.webp 480w, /images/banner/banner-1-768w.webp 768w, /images/banner/banner-1-1280w.webp 1280w, /images/banner/banner-1-1920w.webp 1920w"
           sizes="100vw"
@@ -76,21 +82,40 @@ const coverBySong = Object.fromEntries(
     </div>
     <div class="hero__overlay"></div>
     <div class="hero__grid"></div>
+
+    <!-- Pre-release promo overlay (synced to the first slide) -->
+    <div class="hero-promo is-visible" id="heroPromo">
+      <p class="hero-promo__eyebrow"><span class="pulse-dot"></span> New Single &middot; Coming Soon</p>
+      <h2 class="hero-promo__title">{pre.title}</h2>
+      <p class="hero-promo__date">Out {pre.releaseDate}</p>
+      <div class="hero-promo__actions">
+        {pre.spotifyUrl && (
+          <a href={pre.spotifyUrl} target="_blank" rel="noopener noreferrer" class="prerelease-presave-btn">
+            <i class="fa-brands fa-spotify"></i>
+            Pre-Save on Spotify
+          </a>
+        )}
+        <a href="/pre-release" class="btn btn-ghost">Full Details &#8594;</a>
+      </div>
+    </div>
+
     <div class="hero__scroll">
       <div class="hero__scroll-line"></div>
       <span>Scroll</span>
     </div>
     <div class="hero__dots">
-      <button class="hero__dot active" data-index="0" aria-label="Slide 1"></button>
+      <button class="hero__dot active" data-index="0" aria-label="Pre-release"></button>
       <button class="hero__dot" data-index="1" aria-label="Slide 2"></button>
       <button class="hero__dot" data-index="2" aria-label="Slide 3"></button>
       <button class="hero__dot" data-index="3" aria-label="Slide 4"></button>
+      <button class="hero__dot" data-index="4" aria-label="Slide 5"></button>
     </div>
   </section>
 
   <script>
     const slides = Array.from(document.querySelectorAll('.banner-slide'));
     const dots   = Array.from(document.querySelectorAll('.hero__dot'));
+    const heroPromo = document.getElementById('heroPromo');
     let current  = 0;
     let timer: ReturnType<typeof setInterval>;
 
@@ -100,6 +125,7 @@ const coverBySong = Object.fromEntries(
       current = index;
       slides[current].classList.add('active');
       dots[current].classList.add('active');
+      heroPromo?.classList.toggle('is-visible', current === 0);
     }
 
     function next() {
@@ -140,7 +166,7 @@ const coverBySong = Object.fromEntries(
           <span class="pulse-dot"></span> New Single &middot; {pre.releaseDate}
         </p>
         <h2 class="home-prerelease__title">{pre.title}</h2>
-        <p class="home-prerelease__desc">{pre.description}</p>
+        <p class="home-prerelease__desc">{preHook}</p>
 
         <div class="prerelease-countdown home-prerelease__countdown" id="homePreCountdown" data-target={pre.releaseDateISO}>
           <div class="countdown-unit"><span class="countdown-num" data-days>00</span><span class="countdown-label">Days</span></div>

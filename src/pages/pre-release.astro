@@ -4,14 +4,8 @@ import { preRelease as p } from '../data/preRelease';
 
 const ogImage = `https://adolxsense.com${p.cover.src}-1200w.webp`;
 
-/** Convert a Spotify URL to its embed URL with dark theme */
-function spotifyEmbedUrl(url: string): string | null {
-  const match = url.match(/open\.spotify\.com\/(album|playlist|track)\/([a-zA-Z0-9]+)/);
-  if (!match) return null;
-  return `https://open.spotify.com/embed/${match[1]}/${match[2]}?utm_source=generator&theme=0`;
-}
-
-const spotifyEmbed = p.spotifyUrl ? spotifyEmbedUrl(p.spotifyUrl) : null;
+const paragraphs = p.description.split('\n\n');
+const metaDescription = paragraphs[0];
 
 const jsonLd = {
   '@context': 'https://schema.org',
@@ -29,7 +23,7 @@ const jsonLd = {
 
 <Layout
   title={`${p.title} — Coming Soon`}
-  description={`${p.title} — the new ${p.type.toLowerCase()} from Adolxsense, out ${p.releaseDate}. Pre-save it now.`}
+  description={metaDescription}
   ogType="music.album"
   ogImage={ogImage}
   jsonLd={jsonLd}
@@ -131,26 +125,13 @@ const jsonLd = {
             </div>
           </div>
 
-          {spotifyEmbed && (
-            <div class="spotify-embed">
-              <iframe
-                src={spotifyEmbed}
-                width="100%"
-                height="352"
-                frameborder="0"
-                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-                loading="lazy"
-                title={`${p.title} on Spotify`}
-              ></iframe>
-            </div>
-          )}
         </div>
 
         <!-- RIGHT: description + tracklist -->
         <div class="release-detail-right">
           <div class="release-detail-header">
             <h2 class="song-detail-title">About the Release</h2>
-            <p class="song-detail-desc">{p.description}</p>
+            {paragraphs.map((para) => <p class="song-detail-desc prerelease-para">{para}</p>)}
           </div>
 
           <div class="tracklist">
