@@ -27,3 +27,5 @@ public/images/banner/*.jpg
 # jetbrains setting folder
 .idea/
 .claude/settings.local.json
+
+var/

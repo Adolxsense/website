@@ -1,0 +1,260 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { preRelease as p } from '../data/preRelease';
+
+const ogImage = `https://adolxsense.com${p.cover.src}-1200w.webp`;
+
+/** Convert a Spotify URL to its embed URL with dark theme */
+function spotifyEmbedUrl(url: string): string | null {
+  const match = url.match(/open\.spotify\.com\/(album|playlist|track)\/([a-zA-Z0-9]+)/);
+  if (!match) return null;
+  return `https://open.spotify.com/embed/${match[1]}/${match[2]}?utm_source=generator&theme=0`;
+}
+
+const spotifyEmbed = p.spotifyUrl ? spotifyEmbedUrl(p.spotifyUrl) : null;
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MusicAlbum',
+  name: p.title,
+  url: `https://adolxsense.com/pre-release`,
+  datePublished: p.releaseDateISO,
+  albumReleaseType: p.type === 'Single' ? 'SingleRelease' : 'AlbumRelease',
+  byArtist: { '@type': 'MusicGroup', name: 'Adolxsense', url: 'https://adolxsense.com' },
+  image: ogImage,
+  ...(p.label && { recordLabel: p.label }),
+  numTracks: p.tracks.length,
+};
+---
+
+<Layout
+  title={`${p.title} — Coming Soon`}
+  description={`${p.title} — the new ${p.type.toLowerCase()} from Adolxsense, out ${p.releaseDate}. Pre-save it now.`}
+  ogType="music.album"
+  ogImage={ogImage}
+  jsonLd={jsonLd}
+>
+  <!-- HERO -->
+  <section class="prerelease-hero">
+    <div class="prerelease-hero__bg" style={`background-image:url(${p.cover.src}-1200w.webp)`}></div>
+    <div class="prerelease-hero__overlay"></div>
+
+    <div class="container prerelease-hero__inner">
+      <p class="prerelease-eyebrow">
+        <span class="pulse-dot"></span> Coming Soon &middot; {p.releaseDate}
+      </p>
+
+      <div class="prerelease-cover">
+        <picture>
+          <source srcset={`${p.cover.src}-600w.webp 600w, ${p.cover.src}-300w.webp 300w`} sizes="(max-width: 768px) 100vw, 330px" type="image/webp" />
+          <img src={`${p.cover.src}.jpg`} alt={p.cover.alt} width="600" height="600" fetchpriority="high" />
+        </picture>
+        <span class="prerelease-cover__badge">{p.type}</span>
+      </div>
+
+      <h1 class="prerelease-title">{p.title}</h1>
+
+      <div class="prerelease-tags">
+        <span class="tag">{p.type}</span>
+        <span class="tag">{p.genre}</span>
+        {p.label && <span class="tag">{p.label}</span>}
+      </div>
+
+      <!-- COUNTDOWN -->
+      <div class="prerelease-countdown" data-target={p.releaseDateISO}>
+        <div class="countdown-unit">
+          <span class="countdown-num" data-days>00</span>
+          <span class="countdown-label">Days</span>
+        </div>
+        <div class="countdown-unit">
+          <span class="countdown-num" data-hours>00</span>
+          <span class="countdown-label">Hours</span>
+        </div>
+        <div class="countdown-unit">
+          <span class="countdown-num" data-minutes>00</span>
+          <span class="countdown-label">Minutes</span>
+        </div>
+        <div class="countdown-unit">
+          <span class="countdown-num" data-seconds>00</span>
+          <span class="countdown-label">Seconds</span>
+        </div>
+        <div class="countdown-out">Out Now</div>
+      </div>
+
+      <!-- PRE-SAVE CTA -->
+      {p.previewUrl && (
+        <div class="preview-player" id="previewPlayer">
+          <button class="preview-player__toggle" type="button" aria-label="Play preview">
+            <i class="fa-solid fa-play"></i>
+          </button>
+          <div class="preview-player__body">
+            <div class="preview-player__meta">
+              <span class="preview-player__label">Preview</span>
+              <span class="preview-player__title">{p.title}</span>
+            </div>
+            <div class="preview-player__bar" role="slider" aria-label="Seek" tabindex="0">
+              <div class="preview-player__progress"></div>
+            </div>
+          </div>
+          <span class="preview-player__time">0:00</span>
+          <audio preload="metadata" src={p.previewUrl}></audio>
+        </div>
+      )}
+
+      {p.spotifyUrl && (
+        <div class="prerelease-cta">
+          <a href={p.spotifyUrl} target="_blank" rel="noopener noreferrer" class="prerelease-presave-btn">
+            <i class="fa-brands fa-spotify"></i>
+            Pre-Save on Spotify
+          </a>
+        </div>
+      )}
+    </div>
+  </section>
+
+  <!-- DETAILS -->
+  <section class="section">
+    <div class="container">
+      <div class="release-detail-layout">
+        <!-- LEFT: info -->
+        <div class="release-detail-left">
+          <div class="release-detail-meta-box" style="margin-top:0;">
+            <p style="font-family: var(--font-heading); font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-faint); margin-bottom: 16px;">Release Info</p>
+            <div style="display: flex; flex-direction: column; gap: 10px;">
+              <div class="release-meta-row"><span>Type</span><span>{p.type}</span></div>
+              <div class="release-meta-row"><span>Genre</span><span>{p.genre}</span></div>
+              <div class="release-meta-row"><span>Release date</span><span>{p.releaseDate}</span></div>
+              {p.label && <div class="release-meta-row"><span>Label</span><span>{p.label}</span></div>}
+              {p.upc && <div class="release-meta-row"><span>UPC</span><span style="font-size:0.78rem;">{p.upc}</span></div>}
+              <div class="release-meta-row"><span>Tracks</span><span>{p.tracks.length}</span></div>
+              <div class="release-meta-row"><span>Status</span><span style="color: var(--red);">Coming Soon</span></div>
+            </div>
+          </div>
+
+          {spotifyEmbed && (
+            <div class="spotify-embed">
+              <iframe
+                src={spotifyEmbed}
+                width="100%"
+                height="352"
+                frameborder="0"
+                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                loading="lazy"
+                title={`${p.title} on Spotify`}
+              ></iframe>
+            </div>
+          )}
+        </div>
+
+        <!-- RIGHT: description + tracklist -->
+        <div class="release-detail-right">
+          <div class="release-detail-header">
+            <h2 class="song-detail-title">About the Release</h2>
+            <p class="song-detail-desc">{p.description}</p>
+          </div>
+
+          <div class="tracklist">
+            <p class="tracklist__heading">Tracklist</p>
+            <ol class="tracklist__items">
+              {p.tracks.map((track, i) => (
+                <li class="tracklist__item">
+                  <span class="tracklist__number">{String(i + 1).padStart(2, '0')}</span>
+                  <span class="tracklist__title">{track.title}</span>
+                  <span class="tracklist__no-lyrics"><i class="fa-solid fa-lock"></i></span>
+                </li>
+              ))}
+            </ol>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    const root = document.querySelector('.prerelease-countdown');
+    if (root) {
+      const target = new Date(root.getAttribute('data-target') || '').getTime();
+      const els = {
+        days: root.querySelector('[data-days]'),
+        hours: root.querySelector('[data-hours]'),
+        minutes: root.querySelector('[data-minutes]'),
+        seconds: root.querySelector('[data-seconds]'),
+      };
+      const pad = (n: number) => String(n).padStart(2, '0');
+
+      function tick() {
+        if (isNaN(target)) return;
+        const diff = target - Date.now();
+
+        if (diff <= 0) {
+          root.classList.add('is-out');
+          return;
+        }
+
+        const days = Math.floor(diff / 86400000);
+        const hours = Math.floor((diff % 86400000) / 3600000);
+        const minutes = Math.floor((diff % 3600000) / 60000);
+        const seconds = Math.floor((diff % 60000) / 1000);
+
+        if (els.days) els.days.textContent = String(days);
+        if (els.hours) els.hours.textContent = pad(hours);
+        if (els.minutes) els.minutes.textContent = pad(minutes);
+        if (els.seconds) els.seconds.textContent = pad(seconds);
+      }
+
+      tick();
+      setInterval(tick, 1000);
+    }
+
+    // ── Preview mini player ──
+    const player = document.getElementById('previewPlayer');
+    if (player) {
+      const audio = player.querySelector('audio') as HTMLAudioElement;
+      const toggle = player.querySelector('.preview-player__toggle') as HTMLButtonElement;
+      const icon = toggle.querySelector('i') as HTMLElement;
+      const bar = player.querySelector('.preview-player__bar') as HTMLElement;
+      const progress = player.querySelector('.preview-player__progress') as HTMLElement;
+      const time = player.querySelector('.preview-player__time') as HTMLElement;
+
+      const fmt = (s: number) => {
+        if (!isFinite(s)) return '0:00';
+        const m = Math.floor(s / 60);
+        const sec = Math.floor(s % 60);
+        return `${m}:${String(sec).padStart(2, '0')}`;
+      };
+
+      toggle.addEventListener('click', () => {
+        if (audio.paused) audio.play();
+        else audio.pause();
+      });
+
+      audio.addEventListener('play', () => {
+        player.classList.add('is-playing');
+        icon.classList.replace('fa-play', 'fa-pause');
+      });
+      audio.addEventListener('pause', () => {
+        player.classList.remove('is-playing');
+        icon.classList.replace('fa-pause', 'fa-play');
+      });
+      audio.addEventListener('timeupdate', () => {
+        const pct = audio.duration ? (audio.currentTime / audio.duration) * 100 : 0;
+        progress.style.width = `${pct}%`;
+        time.textContent = fmt(audio.currentTime);
+      });
+      audio.addEventListener('loadedmetadata', () => {
+        time.textContent = fmt(audio.duration);
+      });
+      audio.addEventListener('ended', () => {
+        progress.style.width = '0%';
+        time.textContent = fmt(audio.duration);
+      });
+
+      const seek = (clientX: number) => {
+        const rect = bar.getBoundingClientRect();
+        const ratio = Math.min(Math.max((clientX - rect.left) / rect.width, 0), 1);
+        if (audio.duration) audio.currentTime = ratio * audio.duration;
+      };
+      bar.addEventListener('click', (e) => seek((e as MouseEvent).clientX));
+    }
+  </script>
+</Layout>

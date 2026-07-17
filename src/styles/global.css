@@ -1482,6 +1482,316 @@ body::before {
   border: 1px solid #fc3c44;
 }
 
+.streaming-btn--lg {
+  padding: 14px 28px;
+  font-size: 0.85rem;
+}
+
+/* ─── PRE-RELEASE PAGE ───────────────────────────── */
+.prerelease-hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+  padding: 150px 0 90px;
+}
+
+.prerelease-hero__bg {
+  position: absolute;
+  inset: -40px;
+  background-size: cover;
+  background-position: center;
+  filter: blur(30px) brightness(0.4);
+  transform: scale(1.12);
+}
+
+.prerelease-hero__overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 70% 70% at 50% 42%, transparent 18%, rgba(8,8,8,0.88) 100%),
+    linear-gradient(to bottom, rgba(8,8,8,0.55) 0%, rgba(8,8,8,0.4) 45%, rgba(8,8,8,0.9) 100%);
+}
+
+.prerelease-hero__inner {
+  position: relative;
+  z-index: 2;
+}
+
+.prerelease-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--font-heading);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text);
+  margin-bottom: 28px;
+}
+
+.pulse-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--red);
+  display: inline-block;
+  margin-right: 10px;
+  animation: pulseDot 1.8s ease-in-out infinite;
+}
+
+@keyframes pulseDot {
+  0%   { box-shadow: 0 0 0 0 rgba(192,57,43,0.55); }
+  70%  { box-shadow: 0 0 0 10px rgba(192,57,43,0); }
+  100% { box-shadow: 0 0 0 0 rgba(192,57,43,0); }
+}
+
+.prerelease-cover {
+  position: relative;
+  width: clamp(220px, 40vw, 330px);
+  aspect-ratio: 1;
+  margin: 0 auto 30px;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  box-shadow: 0 30px 80px rgba(0,0,0,0.6), 0 0 60px rgba(192,57,43,0.15);
+}
+
+.prerelease-cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.prerelease-cover__badge {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  font-family: var(--font-heading);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--red);
+  border: 1px solid var(--red-dark);
+  padding: 3px 10px;
+  background: rgba(8,8,8,0.7);
+}
+
+.prerelease-title {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 10vw, 7rem);
+  line-height: 0.95;
+  letter-spacing: 0.03em;
+  color: var(--text);
+  margin-bottom: 18px;
+}
+
+.prerelease-tags {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 40px;
+}
+
+.prerelease-countdown {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 40px;
+}
+
+.countdown-unit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.countdown-num {
+  font-family: var(--font-display);
+  font-size: clamp(2.2rem, 7vw, 4.2rem);
+  line-height: 1;
+  letter-spacing: 0.02em;
+  color: var(--text);
+  background: rgba(22,22,22,0.72);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--border);
+  border-top: 2px solid var(--red);
+  border-radius: 8px;
+  padding: 18px 10px 14px;
+  min-width: clamp(72px, 16vw, 112px);
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+}
+
+.countdown-label {
+  font-family: var(--font-heading);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.countdown-out {
+  display: none;
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 8vw, 4.5rem);
+  letter-spacing: 0.04em;
+  color: var(--red);
+}
+
+.prerelease-countdown.is-out .countdown-unit {
+  display: none;
+}
+
+.prerelease-countdown.is-out .countdown-out {
+  display: block;
+}
+
+/* ── Preview mini player ── */
+.preview-player {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  max-width: 440px;
+  margin: 0 auto 28px;
+  padding: 12px 16px 12px 12px;
+  background: rgba(22, 22, 22, 0.72);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+}
+
+.preview-player__toggle {
+  flex-shrink: 0;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  border: none;
+  background: var(--red);
+  color: #fff;
+  font-size: 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+}
+
+.preview-player__toggle:hover {
+  transform: scale(1.06);
+  box-shadow: 0 0 20px var(--red-glow);
+}
+
+.preview-player.is-playing .preview-player__toggle {
+  box-shadow: 0 0 20px var(--red-glow);
+}
+
+/* nudge the play triangle to look optically centered */
+.preview-player__toggle .fa-play {
+  margin-left: 3px;
+}
+
+.preview-player__body {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.preview-player__meta {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  text-align: left;
+}
+
+.preview-player__label {
+  font-family: var(--font-heading);
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--red);
+}
+
+.preview-player__title {
+  font-family: var(--font-heading);
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.preview-player__bar {
+  height: 6px;
+  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.12);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.preview-player__progress {
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 0%;
+  background: var(--red);
+  border-radius: 3px;
+  transition: width 0.1s linear;
+}
+
+.preview-player__time {
+  flex-shrink: 0;
+  font-family: var(--font-heading);
+  font-size: 0.78rem;
+  font-variant-numeric: tabular-nums;
+  color: var(--text-muted);
+  min-width: 34px;
+  text-align: right;
+}
+
+.prerelease-cta {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.prerelease-presave-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-heading);
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #fff;
+  background: var(--red);
+  border: 1px solid var(--red);
+  padding: 16px 40px;
+  border-radius: 3px;
+  transition: background 0.2s, box-shadow 0.2s, transform 0.2s;
+}
+
+.prerelease-presave-btn:hover {
+  background: transparent;
+  color: var(--red);
+  box-shadow: 0 0 28px var(--red-glow);
+  transform: translateY(-2px);
+}
+
 /* ─── SOCIAL ICONS ───────────────────────────────── */
 .social-icon {
   display: inline-flex;
