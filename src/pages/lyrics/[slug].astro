@@ -81,6 +81,17 @@ const pageTitle = hasTranslation
 
 const storyParagraphs = song.story ? song.story.split('\n\n').map((p) => p.trim()).filter(Boolean) : [];
 
+/**
+ * Other songs on the same release. Alternate versions point at the same lyrics
+ * page, so dedupe before building the list.
+ */
+const siblings = release
+  ? [...new Set(release.tracks.map((t) => t.songSlug).filter(Boolean))]
+      .filter((s) => s !== song.slug)
+      .map((s) => songs.find((x) => x.slug === s))
+      .filter((s): s is NonNullable<typeof s> => Boolean(s))
+  : [];
+
 const pageDescription = hasTranslation
   ? `Full lyrics to "${song.title}" by Adolxsense, with the Portuguese translation side by side. Letra e tradução em português.`
   : `Full lyrics to "${song.title}" by Adolxsense${release ? `, from ${release.title}` : ''} — plus the meaning behind the song.`;
@@ -162,7 +173,11 @@ const pageDescription = hasTranslation
         <!-- VIDEO / COVER COLUMN -->
         <div class="song-video reveal" style="--reveal-delay: 2">
           {cover && (
-            <div class="song-cover">
+            <a
+              href={release ? `/releases/${release.slug}` : '/releases'}
+              class="song-cover"
+              aria-label={release ? `${release.title} — release page` : 'All releases'}
+            >
               <picture>
                 <source
                   srcset={`${cover.src}-600w.webp 600w, ${cover.src}-300w.webp 300w`}
@@ -177,7 +192,7 @@ const pageDescription = hasTranslation
                   height="600"
                 />
               </picture>
-            </div>
+            </a>
           )}
           <div class="song-video-embed" style={cover ? 'margin-top: 16px;' : ''}>
             {song.youtubeId ? (
@@ -198,9 +213,13 @@ const pageDescription = hasTranslation
           <div style="margin-top: 32px; padding: 24px; background: var(--bg-card); border: 1px solid var(--border);">
             <p style="font-family: var(--font-heading); font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-faint); margin-bottom: 16px;">Track Info</p>
             <div style="display: flex; flex-direction: column; gap: 10px;">
-              <div style="display: flex; justify-content: space-between; font-size: 0.85rem;">
+              <div style="display: flex; justify-content: space-between; font-size: 0.85rem; gap: 12px;">
                 <span style="color: var(--text-muted);">Release</span>
-                <span style="color: var(--text);">{song.album}</span>
+                {release ? (
+                  <a href={`/releases/${release.slug}`} class="track-info__link">{song.album}</a>
+                ) : (
+                  <span style="color: var(--text);">{song.album}</span>
+                )}
               </div>
               {song.releaseDate && (
                 <div style="display: flex; justify-content: space-between; font-size: 0.85rem;">
@@ -239,6 +258,32 @@ const pageDescription = hasTranslation
           </div>
         </div>
       </div>
+
+      {release && siblings.length > 0 && (
+        <section class="related-songs reveal">
+          <div class="related-songs__header">
+            <p class="section-header__label">More from</p>
+            <h2 class="related-songs__title">
+              <a href={`/releases/${release.slug}`}>{release.title}</a>
+            </h2>
+          </div>
+          <ul class="related-songs__grid">
+            {siblings.map((s) => (
+              <li>
+                <a href={`/lyrics/${s.slug}`} class="related-song">
+                  <span class="related-song__title">{s.title}</span>
+                  <span class="related-song__meta">
+                    {s.translation ? 'Lyrics + Tradução' : 'Lyrics'}
+                  </span>
+                </a>
+              </li>
+            ))}
+          </ul>
+          <a href={`/releases/${release.slug}`} class="btn btn-ghost related-songs__cta">
+            View {release.title} &#8594;
+          </a>
+        </section>
+      )}
     </div>
   </div>
 </Layout>
