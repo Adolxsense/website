@@ -1,0 +1,89 @@
+{
+  "artistMbid": "4ef16ee6-3ee9-4477-8b28-4f3b611b158d",
+  "releases": [
+    {
+      "slug": "before-the-hurt",
+      "title": "Before the Hurt",
+      "type": "Single",
+      "mbid": "1f057d53-09df-4c53-b5d9-cc0af71df991",
+      "primaryType": "Single"
+    },
+    {
+      "slug": "before-i-became-this",
+      "title": "Before I Became This",
+      "type": "Single",
+      "mbid": "84d0dedf-af7b-4b83-9bc4-c71700f09d93",
+      "primaryType": "Single"
+    },
+    {
+      "slug": "strong-all-day",
+      "title": "Strong All Day",
+      "type": "Single",
+      "mbid": "39c11a0e-97c0-4f93-aa30-384afa8da430",
+      "primaryType": "Single"
+    },
+    {
+      "slug": "under-the-rain",
+      "title": "Under the Rain",
+      "type": "Single",
+      "mbid": "8fed8025-0404-4537-9ebd-3a83918b6495",
+      "primaryType": "Single"
+    },
+    {
+      "slug": "the-weight-i-hide",
+      "title": "The Weight I Hide",
+      "type": "Single",
+      "mbid": "b5003e55-cbad-4420-aacd-24a73c029557",
+      "primaryType": "Single"
+    },
+    {
+      "slug": "after-the-rain",
+      "title": "After the Rain",
+      "type": "Single",
+      "mbid": "0b99e81b-b2a7-4ca1-b2f4-dcf96ac3e1a7",
+      "primaryType": "Single"
+    },
+    {
+      "slug": "where-light-begins",
+      "title": "Where Light Begins",
+      "type": "Single",
+      "mbid": "b8307283-c9bb-45ab-b897-fb5d136d33a6",
+      "primaryType": "Single"
+    },
+    {
+      "slug": "ashes-in-the-rain",
+      "title": "Ashes in the Rain",
+      "type": "Single",
+      "mbid": "a3fa24d6-5487-43e1-9b8e-28758d5f71ae",
+      "primaryType": "Single"
+    },
+    {
+      "slug": "unheard",
+      "title": "Unheard",
+      "type": "LP",
+      "mbid": "1da86c08-d036-4f59-a0bf-0f73173173a4",
+      "primaryType": "Album"
+    },
+    {
+      "slug": "still-reaching",
+      "title": "Still Reaching",
+      "type": "EP",
+      "mbid": "882aa454-d90a-4a66-9740-6d12005ec768",
+      "primaryType": "EP"
+    },
+    {
+      "slug": "maybe-tomorrow",
+      "title": "Maybe Tomorrow",
+      "type": "Single",
+      "mbid": "e21ac635-4cb4-4e03-92f9-29ccde0dcb4a",
+      "primaryType": "Single"
+    },
+    {
+      "slug": "memories-of-unplayed-songs",
+      "title": "Memories of Unplayed Songs",
+      "type": "LP",
+      "mbid": "e9e11000-9d1d-43b8-9f64-799a8c56380f",
+      "primaryType": "Album"
+    }
+  ]
+}
