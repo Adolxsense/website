@@ -7,8 +7,13 @@ import { preRelease as pre } from '../data/preRelease';
 const featuredSongs = songs.slice(0, 4);
 const latestReleases = releases.slice(0, 3);
 
+const showPre = pre.active;
 const preHeroBg = pre.heroBanner ? `${pre.heroBanner}-1920w.webp` : `${pre.cover.src}-1200w.webp`;
 const preHook = pre.description.split('\n\n')[0];
+
+/** Hero banner slides; the pre-release promo is prepended when active. */
+const bannerSlides = ['banner-1', 'banner-2', 'banner-3', 'banner-4'];
+const slideCount = bannerSlides.length + (showPre ? 1 : 0);
 
 const jsonLd = {
   '@context': 'https://schema.org',
@@ -44,71 +49,57 @@ const coverBySong = Object.fromEntries(
   <section class="hero">
     <!-- Rotating banner images -->
     <div class="hero__slides">
-      <div class="banner-slide banner-slide--promo active">
-        <div class="hero-promo__bg" style={`background-image:url(${preHeroBg})`}></div>
-      </div>
-      <div class="banner-slide">
-        <img
-          srcset="/images/banner/banner-1-480w.webp 480w, /images/banner/banner-1-768w.webp 768w, /images/banner/banner-1-1280w.webp 1280w, /images/banner/banner-1-1920w.webp 1920w"
-          sizes="100vw"
-          src="/images/banner/banner-1-1920w.webp"
-          alt="" class="banner-slide__img" fetchpriority="high"
-        />
-      </div>
-      <div class="banner-slide">
-        <img
-          srcset="/images/banner/banner-2-480w.webp 480w, /images/banner/banner-2-768w.webp 768w, /images/banner/banner-2-1280w.webp 1280w, /images/banner/banner-2-1920w.webp 1920w"
-          sizes="100vw"
-          src="/images/banner/banner-2-1920w.webp"
-          alt="" class="banner-slide__img" loading="lazy"
-        />
-      </div>
-      <div class="banner-slide">
-        <img
-          srcset="/images/banner/banner-3-480w.webp 480w, /images/banner/banner-3-768w.webp 768w, /images/banner/banner-3-1280w.webp 1280w, /images/banner/banner-3-1920w.webp 1920w"
-          sizes="100vw"
-          src="/images/banner/banner-3-1920w.webp"
-          alt="" class="banner-slide__img" loading="lazy"
-        />
-      </div>
-      <div class="banner-slide">
-        <img
-          srcset="/images/banner/banner-4-480w.webp 480w, /images/banner/banner-4-768w.webp 768w, /images/banner/banner-4-1280w.webp 1280w, /images/banner/banner-4-1920w.webp 1920w"
-          sizes="100vw"
-          src="/images/banner/banner-4-1920w.webp"
-          alt="" class="banner-slide__img" loading="lazy"
-        />
-      </div>
+      {showPre && (
+        <div class="banner-slide banner-slide--promo active">
+          <div class="hero-promo__bg" style={`background-image:url(${preHeroBg})`}></div>
+        </div>
+      )}
+      {bannerSlides.map((name, i) => (
+        <div class={`banner-slide${!showPre && i === 0 ? ' active' : ''}`}>
+          <img
+            srcset={`/images/banner/${name}-480w.webp 480w, /images/banner/${name}-768w.webp 768w, /images/banner/${name}-1280w.webp 1280w, /images/banner/${name}-1920w.webp 1920w`}
+            sizes="100vw"
+            src={`/images/banner/${name}-1920w.webp`}
+            alt=""
+            class="banner-slide__img"
+            fetchpriority={i === 0 ? 'high' : undefined}
+            loading={i === 0 ? undefined : 'lazy'}
+          />
+        </div>
+      ))}
     </div>
     <div class="hero__overlay"></div>
     <div class="hero__grid"></div>
 
-    <!-- Pre-release promo overlay (synced to the first slide) -->
-    <div class="hero-promo is-visible" id="heroPromo">
-      <p class="hero-promo__eyebrow"><span class="pulse-dot"></span> New Single &middot; Coming Soon</p>
-      <h2 class="hero-promo__title">{pre.title}</h2>
-      <p class="hero-promo__date">Out {pre.releaseDate}</p>
-      <div class="hero-promo__actions">
-        {pre.spotifyUrl && (
-          <a href={pre.spotifyUrl} target="_blank" rel="noopener noreferrer" class="prerelease-presave-btn">
-            <i class="fa-brands fa-spotify"></i>
-            Pre-Save on Spotify
-          </a>
-        )}
-        <a href="/pre-release" class="btn btn-ghost">Full Details &#8594;</a>
+    {showPre && (
+      <div class="hero-promo is-visible" id="heroPromo">
+        <p class="hero-promo__eyebrow"><span class="pulse-dot"></span> New Single &middot; Coming Soon</p>
+        <h2 class="hero-promo__title">{pre.title}</h2>
+        <p class="hero-promo__date">Out {pre.releaseDate}</p>
+        <div class="hero-promo__actions">
+          {pre.spotifyUrl && (
+            <a href={pre.spotifyUrl} target="_blank" rel="noopener noreferrer" class="prerelease-presave-btn">
+              <i class="fa-brands fa-spotify"></i>
+              Pre-Save on Spotify
+            </a>
+          )}
+          <a href="/pre-release" class="btn btn-ghost">Full Details &#8594;</a>
+        </div>
       </div>
-    </div>
+    )}
 
     <div class="hero__scroll">
       <div class="hero__scroll-line"></div>
       <span>Scroll</span>
     </div>
     <div class="hero__dots">
-      <button class="hero__dot active" data-index="0" aria-label="Pre-release"></button>
-      <button class="hero__dot" data-index="1" aria-label="Slide 2"></button>
-      <button class="hero__dot" data-index="2" aria-label="Slide 3"></button>
-      <button class="hero__dot" data-index="3" aria-label="Slide 4"></button>
-      <button class="hero__dot" data-index="4" aria-label="Slide 5"></button>
+      {Array.from({ length: slideCount }).map((_, i) => (
+        <button
+          class={`hero__dot${i === 0 ? ' active' : ''}`}
+          data-index={i}
+          aria-label={showPre && i === 0 ? 'Pre-release' : `Slide ${showPre ? i : i + 1}`}
+        ></button>
+      ))}
     </div>
   </section>
 
@@ -147,7 +138,7 @@ const coverBySong = Object.fromEntries(
     startTimer();
   </script>
 
-  <!-- PRE-RELEASE HIGHLIGHT -->
+  {showPre && (
   <section class="home-prerelease">
     <div class="home-prerelease__bg" style={`background-image:url(${pre.cover.src}-1200w.webp)`}></div>
     <div class="home-prerelease__overlay"></div>
@@ -188,6 +179,7 @@ const coverBySong = Object.fromEntries(
       </div>
     </div>
   </section>
+  )}
 
   <script>
     const preRoot = document.getElementById('homePreCountdown');

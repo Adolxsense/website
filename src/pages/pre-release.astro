@@ -2,6 +2,9 @@
 import Layout from '../layouts/Layout.astro';
 import { preRelease as p } from '../data/preRelease';
 
+// No active pre-release — send visitors to the discography instead.
+if (!p.active) return Astro.redirect('/releases');
+
 const ogImage = `https://adolxsense.com${p.cover.src}-1200w.webp`;
 
 const paragraphs = p.description.split('\n\n');

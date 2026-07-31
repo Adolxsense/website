@@ -31,6 +31,24 @@ export interface Release {
 /** Sorted by release date DESC (latest first) */
 export const releases: Release[] = [
   {
+    slug: 'before-the-hurt',
+    title: 'Before the Hurt',
+    type: 'Single',
+    year: 2026,
+    releaseDate: 'July 31, 2026',
+    label: 'TS Music Records',
+    upc: '882100256392',
+    spotifyUrl: 'https://open.spotify.com/album/0ZzKFztVKAP2AwtDmbolDh',
+    description: "There's a version of you that got left behind — and it still stares back every time you catch your reflection. A cinematic ballad that slowly unravels into an explosion.",
+    cover: {
+      src: '/images/releases/album-cover/before-the-hurt',
+      alt: 'Before the Hurt — Adolxsense Single Cover',
+    },
+    tracks: [
+      { title: 'Before the Hurt' },
+    ],
+  },
+  {
     slug: 'before-i-became-this',
     title: 'Before I Became This',
     type: 'Single',

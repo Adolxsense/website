@@ -3,6 +3,12 @@ export interface PreReleaseTrack {
 }
 
 export interface PreRelease {
+  /**
+   * Master switch. When false, the /pre-release page redirects to /releases and
+   * the homepage hides the hero promo slide + highlight section.
+   * Set to true (and update the fields below) when announcing the next release.
+   */
+  active: boolean;
   slug: string;
   title: string;
   type: 'Single' | 'Album' | 'EP' | 'LP';
@@ -29,7 +35,12 @@ export interface PreRelease {
   tracks: PreReleaseTrack[];
 }
 
+/**
+ * Kept as a template for the next announcement — "Before the Hurt" was released
+ * on July 31, 2026 and now lives in releases.ts.
+ */
 export const preRelease: PreRelease = {
+  active: false,
   slug: 'before-the-hurt',
   title: 'Before the Hurt',
   type: 'Single',
