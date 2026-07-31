@@ -11,9 +11,21 @@ const showPre = pre.active;
 const preHeroBg = pre.heroBanner ? `${pre.heroBanner}-1920w.webp` : `${pre.cover.src}-1200w.webp`;
 const preHook = pre.description.split('\n\n')[0];
 
-/** Hero banner slides; the pre-release promo is prepended when active. */
+/** Released record promoted with an "Out Now" hero slide. */
+const featured = releases.find((r) => r.featured);
+const featuredBg = featured
+  ? `${featured.heroBanner ?? featured.cover?.src}-1920w.webp`
+  : null;
+
+/**
+ * The hero can lead with one promo slide. An upcoming release takes priority
+ * over a freshly released one.
+ */
+const heroPromoKind = showPre ? 'pre' : featured ? 'featured' : null;
+
+/** Hero banner slides; a promo slide is prepended when there is one. */
 const bannerSlides = ['banner-1', 'banner-2', 'banner-3', 'banner-4'];
-const slideCount = bannerSlides.length + (showPre ? 1 : 0);
+const slideCount = bannerSlides.length + (heroPromoKind ? 1 : 0);
 
 const jsonLd = {
   '@context': 'https://schema.org',
@@ -49,13 +61,16 @@ const coverBySong = Object.fromEntries(
   <section class="hero">
     <!-- Rotating banner images -->
     <div class="hero__slides">
-      {showPre && (
+      {heroPromoKind && (
         <div class="banner-slide banner-slide--promo active">
-          <div class="hero-promo__bg" style={`background-image:url(${preHeroBg})`}></div>
+          <div
+            class="hero-promo__bg"
+            style={`background-image:url(${heroPromoKind === 'pre' ? preHeroBg : featuredBg})`}
+          ></div>
         </div>
       )}
       {bannerSlides.map((name, i) => (
-        <div class={`banner-slide${!showPre && i === 0 ? ' active' : ''}`}>
+        <div class={`banner-slide${!heroPromoKind && i === 0 ? ' active' : ''}`}>
           <img
             srcset={`/images/banner/${name}-480w.webp 480w, /images/banner/${name}-768w.webp 768w, /images/banner/${name}-1280w.webp 1280w, /images/banner/${name}-1920w.webp 1920w`}
             sizes="100vw"
@@ -71,7 +86,7 @@ const coverBySong = Object.fromEntries(
     <div class="hero__overlay"></div>
     <div class="hero__grid"></div>
 
-    {showPre && (
+    {heroPromoKind === 'pre' && (
       <div class="hero-promo is-visible" id="heroPromo">
         <p class="hero-promo__eyebrow"><span class="pulse-dot"></span> New Single &middot; Coming Soon</p>
         <h2 class="hero-promo__title">{pre.title}</h2>
@@ -88,6 +103,32 @@ const coverBySong = Object.fromEntries(
       </div>
     )}
 
+    {heroPromoKind === 'featured' && featured && (
+      <div class="hero-promo is-visible" id="heroPromo">
+        <p class="hero-promo__eyebrow">
+          <span class="hero-promo__outnow">Out Now</span>
+          New {featured.type} &middot; {featured.releaseDate}
+        </p>
+        <h2 class="hero-promo__title">{featured.title}</h2>
+        {featured.tagline && <p class="hero-promo__tagline">&ldquo;{featured.tagline}&rdquo;</p>}
+        <div class="hero-promo__actions">
+          {featured.spotifyUrl && (
+            <a href={featured.spotifyUrl} target="_blank" rel="noopener noreferrer" class="streaming-btn streaming-btn--lg streaming-btn--spotify">
+              <i class="fa-brands fa-spotify"></i>
+              Listen on Spotify
+            </a>
+          )}
+          {featured.appleMusicUrl && (
+            <a href={featured.appleMusicUrl} target="_blank" rel="noopener noreferrer" class="streaming-btn streaming-btn--lg streaming-btn--apple">
+              <i class="fa-brands fa-apple"></i>
+              Apple Music
+            </a>
+          )}
+          <a href={`/releases/${featured.slug}`} class="btn btn-ghost">View Release &#8594;</a>
+        </div>
+      </div>
+    )}
+
     <div class="hero__scroll">
       <div class="hero__scroll-line"></div>
       <span>Scroll</span>
@@ -97,7 +138,7 @@ const coverBySong = Object.fromEntries(
         <button
           class={`hero__dot${i === 0 ? ' active' : ''}`}
           data-index={i}
-          aria-label={showPre && i === 0 ? 'Pre-release' : `Slide ${showPre ? i : i + 1}`}
+          aria-label={heroPromoKind && i === 0 ? featured?.title ?? 'Featured' : `Slide ${heroPromoKind ? i : i + 1}`}
         ></button>
       ))}
     </div>
@@ -395,7 +436,7 @@ const coverBySong = Object.fromEntries(
                 <h3 class="song-card__title">{song.title}</h3>
                 <div class="song-card__meta">
                   <span class="tag">{song.genre}</span>
-                  <span class="tag">{song.bpm} BPM</span>
+                  {song.bpm && <span class="tag">{song.bpm} BPM</span>}
                 </div>
                 <p class="song-card__desc">{song.description}</p>
                 <span class="song-card__arrow">&#8594;</span>

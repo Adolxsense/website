@@ -25,6 +25,15 @@ export interface Release {
   appleMusicUrl?: string;
   description?: string;
   cover?: ReleaseCover;
+  /**
+   * Promote this release with an "Out Now" slide in the homepage hero.
+   * Only one release should be featured at a time.
+   */
+  featured?: boolean;
+  /** Wide banner base path (no extension) for the hero slide. WebP: 480/768/1280/1920w. */
+  heroBanner?: string;
+  /** Short punchy line shown under the title on the hero slide. */
+  tagline?: string;
   tracks: ReleaseTrack[];
 }
 
@@ -45,8 +54,11 @@ export const releases: Release[] = [
       src: '/images/releases/album-cover/before-the-hurt',
       alt: 'Before the Hurt — Adolxsense Single Cover',
     },
+    featured: true,
+    heroBanner: '/images/banner/before-the-hurt-banner',
+    tagline: "I'm still alive, but I've come undone.",
     tracks: [
-      { title: 'Before the Hurt' },
+      { title: 'Before the Hurt', songSlug: 'before-the-hurt' },
     ],
   },
   {

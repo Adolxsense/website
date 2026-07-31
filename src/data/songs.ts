@@ -5,7 +5,7 @@ export interface Song {
   year: number;
   releaseDate?: string;
   label?: string;
-  bpm: number;
+  bpm?: number;
   genre: string;
   youtubeId: string | null;
   lyrics: string;
@@ -14,6 +14,175 @@ export interface Song {
 }
 
 export const songs: Song[] = [
+  {
+    slug: 'before-the-hurt',
+    title: 'Before the Hurt',
+    album: 'Single',
+    year: 2026,
+    releaseDate: 'July 31, 2026',
+    label: 'TS Music Records',
+    genre: 'Alternative Rock',
+    youtubeId: null, // Replace with actual YouTube video ID
+    description: "There's a version of you that got left behind — and it still stares back every time you catch your reflection. A cinematic ballad that slowly unravels into an explosion.",
+    translation: `[Verso 1]
+Encontrei tua sombra no vidro
+Um menino que eu conhecia, mas não alcançava
+Os olhos limpos, as mãos leves
+Ele não temia a noite cair
+
+Ele corria em direção às portas abertas
+Agora eu conto as rachaduras pelo chão
+Em algum lugar entre o amor e a perda
+Virei alguém que eu nunca fui
+
+[Pré-Refrão]
+E eu sigo tateando através da fumaça
+Por uma voz que um dia foi meu lar
+
+[Refrão]
+Sinto falta de quem eu era antes da dor
+Antes do silêncio encharcar o meu mundo
+Antes das cores desbotarem em cinza
+Antes de eu aprender a afastar meu coração
+Agora todo espelho mostra um fantasma
+De alguém de quem eu ainda preciso tanto
+Estou aqui de pé, mas ainda parece errado
+Sentindo falta da alma que eu tive por tanto tempo
+
+[Verso 2]
+Estas paredes lembram cada som
+Cada coisinha que me derrubou
+O sorriso cansado, o olhar vazio
+O jeito que aprendi a respirar desespero
+
+Carrego minhas cicatrizes sob a pele
+Como guerras caladas que eu não venci
+E todos os pedaços que eu conhecia
+Não cabem na forma em que me tornei
+
+[Pré-Refrão]
+Ainda estou chamando através do escuro
+Tentando achar onde eu desmoronei
+
+[Refrão]
+Sinto falta de quem eu era antes da dor
+Antes do silêncio encharcar o meu mundo
+Antes das cores desbotarem em cinza
+Antes de eu aprender a afastar meu coração
+Agora todo espelho mostra um fantasma
+De alguém de quem eu ainda preciso tanto
+Estou aqui de pé, mas ainda parece errado
+Sentindo falta da alma que eu tive por tanto tempo
+
+[Ponte]
+Se eu pudesse arrancar a dor das minhas veias
+Eu lembraria como voltar a sentir?
+Se eu pudesse desouvir cada último adeus
+Aquela luz antiga ainda estaria viva?
+
+Ou ele se apagou a cada ferida
+Sumiu debaixo destes quartos quebrados?
+Não quero perder o que sobrou de mim
+Só quero encontrar quem eu costumava ser
+
+[Refrão Final]
+Sinto falta de quem eu era antes da dor
+Antes do peso de tudo ficar pior
+Antes das noites virarem um lugar pra afundar
+Antes do medo virar meu único som
+Agora todo espelho me segura parado
+Como um estranho vestindo toda a minha culpa
+Ainda estou vivo, mas me desfiz
+Sentindo falta da pessoa que eu era antes da dor
+
+[Outro]
+Antes da dor
+Antes do cinza
+Antes de eu deixar levarem meu nome
+Ainda estou em algum lugar
+Sob as cicatrizes
+Uma luz que se apaga
+Um coração partido`,
+    lyrics: `[Verse 1]
+I found your shadow in the glass
+A boy I knew, but couldn't grasp
+His eyes were clear, his hands were light
+He didn't dread the fall of night
+
+He used to run toward open doors
+Now I count cracks across the floor
+Somewhere between the love and loss
+I became someone I never was
+
+[Pre-Chorus]
+And I keep reaching through the smoke
+For a voice that used to feel like home
+
+[Chorus]
+I miss who I was before the hurt
+Before the silence soaked into my world
+Before the colors faded into gray
+Before I learned to push my heart away
+Now every mirror shows a ghost
+Of someone I still need the most
+I'm standing here, but it still feels wrong
+Missing the soul I had for so long
+
+[Verse 2]
+These walls remember every sound
+Every little thing that broke me down
+The tired smile, the empty stare
+The way I learned to breathe despair
+
+I wear my scars beneath my skin
+Like quiet wars I couldn't win
+And all the pieces I once knew
+Don't fit the shape I've turned into
+
+[Pre-Chorus]
+Still I'm calling through the dark
+Trying to find where I fell apart
+
+[Chorus]
+I miss who I was before the hurt
+Before the silence soaked into my world
+Before the colors faded into gray
+Before I learned to push my heart away
+Now every mirror shows a ghost
+Of someone I still need the most
+I'm standing here, but it still feels wrong
+Missing the soul I had for so long
+
+[Bridge]
+If I could pull the pain out of my veins
+Would I remember how to feel again?
+If I could unhear every last goodbye
+Would that old light still be alive?
+
+Or did he fade with every wound
+Disappear beneath these broken rooms?
+I don't wanna lose what's left of me
+I just wanna find who I used to be
+
+[Final Chorus]
+I miss who I was before the hurt
+Before the weight of everything got worse
+Before the nights became a place to drown
+Before the fear became my only sound
+Now every mirror holds me still
+Like a stranger wearing all my guilt
+I'm still alive, but I've come undone
+Missing the person I was before the hurt
+
+[Outro]
+Before the hurt
+Before the gray
+Before I let it take my name
+I'm still somewhere
+Under the scars
+A fading light
+A broken heart`,
+  },
   {
     slug: 'before-i-became-this',
     title: 'Before I Became This',
