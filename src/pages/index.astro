@@ -462,7 +462,7 @@ const websiteSchema = {
                 <span class="song-card__number">0{i + 1}</span>
                 <h3 class="song-card__title">{song.title}</h3>
                 <div class="song-card__meta">
-                  <span class="tag">{song.genre}</span>
+                  {song.genre && <span class="tag">{song.genre}</span>}
                   {song.bpm && <span class="tag">{song.bpm} BPM</span>}
                 </div>
                 <p class="song-card__desc">{song.description}</p>

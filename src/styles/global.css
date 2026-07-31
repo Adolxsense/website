@@ -1300,6 +1300,43 @@ body::before {
   }
 }
 
+/* ─── SONG STORY / MEANING ───────────────────────── */
+.song-story {
+  margin-bottom: 48px;
+  padding: 28px 32px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-left: 2px solid var(--red);
+  max-width: 720px;
+}
+
+.song-story__heading {
+  font-family: var(--font-heading);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--red);
+  margin-bottom: 18px;
+}
+
+.song-story__para {
+  font-size: 0.95rem;
+  line-height: 1.85;
+  color: var(--text-muted);
+  white-space: pre-line;
+}
+
+.song-story__para + .song-story__para {
+  margin-top: 16px;
+}
+
+@media (max-width: 768px) {
+  .song-story {
+    padding: 22px 20px;
+  }
+}
+
 /* ─── LYRICS DUAL (side by side) ─────────────────── */
 .lyrics-dual {
   display: grid;
