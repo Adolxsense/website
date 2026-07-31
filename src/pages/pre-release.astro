@@ -1,9 +1,16 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import { preRelease as p } from '../data/preRelease';
+import { releases } from '../data/releases';
 
-// No active pre-release — send visitors to the discography instead.
-if (!p.active) return Astro.redirect('/releases');
+/**
+ * Between campaigns this URL stays live and indexable, forwarding visitors to
+ * the record that just came out. The redirect is deliberately delayed so search
+ * engines treat it as temporary (302-style) — this URL is reused for the next
+ * pre-release, so its ranking must not be folded into the destination.
+ */
+const justReleased = releases.find((r) => r.featured) ?? releases[0];
+const redirectUrl = `/releases/${justReleased.slug}`;
 
 const ogImage = `https://adolxsense.com${p.cover.src}-1200w.webp`;
 
@@ -24,6 +31,51 @@ const jsonLd = {
 };
 ---
 
+{!p.active && (
+  <Layout
+    title="Next Release"
+    description={`No pre-release campaign is running right now. ${justReleased.title} is the latest Adolxsense ${justReleased.type.toLowerCase()} — out now.`}
+    metaRefresh={{ delay: 3, url: redirectUrl }}
+  >
+    <section class="prerelease-hero">
+      {justReleased.cover && (
+        <div class="prerelease-hero__bg" style={`background-image:url(${justReleased.cover.src}-1200w.webp)`}></div>
+      )}
+      <div class="prerelease-hero__overlay"></div>
+
+      <div class="container prerelease-hero__inner">
+        <p class="prerelease-eyebrow"><span class="pulse-dot"></span> Out Now</p>
+
+        {justReleased.cover && (
+          <a href={redirectUrl} class="prerelease-cover" aria-label={justReleased.title}>
+            <picture>
+              <source srcset={`${justReleased.cover.src}-600w.webp 600w, ${justReleased.cover.src}-300w.webp 300w`} sizes="(max-width: 768px) 100vw, 330px" type="image/webp" />
+              <img src={`${justReleased.cover.src}.jpg`} alt={justReleased.cover.alt} width="600" height="600" />
+            </picture>
+            <span class="prerelease-cover__badge">{justReleased.type}</span>
+          </a>
+        )}
+
+        <h1 class="prerelease-title">{justReleased.title}</h1>
+        <p class="hero-promo__tagline">
+          There's no pre-release running at the moment — our latest record is already out.
+        </p>
+
+        <div class="prerelease-cta">
+          <a href={redirectUrl} class="prerelease-presave-btn">
+            Listen to {justReleased.title} &#8594;
+          </a>
+        </div>
+
+        <p class="prerelease-redirect-note">
+          Taking you there in a moment… <a href={redirectUrl}>go now</a>
+        </p>
+      </div>
+    </section>
+  </Layout>
+)}
+
+{p.active && (
 <Layout
   title={`${p.title} — Coming Soon`}
   description={metaDescription}
@@ -242,3 +294,4 @@ const jsonLd = {
     }
   </script>
 </Layout>
+)}

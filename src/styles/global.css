@@ -1795,6 +1795,7 @@ body::before {
 
 .prerelease-cover {
   position: relative;
+  display: block;
   width: clamp(220px, 40vw, 330px);
   aspect-ratio: 1;
   margin: 0 auto 30px;
@@ -2003,6 +2004,22 @@ body::before {
   color: var(--text-muted);
   min-width: 34px;
   text-align: right;
+}
+
+.prerelease-redirect-note {
+  margin-top: 24px;
+  font-size: 0.82rem;
+  color: var(--text-faint);
+}
+
+.prerelease-redirect-note a {
+  color: var(--text-muted);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.prerelease-redirect-note a:hover {
+  color: var(--red);
 }
 
 .prerelease-cta {
