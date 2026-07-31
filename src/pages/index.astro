@@ -30,10 +30,21 @@ const slideCount = bannerSlides.length + (heroPromoKind ? 1 : 0);
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'MusicGroup',
+  '@id': 'https://adolxsense.com/#band',
   name: 'Adolxsense',
   url: 'https://adolxsense.com',
-  description: 'Nu Metal and Alternative Rock project. Songs for the things we never said, the pain we never showed, and the memories that still echo.',
-  genre: ['Nu Metal', 'Alternative Rock', 'Post-Grunge'],
+  description: 'Female-fronted Nu Metal and Alternative Rock band, channeling early-2000s rock through a modern cinematic lens. Songs for the things we never said, the pain we never showed, and the memories that still echo.',
+  genre: ['Nu Metal', 'Alternative Rock', 'Post-Grunge', 'Alternative Metal'],
+  member: {
+    '@type': 'OrganizationRole',
+    roleName: 'Lead vocalist',
+    member: { '@type': 'Person', name: 'Christie' },
+  },
+  album: releases.map((r) => ({
+    '@type': 'MusicAlbum',
+    name: r.title,
+    url: `https://adolxsense.com/releases/${r.slug}`,
+  })),
   sameAs: [
     'https://open.spotify.com/artist/0E2Sa4BxDqWcleazYE7lUT',
     'https://music.apple.com/br/artist/adolxsense/1848634461',
@@ -54,9 +65,25 @@ const coverBySong = Object.fromEntries(
     .filter((r) => r.cover)
     .flatMap((r) => r.tracks.filter((t) => t.songSlug).map((t) => [t.songSlug!, r.cover!]))
 );
+const websiteSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: 'Adolxsense',
+  url: 'https://adolxsense.com',
+  inLanguage: 'en-US',
+  publisher: { '@id': 'https://adolxsense.com/#band' },
+};
 ---
 
-<Layout jsonLd={jsonLd}>
+<Layout brandFirst jsonLd={jsonLd} schemas={[websiteSchema]}>
+  <!--
+    The logo image is the visual headline, so the crawlable <h1> is
+    screen-reader-only. It states exactly what the page is about.
+  -->
+  <h1 class="sr-only">
+    Adolxsense — female-fronted Nu Metal and Alternative Rock band
+  </h1>
+
   <!-- HERO -->
   <section class="hero">
     <!-- Rotating banner images -->

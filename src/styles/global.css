@@ -69,6 +69,19 @@ body::before {
   padding: 0 24px;
 }
 
+/* Content for assistive tech and crawlers, removed from the visual layout. */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
 .tag {
   display: inline-block;
   font-family: var(--font-heading);
@@ -869,6 +882,14 @@ body::before {
 
 .song-cover:hover .song-cover-img {
   transform: scale(1.02);
+}
+
+.hub-intro {
+  margin-top: 20px;
+  max-width: 620px;
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: var(--text-muted);
 }
 
 /* ─── LYRICS PAGE ─────────────────────────────────── */

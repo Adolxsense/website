@@ -1,9 +1,16 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import { songs } from '../data/songs';
+import { breadcrumbs } from '../lib/seo';
+
+const description = 'Watch Adolxsense music videos and lyric videos — female-fronted Nu Metal and Alternative Rock with early-2000s energy.';
 ---
 
-<Layout title="Videos" description="Watch all Adolxsense music videos on YouTube.">
+<Layout
+  title="Music Videos"
+  description={description}
+  schemas={[breadcrumbs([{ name: 'Videos', path: '/videos' }])]}
+>
   <div style="padding-top: 120px; padding-bottom: 100px;">
     <div class="container">
       <div class="lyrics-hero reveal">

@@ -2,6 +2,7 @@
 import Layout from '../../layouts/Layout.astro';
 import { songs, getSongBySlug } from '../../data/songs';
 import { releases } from '../../data/releases';
+import { breadcrumbs } from '../../lib/seo';
 
 export function getStaticPaths() {
   return songs.map((song) => ({
@@ -66,15 +67,32 @@ const jsonLd = {
     },
   }),
   ...(cover && { image: ogImage }),
+  ...(hasTranslation && { inLanguage: ['en', 'pt-BR'] }),
 };
+
+/**
+ * Front-load the query people actually type — "<song> lyrics". Bilingual pages
+ * also surface "tradução", which is how Brazilian listeners search.
+ */
+const pageTitle = hasTranslation
+  ? `${song.title} Lyrics + Tradução`
+  : `${song.title} Lyrics`;
+
+const pageDescription = hasTranslation
+  ? `Full lyrics to "${song.title}" by Adolxsense, with the Portuguese translation side by side. Letra e tradução em português.`
+  : `Full lyrics to "${song.title}" by Adolxsense — ${song.genre}${release ? `, from ${release.title}` : ''}.`;
 ---
 
 <Layout
-  title={song.title}
-  description={song.description}
+  title={pageTitle}
+  description={pageDescription}
   ogType="music.song"
   ogImage={ogImage}
   jsonLd={jsonLd}
+  schemas={[breadcrumbs([
+    { name: 'Lyrics', path: '/lyrics' },
+    { name: song.title, path: `/lyrics/${song.slug}` },
+  ])]}
 >
   <div style="padding-top: 100px; padding-bottom: 100px;">
     <div class="container">
@@ -96,7 +114,7 @@ const jsonLd = {
 
           {hasTranslation ? (
             <div class="lyrics-dual reveal" style="--reveal-delay: 1">
-              <div class="lyrics-dual__col">
+              <div class="lyrics-dual__col" lang="en">
                 <p class="lyrics-dual__lang">English</p>
                 <div class="lyrics-body">
                   {lyricBlocks.map((block) => {
@@ -107,8 +125,8 @@ const jsonLd = {
                 </div>
               </div>
               <div class="lyrics-dual__divider"></div>
-              <div class="lyrics-dual__col">
-                <p class="lyrics-dual__lang">Portuguese</p>
+              <div class="lyrics-dual__col" lang="pt-BR">
+                <p class="lyrics-dual__lang">Português &middot; Tradução</p>
                 <div class="lyrics-body">
                   {translationBlocks.map((block) => {
                     if (block.type === 'label') return <span class="section-label">[{block.text}]</span>;

@@ -1,14 +1,35 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import { releases } from '../../data/releases';
+import { breadcrumbs, collection } from '../../lib/seo';
+
+const description = `Every Adolxsense release — ${releases.length} albums, EPs and singles of female-fronted Nu Metal and Alternative Rock. Stream on Spotify and Apple Music.`;
+
+const schemas = [
+  collection({
+    name: 'Adolxsense Discography',
+    description,
+    path: '/releases',
+    items: releases.map((r) => ({ name: r.title, path: `/releases/${r.slug}` })),
+  }),
+  breadcrumbs([{ name: 'Releases', path: '/releases' }]),
+];
 ---
 
-<Layout title="Releases" description="All Adolxsense releases — albums, singles, EPs and LPs.">
+<Layout
+  title="Discography — All Albums, EPs & Singles"
+  description={description}
+  schemas={schemas}
+>
   <div style="padding-top: 120px; padding-bottom: 100px;">
     <div class="container">
       <div class="lyrics-hero reveal">
         <p class="section-header__label">Discography</p>
         <h1 class="section-header__title">Releases</h1>
+        <p class="hub-intro">
+          Every Adolxsense album, EP and single — female-fronted Nu Metal and
+          Alternative Rock, streaming on Spotify and Apple Music.
+        </p>
       </div>
 
       <div style="padding-top: 80px;">

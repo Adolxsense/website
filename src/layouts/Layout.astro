@@ -1,9 +1,18 @@
 ---
 import '../styles/global.css';
+import { clampDescription } from '../lib/seo';
 
 interface Props {
+  /**
+   * Keyword-first page title WITHOUT the brand — the brand is appended.
+   * Front-load what people actually search: "Before the Hurt Lyrics", not
+   * "Adolxsense — Before the Hurt". Set `brandFirst` for the homepage only.
+   */
   title?: string;
+  brandFirst?: boolean;
   description?: string;
+  /** Extra JSON-LD blocks (breadcrumbs, collections) rendered alongside `jsonLd`. */
+  schemas?: object[];
   ogImage?: string;   // absolute URL to OG image
   ogType?: string;    // defaults to 'website'
   jsonLd?: object;    // structured data object
@@ -16,17 +25,23 @@ interface Props {
 }
 
 const {
-  title = "Revive the 2000s Nu Metal and Alternative Rock!",
-  description = 'Songs for the things we never said, the pain we never showed, and the memories that still echo.',
+  title = 'Female-Fronted Nu Metal & 2000s Alternative Rock',
+  brandFirst = false,
+  description: rawDescription = 'Adolxsense is a female-fronted Nu Metal and Alternative Rock band channeling early-2000s energy — songs for the things we never said.',
   ogImage = 'https://adolxsense.com/images/banner/banner-1-1920w.webp',
   ogType = 'website',
   jsonLd,
+  schemas = [],
   metaRefresh,
 } = Astro.props;
 
-const fullTitle = title === 'Adolxsense' ? title : `Adolxsense — ${title}`;
+// Keyword-first everywhere except the homepage, where the brand is the query.
+const fullTitle = brandFirst ? `Adolxsense — ${title}` : `${title} — Adolxsense`;
+const description = clampDescription(rawDescription);
 const pathname = Astro.url.pathname;
 const canonicalUrl = `https://adolxsense.com${pathname}`;
+
+const allSchemas = [...(jsonLd ? [jsonLd] : []), ...schemas];
 
 const socials = [
   { name: 'TikTok',     url: 'https://www.tiktok.com/@adolxsense',           icon: 'fa-tiktok' },
@@ -75,7 +90,7 @@ const socials = [
     <meta name="theme-color" content="#c0392b" />
 
     <!-- JSON-LD Structured Data -->
-    {jsonLd && <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />}
+    {allSchemas.map((s) => <script type="application/ld+json" set:html={JSON.stringify(s)} />)}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-M5SM5WTL9H"></script>

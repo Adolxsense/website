@@ -1,6 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import { releases, getReleaseBySlug } from '../../data/releases';
+import { breadcrumbs } from '../../lib/seo';
 
 export function getStaticPaths() {
   return releases.map((r) => ({ params: { slug: r.slug } }));
@@ -126,13 +127,17 @@ const jsonLd = {
 ---
 
 <Layout
-  title={release.title}
+  title={`${release.title} (${release.type}, ${release.year})`}
   description={release.description
     ? `${release.description} ${release.type} by Adolxsense — released ${release.releaseDate}.`
     : `${release.title} — ${release.type} by Adolxsense. Released ${release.releaseDate}. Stream on Spotify and Apple Music.`}
   ogType="music.album"
   ogImage={ogImage}
   jsonLd={jsonLd}
+  schemas={[breadcrumbs([
+    { name: 'Releases', path: '/releases' },
+    { name: release.title, path: `/releases/${release.slug}` },
+  ])]}
 >
   <div style="padding-top: 100px; padding-bottom: 100px;">
     <div class="container">
