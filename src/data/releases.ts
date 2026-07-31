@@ -39,6 +39,7 @@ export const releases: Release[] = [
     label: 'TS Music Records',
     upc: '882100256392',
     spotifyUrl: 'https://open.spotify.com/album/0ZzKFztVKAP2AwtDmbolDh',
+    appleMusicUrl: 'https://music.apple.com/br/album/before-the-hurt-single/6791437129',
     description: "There's a version of you that got left behind — and it still stares back every time you catch your reflection. A cinematic ballad that slowly unravels into an explosion.",
     cover: {
       src: '/images/releases/album-cover/before-the-hurt',
