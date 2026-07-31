@@ -20,6 +20,14 @@ export interface Release {
   releaseDate: string;
   label?: string;
   upc?: string;
+  /**
+   * MusicBrainz release group MBID.
+   *
+   * Cited from the release page's JSON-LD so the page points back at the
+   * MusicBrainz entry that already points at this site — the reciprocal link
+   * is what corroborates the entity rather than merely asserting it.
+   */
+  musicbrainzId?: string;
   promotionUrl?: string;
   spotifyUrl?: string;
   appleMusicUrl?: string;
@@ -47,6 +55,7 @@ export const releases: Release[] = [
     releaseDate: 'July 31, 2026',
     label: 'TS Music Records',
     upc: '882100256392',
+    musicbrainzId: '1f057d53-09df-4c53-b5d9-cc0af71df991',
     spotifyUrl: 'https://open.spotify.com/album/0ZzKFztVKAP2AwtDmbolDh',
     appleMusicUrl: 'https://music.apple.com/br/album/before-the-hurt-single/6791437129',
     description: "There's a version of you that got left behind — and it still stares back every time you catch your reflection. A cinematic ballad that slowly unravels into an explosion.",
@@ -69,6 +78,7 @@ export const releases: Release[] = [
     releaseDate: 'May 22, 2026',
     label: 'TS Music Records',
     upc: '825324105237',
+    musicbrainzId: '84d0dedf-af7b-4b83-9bc4-c71700f09d93',
     promotionUrl: 'https://distrokid.com/hyperfollow/adolxsense1/before-i-became-this',
     spotifyUrl: 'https://open.spotify.com/album/6GK8IRLchCPdqj195Rw4Tn?si=LLdsCEq9TwGqcKt9Iqn8Ow',
     appleMusicUrl: 'https://music.apple.com/br/album/before-i-became-this-single/6766311606',
@@ -89,6 +99,7 @@ export const releases: Release[] = [
     releaseDate: 'May 1, 2026',
     label: 'TS Music Records',
     upc: '825583810989',
+    musicbrainzId: '39c11a0e-97c0-4f93-aa30-384afa8da430',
     promotionUrl: 'https://distrokid.com/hyperfollow/adolxsense1/strong-all-day',
     spotifyUrl: 'https://open.spotify.com/album/0Cn5IEebWpyPhqwUwWR9Dq?si=w79O1LVkSwCgqwgb5Hx5AA',
     appleMusicUrl: 'https://music.apple.com/br/album/strong-all-day-single/1890747740',
@@ -110,6 +121,7 @@ export const releases: Release[] = [
     releaseDate: 'April 17, 2026',
     label: 'TS Music Records',
     upc: '825642014594',
+    musicbrainzId: '8fed8025-0404-4537-9ebd-3a83918b6495',
     promotionUrl: 'https://distrokid.com/hyperfollow/adolxsense1/under-the-rain',
     spotifyUrl: 'https://open.spotify.com/album/42YhyLVwBcmLQRbBq49mqB?si=dM7ukt7sTZ-3zP4BmO7ghg',
     appleMusicUrl: 'https://music.apple.com/br/album/under-the-rain-single/1888916150',
@@ -132,6 +144,7 @@ export const releases: Release[] = [
     releaseDate: 'February 20, 2026',
     label: 'TS Music Records',
     upc: '821530844007',
+    musicbrainzId: 'b5003e55-cbad-4420-aacd-24a73c029557',
     promotionUrl: 'https://distrokid.com/hyperfollow/adolxsense1/the-weight-i-hide-2',
     spotifyUrl: 'https://open.spotify.com/album/6eN0b03KWVmrX0p9bLrUJj?si=jciP6P6IQA62EO1EC5NMcA',
     appleMusicUrl: 'https://music.apple.com/br/album/the-weight-i-hide-single/1868294125',
@@ -152,6 +165,7 @@ export const releases: Release[] = [
     releaseDate: 'January 9, 2026',
     label: 'TS Music Records',
     upc: '199947443800',
+    musicbrainzId: '0b99e81b-b2a7-4ca1-b2f4-dcf96ac3e1a7',
     promotionUrl: 'https://distrokid.com/hyperfollow/adolxsense1/after-the-rain',
     spotifyUrl: 'https://open.spotify.com/album/6MWGHk3WLtFiJoezXVyB7p?si=9ghufF0eRWOxNaxwPXGwug',
     appleMusicUrl: 'https://music.apple.com/br/album/after-the-rain-single/1857830814',
@@ -173,6 +187,7 @@ export const releases: Release[] = [
     releaseDate: 'December 12, 2025',
     label: 'TS Music Records',
     upc: '199948578884',
+    musicbrainzId: 'b8307283-c9bb-45ab-b897-fb5d136d33a6',
     promotionUrl: 'https://distrokid.com/hyperfollow/adolxsense1/where-light-begins',
     spotifyUrl: 'https://open.spotify.com/album/1v5jetcKmPXviVY1uGVaOy?si=OVGJc46uS1-7JwEcPtJHlw',
     appleMusicUrl: 'https://music.apple.com/br/album/where-light-begins-single/1857319405',
@@ -192,6 +207,7 @@ export const releases: Release[] = [
     releaseDate: 'December 5, 2025',
     label: 'TS Music Records',
     upc: '199953688516',
+    musicbrainzId: 'a3fa24d6-5487-43e1-9b8e-28758d5f71ae',
     promotionUrl: 'https://distrokid.com/hyperfollow/adolxsense1/ashes-in-the-rain',
     spotifyUrl: 'https://open.spotify.com/album/6tZZaajBtLlib8BrVe16aQ?si=x9h57QzSSiyn2xCwx0SS0g',
     appleMusicUrl: 'https://music.apple.com/br/album/ashes-in-the-rain-single/1854605069',
@@ -211,6 +227,7 @@ export const releases: Release[] = [
     releaseDate: 'November 21, 2025',
     label: 'TS Music Records',
     upc: '199750366068',
+    musicbrainzId: '1da86c08-d036-4f59-a0bf-0f73173173a4',
     promotionUrl: 'https://distrokid.com/hyperfollow/adolxsense1/unheard',
     spotifyUrl: 'https://open.spotify.com/album/0xAhTyBPPFUwQaqANo9PoG?si=-MSNHsSiTDS-vGVC1He4Lw',
     appleMusicUrl: 'https://music.apple.com/br/album/unheard/1850765731',
@@ -241,6 +258,7 @@ export const releases: Release[] = [
     releaseDate: 'November 14, 2025',
     label: 'TS Music Records',
     upc: '199749036460',
+    musicbrainzId: '882aa454-d90a-4a66-9740-6d12005ec768',
     promotionUrl: 'https://distrokid.com/hyperfollow/adolxsense1/still-reaching',
     spotifyUrl: 'https://open.spotify.com/album/4nyDKnhPzhuBLXjYvObfF3?si=Thjyi2RwTKaWE8M2VibGOw',
     appleMusicUrl: 'https://music.apple.com/br/album/still-reaching-ep/1849932897',
@@ -263,6 +281,7 @@ export const releases: Release[] = [
     releaseDate: 'November 7, 2025',
     label: 'TS Music Records',
     upc: '199749051296',
+    musicbrainzId: 'e21ac635-4cb4-4e03-92f9-29ccde0dcb4a',
     promotionUrl: 'https://distrokid.com/hyperfollow/adolxsense1/maybe-tomorrow',
     spotifyUrl: 'https://open.spotify.com/album/23wg9GB6q7DZS8pJQYH2gu?si=7dmGEYN9QJu00kTGo5bf7Q',
     appleMusicUrl: 'https://music.apple.com/br/album/maybe-tomorrow-single/1850117103',
@@ -282,6 +301,7 @@ export const releases: Release[] = [
     releaseDate: 'October 25, 2025',
     label: 'TS Music Records',
     upc: '199749826085',
+    musicbrainzId: 'e9e11000-9d1d-43b8-9f64-799a8c56380f',
     promotionUrl: 'https://distrokid.com/hyperfollow/adolxsense1/memories-of-unplayed-songs-2',
     spotifyUrl: 'https://open.spotify.com/intl-pt/album/3i95acUgbBHYosdTu9Cglw?si=AZvSjk_OTwOuyiCQAc1j7w',
     appleMusicUrl: 'https://music.apple.com/br/album/memories-of-unplayed-songs/1849422593',

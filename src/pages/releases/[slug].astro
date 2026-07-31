@@ -1,7 +1,13 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import { releases, getReleaseBySlug } from '../../data/releases';
-import { breadcrumbs } from '../../lib/seo';
+import {
+  breadcrumbs,
+  LABEL_SAME_AS,
+  MUSICBRAINZ_ARTIST,
+  musicbrainzRelease,
+  WIKIDATA_ARTIST,
+} from '../../lib/seo';
 
 export function getStaticPaths() {
   return releases.map((r) => ({ params: { slug: r.slug } }));
@@ -37,6 +43,8 @@ const artist = {
   name: 'Adolxsense',
   url: 'https://adolxsense.com',
   sameAs: [
+    WIKIDATA_ARTIST,
+    MUSICBRAINZ_ARTIST,
     'https://open.spotify.com/artist/0E2Sa4BxDqWcleazYE7lUT',
     'https://music.apple.com/br/artist/adolxsense/1848634461',
     'https://www.youtube.com/@adolxsenseofficial',
@@ -87,6 +95,7 @@ const jsonLd = {
     recordLabel: {
       '@type': 'Organization',
       name: release.label,
+      ...(LABEL_SAME_AS[release.label] && { sameAs: LABEL_SAME_AS[release.label] }),
     },
   }),
   ...(release.upc && { gtin13: release.upc }),
@@ -101,6 +110,7 @@ const jsonLd = {
   })),
   ...(streamingOffers.length > 0 && { offers: streamingOffers }),
   sameAs: [
+    ...(release.musicbrainzId ? [musicbrainzRelease(release.musicbrainzId)] : []),
     ...(release.spotifyUrl ? [release.spotifyUrl] : []),
     ...(release.appleMusicUrl ? [release.appleMusicUrl] : []),
     ...(release.promotionUrl ? [release.promotionUrl] : []),

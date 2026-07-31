@@ -3,6 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import { songs } from '../data/songs';
 import { releases } from '../data/releases';
 import { preRelease as pre } from '../data/preRelease';
+import { MUSICBRAINZ_ARTIST, WIKIDATA_ARTIST } from '../lib/seo';
 
 const featuredSongs = songs.slice(0, 4);
 const latestReleases = releases.slice(0, 3);
@@ -46,6 +47,8 @@ const jsonLd = {
     url: `https://adolxsense.com/releases/${r.slug}`,
   })),
   sameAs: [
+    WIKIDATA_ARTIST,
+    MUSICBRAINZ_ARTIST,
     'https://open.spotify.com/artist/0E2Sa4BxDqWcleazYE7lUT',
     'https://music.apple.com/br/artist/adolxsense/1848634461',
     'https://www.youtube.com/@adolxsenseofficial',
