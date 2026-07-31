@@ -528,6 +528,73 @@ It’s not a resolution. It’s a beginning.
 Under the Rain is about that fragile moment where someone stops waiting to be understood… and considers the possibility of finally understanding themselves.
 A quiet realization that maybe healing doesn’t start when someone else sees you —
 but when you stop hiding from yourself.`,
+    translation: `Casaco bem fechado
+Mas o frio entra
+Placas de rua borram
+Enquanto as nuvens chegam
+Ela conta os passos
+Como se fossem promessas
+Cada poça
+Mais um desejo que ela perdeu
+
+Ela ri alto demais
+Das coisas mais bobas
+Torcendo pra alguém ouvir
+Torcendo pra alguém ficar
+
+Sob a chuva
+Ela pergunta ao céu
+Quando é que eu posso
+Parar de estar bem
+Eu quero ser conhecida
+Até nas cicatrizes que escondo
+Sob a chuva
+Ela implora por um sinal
+Quando é que eu vou ser feliz
+Quando é que eu vou ser minha
+
+Máscaras nas prateleiras
+No gancho da porta
+Sorrisos que ela veste
+Pro olhar de passagem
+Conta histórias
+Editadas e aparadas
+Guarda as partes mais verdadeiras
+Trancadas lá no fundo
+
+Ela troca a verdade dela
+Por um pouco de elogio
+Mas os ecos somem
+E a dor continua
+
+Sob a chuva
+Ela pergunta ao céu
+Quando é que eu posso
+Parar de estar bem
+Eu quero ser conhecida
+Até nas cicatrizes que escondo
+Sob a chuva
+Ela implora por um sinal
+Quando é que eu vou ser feliz
+Quando é que eu vou ser minha
+
+Se alguém segurasse a mão dela tremendo
+Ela deixaria entrar
+Ela conseguiria deixar entrar
+Se ela dissesse as palavras que nunca disse
+Isso a quebraria
+Ou finalmente curaria
+
+Sob a chuva
+Ela pergunta ao céu
+Quando é que eu posso
+Parar de estar bem
+Eu quero ser conhecida
+Até nas cicatrizes que escondo
+Sob a chuva
+Ela sussurra dessa vez
+Talvez eu seja feliz
+Se eu começar por mim`,
     lyrics: `Coat pulled tight
 But the cold gets in
 Street signs blur
@@ -846,6 +913,52 @@ that it will rise.
 
 Because no matter how heavy the rain,
 there is always a dawn waiting on the other side.`,
+    translation: `Andei por noites que não tinham estrelas
+Por silêncios gritando nas cicatrizes
+O céu caía sem fazer som
+E enterrava tudo o que eu tinha achado
+
+Mas mesmo quando minhas mãos soltaram
+Algo bem fundo se recusou a ceder
+
+Depois da chuva, o sol vai nascer
+Além das nuvens, além das mentiras
+Mesmo quando a esperança escapa pelas frestas
+Eu ainda seguro os meus sonhos
+Por fé em cacos e céus em brasa
+Vou seguir andando, olhos marcados de choro
+Porque no escuro, eu ainda fico
+Esperando a luz
+Depois da chuva
+
+Sussurrei preces pra paredes quebradas
+Não senti resposta quando chamei
+Mas o quieto nem sempre é ausência
+É onde o coração aprende a ser forte
+
+E mesmo que os ventos tenham me rasgado
+Ainda há um fogo aqui dentro
+
+Depois da chuva, o sol vai nascer
+Além do medo, além dos adeuses
+Mesmo quando a esperança começa a sumir
+A menor luz ainda pode invadir
+Por tempestades que rasgam e anos que drenam
+Eu vou acreditar
+Depois da chuva
+
+Talvez a dor tenha sido o meu crescer
+Talvez a tempestade só tenha me atravessado
+O que nos quebra pode nos libertar
+E escrever a alma em poesia
+
+Depois da chuva, o sol vai nascer
+Até quem se perdeu pode tocar o céu
+Até quem foi ferido aprende a respirar
+E corações partidos ainda encontram alívio
+Por toda a dor, por todo o peso
+Existe um amanhecer
+Depois da chuva`,
     lyrics: `I've walked through nights that had no stars
 Through silence screaming in my scars
 The sky would fall without a sound
@@ -943,6 +1056,63 @@ In the Adolxsense universe, “Where Light Begins” stands out as one of the mo
 It is the chapter of acceptance, spiritual clarity, and gentle transformation.
 A reminder that healing doesn’t always arrive loudly — sometimes it arrives when you become still enough to notice the light already entering your life.
 It is a song about surrender, grace, and the quiet start of a new version of yourself.`,
+    translation: `[Verso 1]
+Andei sozinho por campos de dúvida
+Um coração pesado que eu não sabia dizer
+O céu era cinza, o vento parou
+Mas algo mais fundo ainda me chamou
+
+[Pré-Refrão]
+Ouvi um sussurro na chuva
+Uma voz que disse: "Você não é o mesmo"
+Então olhei pra cima e deixei entrar
+A luz que arde debaixo da pele
+
+[Refrão]
+De mãos abertas, encaro o céu
+Sem precisar perguntar o porquê
+Se o amor é real, então que ele apareça
+Em cada passo, em tudo que eu cresço
+Estou parado, e mesmo assim começo
+Este é o lugar onde a luz entra
+
+[Verso 2]
+Segurei o passado tempo demais, forte demais
+Mas a cura vem quando você para de lutar
+Os muros que eu ergui começaram a cair
+E no lugar deles, eu ouvi o chamado
+
+[Pré-Refrão]
+Sem palavras perfeitas, sem fé impecável
+Só verdade simples e graça silenciosa
+Então aqui estou, não quem eu fui
+Mas quem estou aprendendo a ser Nele
+
+[Refrão]
+De mãos abertas, encaro o céu
+Sem precisar perguntar o porquê
+Se o amor é real, então que ele apareça
+Em cada passo, em tudo que eu cresço
+Estou parado, e mesmo assim começo
+Este é o lugar onde a luz entra
+
+[Ponte]
+E se eu cair, eu me levanto de novo
+Não sozinho, mas amparado por dentro
+Uma força maior, um plano mais alto
+Pra caminhar com propósito, coração na mão
+
+[Refrão Final]
+De mãos abertas, encaro o céu
+Sem precisar perguntar o porquê
+Se o amor é real, então que ele apareça
+Em cada passo, em tudo que eu cresço
+Estou parado, e mesmo assim começo
+Este é o lugar onde a luz entra
+
+[Outro]
+Onde a luz começa…
+Onde a luz começa…`,
     lyrics: `[Verse 1]
 I walked alone through fields of doubt
 A heavy heart I couldn’t speak out
@@ -1071,6 +1241,47 @@ felt the weight of their past,
 and still chose to take one more breath,
 one more step,
 into the rain.`,
+    translation: `Sigo as rachaduras pelo chão
+Cada uma é uma voz que não consigo ignorar
+Os ecos sussurram o que eu perdi
+Talhado em silêncio, frio como geada
+Prendi a respiração em cada incêndio
+Ainda acorrentado sob o arame farpado
+Nenhuma prece virou a maré que enfrentei
+Só sombras que eu abracei
+Mas não posso mudar as cicatrizes que guardo
+Elas me assombram quando tento dormir
+Não dá pra reescrever onde eu estive
+Só cinzas dançando ao vento
+O passado não quebra, o futuro é cego
+Mas o agora é onde eu escolho a minha linha
+Um fôlego, um passo, por toda essa dor
+Sou só cinzas na chuva
+Visto o silêncio como pele
+Uma guerra calada que travo por dentro
+O espelho mostra quem eu fui
+Mas não a alma sob as cicatrizes
+E não posso mudar as cicatrizes que guardo
+Elas me assombram quando tento dormir
+Não dá pra reescrever onde eu estive
+Só cinzas dançando ao vento
+O passado não quebra, o futuro é cego
+Mas o agora é onde eu escolho a minha linha
+Um fôlego, um passo, por toda essa dor
+Sou só cinzas na chuva
+O tempo não cura o que não se deixa tocar
+E o silêncio nunca disse demais
+Mas talvez ainda assim eu mova a chama
+E deixe a fumaça esquecer o meu nome
+Não podemos mudar as cicatrizes que guardamos
+Mas ainda estamos de pé, alma adentro
+Não dá pra reescrever onde estivemos
+Ainda somos cinzas subindo ao vento
+O passado não cede, o céu não chora
+Mas o agora é onde escolhemos tentar
+Um fôlego, uma faísca, por toda essa dor
+Somos só cinzas na chuva…
+Cinzas na chuva`,
     lyrics: `I trace the cracks along the floor
 Each one a voice I can't ignore
 The echoes whisper what I've lost
@@ -2107,6 +2318,54 @@ It says:
 I haven’t given up.
 I’m still here.
 I’m still reaching.`,
+    translation: `As ruas estão frias, as luzes se apagam
+Ando sozinho pelo ontem
+Cada rosto só passa por mim
+Mas nenhum consegue me encarar
+
+E eu sigo gritando o teu nome
+No silêncio, só chuva
+
+Você está aí, você está ouvindo?
+Ainda estou tentando te alcançar pela noite
+Todas essas perguntas, toda essa distância
+Só uma sombra deixada pra trás
+Se um dia você sentir que também vai cair
+Eu vou estar aqui de pé por você
+Mesmo quando eu estiver me partindo
+Ainda estou tentando alcançar
+
+Tentei sair, mas continuo parado
+No eco do que escapou
+Prendo a respiração e finjo o sorriso
+Mas só funciona por um tempinho
+
+O vento só responde com o teu nome
+Me puxa de volta pra chama
+
+Você está aí, você está ouvindo?
+Ainda estou tentando te alcançar pela noite
+Todas essas perguntas, toda essa distância
+Só uma sombra deixada pra trás
+Se um dia você sentir que também vai cair
+Eu vou estar aqui de pé por você
+Mesmo quando eu estiver me partindo
+Ainda estou tentando alcançar
+
+Talvez um dia você se vire
+E eu ainda vou estar neste chão
+Com cada lágrima que eu tive que esconder
+Você foi a razão de eu sobreviver
+
+Você está aí, você está ouvindo?
+Ainda estou tentando te alcançar pela noite
+Mesmo machucado e mal respirando
+Ainda acredito que você vai me ouvir
+Se um dia você sentir que também vai apagar
+Eu vou estar aqui de pé por você
+Mesmo quando não houver nada de novo
+Ainda estou tentando alcançar
+Ainda tentando…`,
     lyrics: `The streets are cold, the lights all fade
 I walk alone through yesterday
 Every face just passes by
@@ -2202,6 +2461,49 @@ To rest.
 Because even the strongest hearts need a night of falling apart before they can stand again.
 In the Adolxsense universe, “Maybe Tomorrow” represents the chapter of raw vulnerability — the moment before strength returns, where pain is honest and unfiltered.
 It’s for anyone who doesn’t feel okay today, but still carries a quiet belief that maybe tomorrow, they will.`,
+    translation: `Sentei na janela, olhei a chuva
+Torcendo pra ela lavar a dor
+As palavras que você disse ainda ecoam claras
+Mas você não está aqui, não está perto
+
+Tentei sorrir, seguir em frente
+Mas tudo parece tão errado
+O silêncio grita mais alto que antes
+Não sei o que estou esperando
+
+Talvez amanhã eu fique bem
+Talvez as sombras se afastem
+Talvez eu ache um motivo pra respirar
+Um jeito de soltar, um jeito de crer
+Mas hoje à noite, estou perdido nessa tristeza
+Torcendo por esperança
+Talvez amanhã
+
+Fico repetindo o que a gente teve
+Alguns dias bons, a maioria tristes
+Dei tudo de mim, mas você foi embora
+Me deixou com perguntas, me deixou com dúvida
+
+Talvez amanhã eu fique bem
+Talvez o silêncio se dissipe
+Talvez eu ache a força pra ver
+Que há mais na vida do que você e eu
+Mas hoje à noite, estou preso nesse vazio
+Torcendo por luz
+Talvez amanhã
+
+Eu sei que a noite não dura pra sempre
+Mas é difícil crer que eu vou melhorar
+Ainda assim sussurro no escuro
+Uma promessa ao meu coração doído
+
+Talvez amanhã eu fique bem
+Talvez eu ache a minha voz pra dizer
+Que ainda estou aqui, ainda estou vivo
+E eu não vou só sobreviver — eu vou me erguer
+Mas hoje à noite, me deixa quebrar, me deixa afundar
+Me deixa ficar parado
+Talvez amanhã`,
     lyrics: `I sat by the window, watched the rain
 Hoping it could wash away the pain
 The words you said still echo clear
