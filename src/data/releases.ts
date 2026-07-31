@@ -140,8 +140,8 @@ export const releases: Release[] = [
       alt: 'The Weight I Hide — Adolxsense Single Cover',
     },
     tracks: [
-      { title: 'The Weight I Hide' },
-      { title: 'The Weight I Hide (Acoustic Version)' },
+      { title: 'The Weight I Hide', songSlug: 'the-weight-i-hide' },
+      { title: 'The Weight I Hide (Acoustic Version)', songSlug: 'the-weight-i-hide' },
     ],
   },
   {

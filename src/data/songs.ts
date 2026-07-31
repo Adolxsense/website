@@ -544,6 +544,189 @@ Chasing what I cannot take
 (Lyrics coming soon)`,
   },
   {
+    slug: 'the-weight-i-hide',
+    title: 'The Weight I Hide',
+    album: 'Single',
+    year: 2026,
+    releaseDate: 'February 20, 2026',
+    label: 'TS Music Records',
+    genre: 'Alternative Rock',
+    youtubeId: null, // Replace with actual YouTube video ID
+    description: 'The song for everyone who became the strong one and never got asked how they were doing. A confession about the cost of always holding everybody else up.',
+    translation: `[Verso 1]
+Acordo cedo só pra manter tudo de pé
+Costurando o silêncio no teu rosto cansado
+Atendo o telefone quando o raio corta teu céu
+Digo "eu tô aqui" enquanto morro por dentro
+Carrego conversas como uma arma carregada
+Um suspiro errado e tudo se desfaz
+Então meço cada palavra, mantenho o tom leve
+Enquanto meu peito aprende o medo toda noite
+
+[Pré-Refrão]
+Não peço ajuda, não faço um som
+Porque se eu desabar, tudo vem ao chão
+Mordo a língua até sangrar de novo
+E chamo isso de força como se não fosse dor
+
+[Refrão]
+Cansei de ser o abrigo na tempestade
+Segurando o teto enquanto me rasgo
+Se força é tudo o que você vê
+Então me diz — quem está aqui por mim?
+Eu escolhi ser a chama que você toma emprestada
+Mas não consigo te aquecer amanhã
+
+[Verso 2]
+Fico na porta quando o trovão vem
+Levo o golpe por todo mundo, finjo estar dormente
+Faço piada sob a pressão, mantenho a sala viva
+Enquanto meu coração corre milhas só pra te ajudar a sobreviver
+E cansei do elogio que parece corrente
+"Olha como você é forte" enquanto engasgo de dor
+Você ama a calma, você ama o controle
+Mas nunca toca no tremor da minha alma
+
+[Pré-Refrão]
+Guardo minhas lágrimas num quarto trancado
+Onde as luzes não funcionam e o ar tem gosto de fim
+Prendo a respiração como se fosse assim que eu vivo
+Mas estou ficando sem nada pra dar
+
+[Refrão]
+Cansei de ser o abrigo na tempestade
+Segurando o teto enquanto me rasgo
+Se força é tudo o que você vê
+Então me diz — quem está aqui por mim?
+Eu escolhi ser a chama que você toma emprestada
+Mas não consigo te aquecer amanhã
+
+[Ponte]
+Eu escolhi esta armadura, eu admito
+Mas armadura não quer dizer que eu não rache
+Não sou uma parede, não sou o teu lar
+Sou só um coração que aprendeu a se virar sozinho
+E se eu te mostrar o que escondo
+Você vai ficar aqui do meu lado?
+Ou vai me amar menos
+No instante em que eu confessar?
+
+[Breakdown]
+Me diz — quem está aqui…
+Quem está aqui por mim?
+Eu te segurei quando minhas mãos tremiam
+Eu te mantive a salvo enquanto meu peito quebrava
+Não me chame de "forte" como se fosse tudo que eu sou
+Me diz — quem está aqui por mim?
+
+[Refrão Final]
+Cansei de ser o abrigo na tempestade
+Segurando o teto enquanto me rasgo
+Se força é tudo o que você vê
+Então me diz — quem está aqui por mim?
+Eu escolhi ser a chama que você toma emprestada
+Mas não consigo te aquecer amanhã
+
+[Outro]
+O peso que eu escondo…
+Está me matando em silêncio
+O peso que eu escondo…
+Diz que você fica —
+Diz que você fica…
+
+O peso que eu escondo…
+Está me matando em silêncio
+O peso que eu escondo…
+Diz que você fica —
+Diz que você fica…`,
+    lyrics: `[Verse 1]
+I wake up early just to hold it all in place
+Stitching up the silence on your tired face
+I take the phone when lightning hits your sky
+Say "I got you" while I'm dying inside
+I carry conversations like a loaded gun
+One wrong breath and everything comes undone
+So I measure every word, keep the tone light
+While my chest learns fear every night
+
+[Pre-Chorus]
+I don't ask for help, I don't make a sound
+'Cause if I fall apart, the whole thing hits the ground
+I bite my tongue until it bleeds again
+And call it strength like it's not pain
+
+[Chorus]
+I'm tired of being the shelter in the storm
+Holding the ceiling while I'm torn
+If strength is all you see
+Then tell me—who's here for me?
+I chose to be the flame you borrow
+But I can't keep you warm tomorrow
+
+[Verse 2]
+I stand in the doorway when the thunder comes
+Take the hit for everyone, pretend I'm numb
+I joke through the pressure, keep the room alive
+While my heart runs miles just to help you survive
+And I'm sick of the praise that feels like a chain
+"Look how strong you are" while I'm choking on pain
+You love the calm, you love the control
+But you never touch the shaking in my soul
+
+[Pre-Chorus]
+I keep my tears in a locked back room
+Where the lights don't work and the air tastes doomed
+I hold my breath like it's how I live
+But I'm running out of things to give
+
+[Chorus]
+I'm tired of being the shelter in the storm
+Holding the ceiling while I'm torn
+If strength is all you see
+Then tell me—who's here for me?
+I chose to be the flame you borrow
+But I can't keep you warm tomorrow
+
+[Bridge]
+I chose this armor, I admit
+But armor doesn't mean I don't split
+I'm not a wall, I'm not your home
+I'm just a heart that learned to cope alone
+And if I show you what I hide
+Will you stay here by my side?
+Or will you love me less
+The moment I confess?
+
+[Breakdown]
+Tell me—who's here…
+Who's here for me?
+I held you up when my hands were shaking
+I kept you safe while my chest was breaking
+Don't call me "strong" like it's all I'll be
+Tell me—who's here for me?
+
+[Final Chorus]
+I'm tired of being the shelter in the storm
+Holding the ceiling while I'm torn
+If strength is all you see
+Then tell me—who's here for me?
+I chose to be the flame you borrow
+But I can't keep you warm tomorrow
+
+[Outro]
+The weight I hide…
+Is killing me in silence
+The weight I hide…
+Say you'll stay—
+Say you'll stay…
+
+The weight I hide…
+Is killing me in silence
+The weight I hide…
+Say you'll stay—
+Say you'll stay…`,
+  },
+  {
     slug: 'after-the-rain',
     title: 'After the Rain',
     album: 'After the Rain',
