@@ -32,6 +32,11 @@ release. Releases already present upstream (per `mbids.json`) render as links
 instead of submit buttons, so they cannot be added twice. Duplicate release
 groups need a voted-through merge request to undo, hence the guard.
 
+`seed.html` is committed so it can be opened straight from a clone with no
+tooling — it is fully self-contained. It is still a derived file: **regenerate
+it after any change to `releases.ts`**, or it will quietly be missing your
+newest release.
+
 ```bash
 node var/musicbrainz/generate-seed.mjs
 open var/musicbrainz/seed.html

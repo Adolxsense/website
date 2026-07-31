@@ -1,0 +1,444 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MusicBrainz seeding — Adolxsense</title>
+<style>
+  :root { color-scheme: dark; }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; padding: 40px 24px 80px;
+    background: #0b0b0d; color: #e8e8ea;
+    font: 15px/1.55 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  }
+  .wrap { max-width: 900px; margin: 0 auto; }
+  h1 { font-size: 1.6rem; margin: 0 0 6px; letter-spacing: -0.01em; }
+  .sub { color: #8a8a94; margin: 0 0 28px; font-size: 0.9rem; }
+  .panel {
+    background: #141418; border: 1px solid #26262e; border-radius: 10px;
+    padding: 18px 20px; margin-bottom: 14px;
+  }
+  .panel label { display: block; font-weight: 600; margin-bottom: 8px; font-size: 0.85rem; }
+  .panel input[type=text] {
+    width: 100%; padding: 10px 12px; border-radius: 7px;
+    border: 1px solid #33333d; background: #0b0b0d; color: #e8e8ea;
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.85rem;
+  }
+  .panel input[type=text]:focus { outline: 2px solid #d64b4b; outline-offset: -1px; }
+  .hint { color: #8a8a94; font-size: 0.8rem; margin: 8px 0 0; }
+  .status { font-size: 0.82rem; margin-top: 10px; }
+  .status.ok { color: #4ec98a; }
+  .status.bad { color: #e0a34a; }
+  .steps { background: #141418; border: 1px solid #26262e; border-radius: 10px; padding: 18px 20px 18px 38px; margin-bottom: 26px; }
+  .steps li { margin-bottom: 7px; color: #b9b9c2; font-size: 0.88rem; }
+  .steps li:last-child { margin-bottom: 0; }
+  .steps code { background: #0b0b0d; padding: 1px 6px; border-radius: 4px; font-size: 0.85em; }
+  .card {
+    background: #141418; border: 1px solid #26262e; border-radius: 10px;
+    padding: 16px 18px; margin-bottom: 12px; transition: opacity .15s, border-color .15s;
+  }
+  .card.is-done { opacity: 0.45; border-color: #1d3d2c; }
+  .card.is-existing { border-color: #1d3d2c; background: #101512; }
+  .card.is-existing .done__num { padding-left: 25px; }
+  .pill {
+    background: #1d3d2c; color: #4ec98a; padding: 2px 9px; border-radius: 20px;
+    font-size: 0.66rem; font-weight: 600; text-transform: uppercase;
+    letter-spacing: 0.05em; vertical-align: middle; margin-left: 6px;
+  }
+  .card__head { display: flex; align-items: center; gap: 14px; }
+  .card__head > div { flex: 1; min-width: 0; }
+  .card__title { font-size: 1.02rem; margin: 0 0 5px; }
+  .card__meta { margin: 0; color: #8a8a94; font-size: 0.8rem; display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+  .tag { background: #2a2a33; color: #cfcfd8; padding: 1px 8px; border-radius: 20px; font-size: 0.75rem; }
+  .note { color: #6e6e78; font-size: 0.75rem; }
+  .warn { color: #e0a34a; }
+  .done { display: flex; align-items: center; gap: 9px; cursor: pointer; user-select: none; }
+  .done__box { width: 16px; height: 16px; accent-color: #4ec98a; cursor: pointer; }
+  .done__num { font-family: ui-monospace, Menlo, monospace; color: #55555f; font-size: 0.85rem; }
+  .btn {
+    background: transparent; color: #d64b4b; border: 1px solid #d64b4b;
+    padding: 8px 15px; border-radius: 7px; cursor: pointer;
+    font-size: 0.82rem; font-weight: 600; white-space: nowrap;
+  }
+  .btn:hover { background: #d64b4b; color: #fff; }
+  .btn:disabled { opacity: .35; cursor: not-allowed; border-color: #55555f; color: #55555f; background: transparent; }
+  /* Declared after .btn — equal specificity, so source order decides the winner. */
+  .btn--ghost { color: #4ec98a; border-color: #2c5a41; text-decoration: none; display: inline-block; }
+  .btn--ghost:hover { background: #4ec98a; color: #0b0b0d; border-color: #4ec98a; }
+  .card__tracks { margin-top: 12px; }
+  .card__tracks summary { cursor: pointer; color: #8a8a94; font-size: 0.8rem; }
+  .card__tracks ol { margin: 10px 0 0; padding-left: 22px; color: #b9b9c2; font-size: 0.83rem; }
+  .card__tracks li { margin-bottom: 3px; }
+  @media (max-width: 620px) {
+    .card__head { flex-wrap: wrap; }
+    .btn { width: 100%; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>MusicBrainz seeding — Adolxsense</h1>
+  <p class="sub">12 releases &middot; 47 tracks &middot; <strong>0 still to add</strong> &middot; generated from <code>src/data/releases.ts</code></p>
+
+  <ol class="steps">
+    <li>The artist entry <strong>already exists</strong> — MBID is pre-filled below and applied to all forms.</li>
+    <li>Click each release. The Add Release editor opens pre-filled in a new tab — <strong>review, then submit</strong>.</li>
+    <li>Tick it off here to keep your place.</li>
+    <li>Re-run <code>fetch-mbids.mjs</code> afterwards, then regenerate this page — anything already upstream turns into a link so it cannot be added twice.</li>
+  </ol>
+
+  <div class="panel">
+    <label for="mbid">Artist MBID</label>
+    <input type="text" id="mbid" value="4ef16ee6-3ee9-4477-8b28-4f3b611b158d" placeholder="e.g. 5b11f4ce-a62d-471e-81fc-a69a8278c7da" autocomplete="off" spellcheck="false">
+    <p class="hint">A 36-character UUID from the artist page URL.</p>
+    <p class="status bad" id="status">Not set — buttons are disabled until a valid MBID is entered.</p>
+  </div>
+
+      <div class="card is-existing">
+        <div class="card__head">
+          <span class="done__num">01</span>
+          <div>
+            <h2 class="card__title">Before the Hurt <span class="pill">already on MusicBrainz</span></h2>
+            <p class="card__meta">
+              <span class="tag">Single</span>
+              <span>July 31, 2026</span>
+              <span>1 track</span>
+              <span>UPC 882100256392</span>
+            </p>
+          </div>
+          <a class="btn btn--ghost" href="https://musicbrainz.org/release-group/1f057d53-09df-4c53-b5d9-cc0af71df991" target="_blank" rel="noopener">View entry &rarr;</a>
+        </div>
+        <details class="card__tracks">
+          <summary>Track list</summary>
+          <ol>
+            <li>Before the Hurt</li>
+          </ol>
+        </details>
+      </div>
+
+      <div class="card is-existing">
+        <div class="card__head">
+          <span class="done__num">02</span>
+          <div>
+            <h2 class="card__title">Before I Became This <span class="pill">already on MusicBrainz</span></h2>
+            <p class="card__meta">
+              <span class="tag">Single</span>
+              <span>May 22, 2026</span>
+              <span>1 track</span>
+              <span>UPC 825324105237</span>
+            </p>
+          </div>
+          <a class="btn btn--ghost" href="https://musicbrainz.org/release-group/84d0dedf-af7b-4b83-9bc4-c71700f09d93" target="_blank" rel="noopener">View entry &rarr;</a>
+        </div>
+        <details class="card__tracks">
+          <summary>Track list</summary>
+          <ol>
+            <li>Before I Became This</li>
+          </ol>
+        </details>
+      </div>
+
+      <div class="card is-existing">
+        <div class="card__head">
+          <span class="done__num">03</span>
+          <div>
+            <h2 class="card__title">Strong All Day <span class="pill">already on MusicBrainz</span></h2>
+            <p class="card__meta">
+              <span class="tag">Single</span>
+              <span>May 1, 2026</span>
+              <span>2 tracks</span>
+              <span>UPC 825583810989</span>
+            </p>
+          </div>
+          <a class="btn btn--ghost" href="https://musicbrainz.org/release-group/39c11a0e-97c0-4f93-aa30-384afa8da430" target="_blank" rel="noopener">View entry &rarr;</a>
+        </div>
+        <details class="card__tracks">
+          <summary>Track list</summary>
+          <ol>
+            <li>Strong All Day</li>
+            <li>Strong All Day (Acoustic Version)</li>
+          </ol>
+        </details>
+      </div>
+
+      <div class="card is-existing">
+        <div class="card__head">
+          <span class="done__num">04</span>
+          <div>
+            <h2 class="card__title">Under the Rain <span class="pill">already on MusicBrainz</span></h2>
+            <p class="card__meta">
+              <span class="tag">Single</span>
+              <span>April 17, 2026</span>
+              <span>3 tracks</span>
+              <span>UPC 825642014594</span>
+            </p>
+          </div>
+          <a class="btn btn--ghost" href="https://musicbrainz.org/release-group/8fed8025-0404-4537-9ebd-3a83918b6495" target="_blank" rel="noopener">View entry &rarr;</a>
+        </div>
+        <details class="card__tracks">
+          <summary>Track list</summary>
+          <ol>
+            <li>Under the Rain</li>
+            <li>Under the Rain (Unplugged Version)</li>
+            <li>Under the Rain (Acoustic Version)</li>
+          </ol>
+        </details>
+      </div>
+
+      <div class="card is-existing">
+        <div class="card__head">
+          <span class="done__num">05</span>
+          <div>
+            <h2 class="card__title">The Weight I Hide <span class="pill">already on MusicBrainz</span></h2>
+            <p class="card__meta">
+              <span class="tag">Single</span>
+              <span>February 20, 2026</span>
+              <span>2 tracks</span>
+              <span>UPC 821530844007</span>
+            </p>
+          </div>
+          <a class="btn btn--ghost" href="https://musicbrainz.org/release-group/b5003e55-cbad-4420-aacd-24a73c029557" target="_blank" rel="noopener">View entry &rarr;</a>
+        </div>
+        <details class="card__tracks">
+          <summary>Track list</summary>
+          <ol>
+            <li>The Weight I Hide</li>
+            <li>The Weight I Hide (Acoustic Version)</li>
+          </ol>
+        </details>
+      </div>
+
+      <div class="card is-existing">
+        <div class="card__head">
+          <span class="done__num">06</span>
+          <div>
+            <h2 class="card__title">After the Rain <span class="pill">already on MusicBrainz</span></h2>
+            <p class="card__meta">
+              <span class="tag">Single</span>
+              <span>January 9, 2026</span>
+              <span>2 tracks</span>
+              <span>UPC 199947443800</span>
+            </p>
+          </div>
+          <a class="btn btn--ghost" href="https://musicbrainz.org/release-group/0b99e81b-b2a7-4ca1-b2f4-dcf96ac3e1a7" target="_blank" rel="noopener">View entry &rarr;</a>
+        </div>
+        <details class="card__tracks">
+          <summary>Track list</summary>
+          <ol>
+            <li>After the Rain</li>
+            <li>After the Rain (Acoustic Version)</li>
+          </ol>
+        </details>
+      </div>
+
+      <div class="card is-existing">
+        <div class="card__head">
+          <span class="done__num">07</span>
+          <div>
+            <h2 class="card__title">Where Light Begins <span class="pill">already on MusicBrainz</span></h2>
+            <p class="card__meta">
+              <span class="tag">Single</span>
+              <span>December 12, 2025</span>
+              <span>1 track</span>
+              <span>UPC 199948578884</span>
+            </p>
+          </div>
+          <a class="btn btn--ghost" href="https://musicbrainz.org/release-group/b8307283-c9bb-45ab-b897-fb5d136d33a6" target="_blank" rel="noopener">View entry &rarr;</a>
+        </div>
+        <details class="card__tracks">
+          <summary>Track list</summary>
+          <ol>
+            <li>Where Light Begins</li>
+          </ol>
+        </details>
+      </div>
+
+      <div class="card is-existing">
+        <div class="card__head">
+          <span class="done__num">08</span>
+          <div>
+            <h2 class="card__title">Ashes in the Rain <span class="pill">already on MusicBrainz</span></h2>
+            <p class="card__meta">
+              <span class="tag">Single</span>
+              <span>December 5, 2025</span>
+              <span>1 track</span>
+              <span>UPC 199953688516</span>
+            </p>
+          </div>
+          <a class="btn btn--ghost" href="https://musicbrainz.org/release-group/a3fa24d6-5487-43e1-9b8e-28758d5f71ae" target="_blank" rel="noopener">View entry &rarr;</a>
+        </div>
+        <details class="card__tracks">
+          <summary>Track list</summary>
+          <ol>
+            <li>Ashes in the Rain</li>
+          </ol>
+        </details>
+      </div>
+
+      <div class="card is-existing">
+        <div class="card__head">
+          <span class="done__num">09</span>
+          <div>
+            <h2 class="card__title">Unheard <span class="pill">already on MusicBrainz</span></h2>
+            <p class="card__meta">
+              <span class="tag">Album</span> <span class="note">(LP &rarr; Album)</span>
+              <span>November 21, 2025</span>
+              <span>12 tracks</span>
+              <span>UPC 199750366068</span>
+            </p>
+          </div>
+          <a class="btn btn--ghost" href="https://musicbrainz.org/release-group/1da86c08-d036-4f59-a0bf-0f73173173a4" target="_blank" rel="noopener">View entry &rarr;</a>
+        </div>
+        <details class="card__tracks">
+          <summary>Track list</summary>
+          <ol>
+            <li>Inside My Skin</li>
+            <li>Shadows in the Room</li>
+            <li>Silent Hallways</li>
+            <li>Break the Echo</li>
+            <li>She Doesn't Feel the Rain</li>
+            <li>Where the Light Still Goes</li>
+            <li>Fading Echoes</li>
+            <li>Fading Echoes (Acoustic Version)</li>
+            <li>Fragments of Enough</li>
+            <li>Fragments of Enough (Hip-Hop Version)</li>
+            <li>Fragments of Enough (Acoustic Version)</li>
+            <li>Inside the Maze</li>
+          </ol>
+        </details>
+      </div>
+
+      <div class="card is-existing">
+        <div class="card__head">
+          <span class="done__num">10</span>
+          <div>
+            <h2 class="card__title">Still Reaching <span class="pill">already on MusicBrainz</span></h2>
+            <p class="card__meta">
+              <span class="tag">EP</span>
+              <span>November 14, 2025</span>
+              <span>4 tracks</span>
+              <span>UPC 199749036460</span>
+            </p>
+          </div>
+          <a class="btn btn--ghost" href="https://musicbrainz.org/release-group/882aa454-d90a-4a66-9740-6d12005ec768" target="_blank" rel="noopener">View entry &rarr;</a>
+        </div>
+        <details class="card__tracks">
+          <summary>Track list</summary>
+          <ol>
+            <li>Still Reaching</li>
+            <li>Still Reaching (Heavy Version)</li>
+            <li>Still Reaching (Acoustic Version)</li>
+            <li>Still Reaching (Acoustic Fingerstyle Version)</li>
+          </ol>
+        </details>
+      </div>
+
+      <div class="card is-existing">
+        <div class="card__head">
+          <span class="done__num">11</span>
+          <div>
+            <h2 class="card__title">Maybe Tomorrow <span class="pill">already on MusicBrainz</span></h2>
+            <p class="card__meta">
+              <span class="tag">Single</span>
+              <span>November 7, 2025</span>
+              <span>1 track</span>
+              <span>UPC 199749051296</span>
+            </p>
+          </div>
+          <a class="btn btn--ghost" href="https://musicbrainz.org/release-group/e21ac635-4cb4-4e03-92f9-29ccde0dcb4a" target="_blank" rel="noopener">View entry &rarr;</a>
+        </div>
+        <details class="card__tracks">
+          <summary>Track list</summary>
+          <ol>
+            <li>Maybe Tomorrow</li>
+          </ol>
+        </details>
+      </div>
+
+      <div class="card is-existing">
+        <div class="card__head">
+          <span class="done__num">12</span>
+          <div>
+            <h2 class="card__title">Memories of Unplayed Songs <span class="pill">already on MusicBrainz</span></h2>
+            <p class="card__meta">
+              <span class="tag">Album</span> <span class="note">(LP &rarr; Album)</span>
+              <span>October 25, 2025</span>
+              <span>17 tracks</span>
+              <span>UPC 199749826085</span>
+            </p>
+          </div>
+          <a class="btn btn--ghost" href="https://musicbrainz.org/release-group/e9e11000-9d1d-43b8-9f64-799a8c56380f" target="_blank" rel="noopener">View entry &rarr;</a>
+        </div>
+        <details class="card__tracks">
+          <summary>Track list</summary>
+          <ol>
+            <li>Whiskey Roads</li>
+            <li>Shadows in the Hallway</li>
+            <li>Shattered Silence</li>
+            <li>Shatterproof</li>
+            <li>Shattered Crown</li>
+            <li>Screams of Pain</li>
+            <li>Rise From Ruin</li>
+            <li>Shattered Horizon</li>
+            <li>Shattered Stillness (Acoustic Version)</li>
+            <li>Shattered Stillness (Melancholic Version)</li>
+            <li>You'll Never Know My Name</li>
+            <li>You're Still Here</li>
+            <li>Words Never Confessed</li>
+            <li>Another Life</li>
+            <li>Eternal Flame</li>
+            <li>Eternal Flame (Acoustic Version)</li>
+            <li>No One Leaves the Desert Unapproved</li>
+          </ol>
+        </details>
+      </div>
+</div>
+
+<script>
+// Wrapped in an IIFE: a top-level "var status" would assign to window.status,
+// whose legacy setter coerces the value to a string and silently discards the
+// element reference.
+(function () {
+  var UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
+  var input = document.getElementById('mbid');
+  var statusEl = document.getElementById('status');
+  var buttons = document.querySelectorAll('.btn');
+  var mbidFields = document.querySelectorAll('input[name="artist_credit.names.0.mbid"]');
+
+  /** Pushes the MBID into every form and locks submission until it is valid. */
+  function apply(value) {
+    var trimmed = value.trim();
+    var valid = UUID.test(trimmed);
+    for (var i = 0; i < mbidFields.length; i++) mbidFields[i].value = valid ? trimmed : '';
+    for (var j = 0; j < buttons.length; j++) buttons[j].disabled = !valid;
+    statusEl.textContent = valid
+      ? 'MBID applied to all ' + mbidFields.length + ' forms.'
+      : (trimmed ? 'That does not look like a valid MBID.' : 'Not set — buttons are disabled until a valid MBID is entered.');
+    statusEl.className = 'status ' + (valid ? 'ok' : 'bad');
+    if (valid) localStorage.setItem('mb.artistMbid', trimmed);
+  }
+
+  input.addEventListener('input', function () { apply(input.value); });
+  var saved = localStorage.getItem('mb.artistMbid');
+  if (saved) { input.value = saved; }
+  apply(input.value);
+
+  /** Per-release "done" ticks, so progress survives a page reload. */
+  var boxes = document.querySelectorAll('.done__box');
+  for (var k = 0; k < boxes.length; k++) {
+    (function (box) {
+      var key = 'mb.done.' + box.dataset.slug;
+      var card = box.closest('.card');
+      box.checked = localStorage.getItem(key) === '1';
+      card.classList.toggle('is-done', box.checked);
+      box.addEventListener('change', function () {
+        localStorage.setItem(key, box.checked ? '1' : '0');
+        card.classList.toggle('is-done', box.checked);
+      });
+    })(boxes[k]);
+  }
+})();
+</script>
+</body>
+</html>
