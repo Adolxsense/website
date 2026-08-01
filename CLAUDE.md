@@ -64,6 +64,17 @@ public/
 
 The only exception is the `translation` field in `src/data/songs.ts`, which contains Portuguese (Brazil) lyrics translations. Those must remain in PT-BR.
 
+## Band Identity — Christie
+
+Christie (full name **Christine Noelle Lavigne**) is the lead vocalist and emotional identity of Adolxsense. The canonical reference is [`docs/christie-character-bible.md`](docs/christie-character-bible.md).
+
+**Read the bible before writing anything that involves her** — lyrics, song descriptions, release copy, site copy, social captions, image prompts, or video treatments. The short version:
+
+- **Real voice, fictional face.** There is a real person and real voice behind Christie; the visual version of her is a fictional 3D character inspired by that identity. Never describe her as fake, "only AI", a virtual influencer, or non-existent.
+- **Music-first, Gorillaz-in-spirit.** The band is a visual music project — the fictional universe, music, and emotion come before the people behind it. Do not write copy that centers her private life.
+- **Tone.** Introspective, melancholic, wounded but not defeated, quiet in public and explosive in music. She sings from the wreckage, never as a glamorous pop star.
+- **Visuals.** Cinematic, dark, ultra-realistic 3D, alternative-rock / Nu Metal fashion, consistent facial identity across every image, never oversexualized.
+
 ## Lyrics Rules
 
 ### Adding a new song
